@@ -1,43 +1,109 @@
-**Tablemunukart Frontend**
-- This project was bootstrapped with Create React App.
-- Available Scripts
-- In the project directory, you can run:
-- clone
-- Take clone from master
-- after clone go to specific folder with command cd
-- npm install
-- Run this command to install all the packages, using in project
-- npm start
-- Runs the app in the development mode.
-- Open http://localhost:3000 to view it in the browser.
-- The page will reload if you make edits.
-- You will also see any lint errors in the console.
-- npm test
-- Launches the test runner in the interactive watch mode.
-- See the section about running tests for more information.
-- npm run build
-- Builds the app for production to the build folder.
-- It correctly bundles React in production mode and optimizes the build for the best performance.
-- The build is minified and the filenames include the hashes.
-- Your app is ready to be deployed!
-- See the section about deployment for more information.
-- npm run eject
-- Note: this is a one-way operation. Once you eject, you can’t go back!
-- If you aren’t satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.
-- Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except eject will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-- You don’t have to ever use eject. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-- Learn More
-- You can learn more in the Create React App documentation.
-- To learn React, check out the React documentation.
-- Code Splitting
-- This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-- Analyzing the Bundle Size
-- This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-- Making a Progressive Web App
-- This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-- Advanced Configuration
-- This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-- Deployment
-- This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-- npm run build fails to minify
-- This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+# GuestIt - Web Ordering
+
+A modern, tablet-first web ordering application for restaurants and hospitality venues. Customers browse menus, customize items with modifiers, manage their cart, and place orders directly from a tablet at their table.
+
+## Features
+
+- **Menu Browsing** - Category tabs, product list/grid views, image slideshows
+- **Product Customization** - Modifier wizards with mandatory/optional options
+- **Shopping Cart** - Add, edit, remove items with real-time totals
+- **Order Placement** - Submit orders with order tracking and confirmation
+- **Payment Methods** - PIN, Cash, and QR payment support
+- **Allergen Filtering** - Filter products by 22 allergen types
+- **Multi-language** - Dutch, English, German, Turkish, French (via i18next)
+- **Real-time Sync** - SignalR integration for multi-user order coordination
+- **Dynamic Theming** - API-driven colors, logos, and branding per restaurant
+- **QR Code Entry** - Scan to access without URL parameters
+- **Service Requests** - Call staff, request bill, extra utensils
+- **Order History** - View and track previous orders
+- **Responsive Design** - Tablet-first with mobile and desktop support
+
+## Tech Stack
+
+- **React 17** with Context API for state management
+- **40+ Custom Hooks** for business logic separation
+- **57 Components** with proper separation of concerns
+- **SCSS** with design tokens, animations, and mixins
+- **React Bootstrap** for modals and UI components
+- **React Router 5** for navigation
+- **Axios** for API communication
+- **SignalR** for real-time updates
+- **i18next** for internationalization
+- **Moment.js** for date/time handling
+
+## Project Structure
+
+```
+src/
+  context/          # Context API state management
+  Hooks/            # 40+ custom hooks (payment, orders, modifiers, etc.)
+  Pages/            # Page components (Login, Home, Landing, About, etc.)
+  components/       # Reusable UI components
+    TopFixMenu/     # Header, tabs, search
+    OrderListItems/ # Product list, cards, banners
+    BottomMenu/     # Bottom navigation bar
+    CartBar/        # Floating cart summary
+    FilterSidebar/  # Allergen filter panel
+    Modals/         # 15+ modal components
+    Icons/          # SVG icon library
+  styles/           # Design system (tokens, animations, mixins, theme)
+  services/         # API service layer
+  global/           # Configuration and constants
+  utils/            # HTTP client, session management
+```
+
+## Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/OliGuest/web-ordering-ai.git
+cd web-ordering-ai
+
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Build
+
+```bash
+npm run build
+```
+
+Builds the app for production to the `build` folder.
+
+## Configuration
+
+Server endpoints are configured in `public/config.js`:
+
+```js
+window.config = {
+  APP_CONNECTION: "your-signalr-endpoint",
+  APP_LOCALHOST: "your-api-base-url",
+  APP_PLATFORM: "your-platform-url",
+};
+```
+
+## Pages
+
+| Route | Description |
+|-------|-------------|
+| `/` | Login / Welcome screen |
+| `/home` | Main ordering interface |
+| `/landing` | Category selection landing |
+| `/about` | About us page |
+| `/HouseRules` | House rules page |
+| No params | QR code scanner entry |
+
+## Design System
+
+The app uses a custom design system with:
+
+- **Tokens** - Spacing (4px base), typography scale, radius, shadows, z-index
+- **Animations** - fadeIn, slideUp, slideInRight, scaleIn, shimmer, spring easing
+- **Mixins** - Glass morphism, responsive grid, text truncation, skeleton loading
+- **Theme** - CSS custom properties with dark mode support, API-driven colors
