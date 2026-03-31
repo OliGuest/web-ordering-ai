@@ -1,0 +1,10 @@
+:root {
+    --activeColor: #2B5270; // name set as per API response 
+    --arrowBackButtonColor: #000000;
+
+}
+
+
+$blue1: #2B5270;
+$activeColor: var(--activeColor);
+$arrowBackButtonColor: var(--arrowBackButtonColor);

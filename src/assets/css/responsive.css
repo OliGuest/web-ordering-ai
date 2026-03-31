@@ -1,0 +1,105 @@
+/* ============================================
+   Responsive Overrides — web-ordering-ace
+   Tablet-first responsive design
+   ============================================ */
+
+/* --- Small phones (< 360px) --- */
+@media (max-width: 359px) {
+  .order-menu-tabs .nav-link {
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+  .menu-list-item .item-img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  .item-count-wrapper .qty-btn {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* --- Mobile (< 575px) --- */
+@media (max-width: 575px) {
+  .products-modal .menu-list-item img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+  }
+  .language-flag img {
+    width: 26px;
+    height: 26px;
+  }
+  h2 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .total-amounts p,
+  .tip-amount p,
+  .all-tips .tip-hd {
+    font-size: 14px;
+  }
+  .butn {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px;
+  }
+  .payment-method,
+  .tips,
+  .total-amounts {
+    padding: 10px 20px;
+  }
+  .products-modal .modal-content .modal-header h4 {
+    font-size: 16px;
+  }
+  .cart-bar {
+    bottom: 72px;
+  }
+}
+
+/* --- Tablet Portrait (>= 575px) --- */
+@media (min-width: 575px) {
+  .payment-method,
+  .tips,
+  .total-amounts {
+    padding: 20px 40px;
+  }
+  .tips {
+    padding-bottom: 0;
+  }
+}
+
+/* --- Tablet Landscape (>= 768px) --- */
+@media (min-width: 768px) {
+  .header-main {
+    padding: 0 24px;
+  }
+  .order-list-body {
+    padding: 20px 24px;
+  }
+  .menu-search {
+    gap: 12px;
+  }
+}
+
+/* --- Desktop (>= 1024px) --- */
+@media (min-width: 1024px) {
+  .order-list-body {
+    padding: 24px 32px;
+  }
+  .cart-modal .modal-dialog {
+    max-width: 540px;
+    margin: 2rem auto;
+  }
+  .sent-modal .modal-dialog {
+    max-width: 480px;
+    margin: 2rem auto;
+  }
+}
+
+/* --- Large Desktop (>= 1366px) --- */
+@media (min-width: 1366px) {
+  .order-list-body {
+    padding: 24px 48px;
+  }
+}

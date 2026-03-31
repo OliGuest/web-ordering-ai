@@ -1,0 +1,74 @@
+// ============================================
+// Extended Theme — CSS Custom Properties
+// ============================================
+// These extend the existing --activeColor and --arrowBackButtonColor
+// with a full design system. Values are updated dynamically from API.
+
+:root {
+  // --- Existing (preserved from API) ---
+  // --activeColor is set dynamically in home.jsx / login/index.jsx
+  // --arrowBackButtonColor is set dynamically
+
+  // --- Surfaces ---
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f7f8;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #f0f0f2;
+  --bg-overlay: rgba(0, 0, 0, 0.3);
+
+  // --- Text ---
+  --text-primary: #1a1a1a;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
+  --text-inverse: #ffffff;
+  --text-on-active: #ffffff;
+
+  // --- Borders ---
+  --border-light: #f0f0f0;
+  --border-default: #e5e7eb;
+  --border-strong: #d1d5db;
+
+  // --- Radius ---
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  // --- Shadows ---
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+  // --- Layout ---
+  --header-height: 64px;
+  --bottom-bar-height: 72px;
+  --cart-bar-height: 56px;
+
+  // --- Feedback colors ---
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+}
+
+// --- Dark theme override (ThemeType === "1") ---
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2a2a2a;
+  --bg-surface: #2a2a2a;
+  --bg-surface-hover: #333333;
+
+  --text-primary: #f0f0f0;
+  --text-secondary: #a0a0a0;
+  --text-tertiary: #707070;
+
+  --border-light: #333333;
+  --border-default: #404040;
+  --border-strong: #555555;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,71 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  z-index: 499;
+  opacity: 1;
+  transition: opacity 350ms ease;
+}
+
+.drawer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(100%);
+  transition: transform 350ms cubic-bezier(0.32, 0.72, 0, 1);
+  z-index: 500;
+  max-height: 70vh;
+  border-radius: 20px 20px 0 0;
+  overflow-y: auto;
+}
+
+.open {
+  transform: translateY(0);
+}
+
+.header {
+  text-align: center;
+  padding: 16px 20px;
+}
+
+.dragHandle {
+  width: 40px;
+  height: 4px;
+  background: #d0d0d0;
+  border-radius: 9999px;
+  margin: 0 auto 16px;
+}
+
+.list {
+  list-style: none;
+  padding: 0 20px 20px;
+  margin: 0;
+}
+
+.langItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 16px 0;
+  border: none;
+  background: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.flag {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.active {
+  font-weight: 700;
+  color: var(--activeColor);
+}

@@ -1,0 +1,162 @@
+@import '../../styles/tokens';
+@import '../../styles/mixins';
+
+.container {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $space-6;
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      ellipse at 30% 20%,
+      rgba(var(--activeColor-rgb, 43, 82, 112), 0.06) 0%,
+      transparent 50%
+    );
+    pointer-events: none;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $space-8;
+  width: 100%;
+  max-width: 400px;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.logo {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  animation: scaleIn 0.5s ease-out 0.1s both;
+}
+
+.logoWrapper {
+  @include flex-center;
+  cursor: pointer;
+  transition: transform $transition-normal;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.welcome {
+  text-align: center;
+
+  h2 {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: var(--text-primary);
+    margin-bottom: $space-3;
+    line-height: $line-height-tight;
+  }
+
+  p {
+    font-size: $font-size-base;
+    font-weight: $font-weight-light;
+    color: var(--text-secondary);
+    line-height: $line-height-relaxed;
+    margin: 0;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  width: 100%;
+}
+
+.btnPrimary {
+  @include button-reset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: $space-4 $space-6;
+  border-radius: $radius-lg;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  transition: transform $transition-fast, box-shadow $transition-fast, opacity $transition-fast;
+  @include shadow('md');
+
+  &:hover {
+    transform: translateY(-1px);
+    @include shadow('lg');
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.btnSecondary {
+  @include button-reset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: $space-4 $space-6;
+  border-radius: $radius-lg;
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-default);
+  transition: transform $transition-fast, box-shadow $transition-fast, border-color $transition-fast;
+  @include shadow('sm');
+
+  &:hover {
+    transform: translateY(-1px);
+    border-color: var(--activeColor);
+    @include shadow('md');
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.secondaryButtons {
+  display: flex;
+  gap: $space-3;
+  width: 100%;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,86 @@
+// APPLY ON MENU
+.order-menu-tabs {
+    .nav-item {
+        .nav-link {
+            &.active {
+                background-color: $activeColor  !important;
+            }
+        }
+    }
+}
+
+// ADD ICON
+
+i.fal.fa-plus-circle {
+    color: $activeColor  !important;
+    font-size: 23px;
+}
+
+a.nav-link.cart-link span {
+    color: $activeColor  !important;
+}
+
+.item-count-wrapper {
+
+    .qty-btn {
+
+        border: 2px solid $activeColor  !important;
+
+        &:before {
+            background-color: $activeColor  !important;
+        }
+
+        &:after {
+            background-color: $activeColor  !important;
+        }
+    }
+
+}
+
+// CART ITEM NUMBER
+
+.menu-list-wrapper {
+    .menu-list-item {
+        .item-img {
+            .count-number {
+                background-color: $activeColor  !important;
+            }
+        }
+    }
+}
+
+// ON HOVER - GRID VIEW PRODUCT
+
+.now-tile {
+    .menu-list-wrapper {
+
+        .menu-list-item {
+            .item-content {
+
+                &:hover {
+                    background: $activeColor  !important;
+                }
+            }
+        }
+    }
+}
+
+.info-msg {
+    color: $activeColor  !important;
+
+    span {
+        svg {
+            stroke: $activeColor  !important;
+            ;
+        }
+    }
+}
+
+.modifiersbox {
+    border-color: $activeColor  !important;
+}
+
+// BACK BUTTON - arrow HeaderTextColor.
+.fal {
+    color: $arrowBackButtonColor  !important;
+}

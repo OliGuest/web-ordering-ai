@@ -1,0 +1,156 @@
+// ============================================
+// SCSS Mixins — web-ordering-ace
+// ============================================
+
+@import 'tokens';
+
+// --- Glass Morphism ---
+@mixin glass($opacity: 0.85, $blur: 12px) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+}
+
+@mixin glass-dark($opacity: 0.7, $blur: 12px) {
+  background: rgba(0, 0, 0, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+}
+
+// --- Shadows ---
+@mixin shadow($level: 'sm') {
+  @if $level == 'xs' { box-shadow: $shadow-xs; }
+  @else if $level == 'sm' { box-shadow: $shadow-sm; }
+  @else if $level == 'md' { box-shadow: $shadow-md; }
+  @else if $level == 'lg' { box-shadow: $shadow-lg; }
+  @else if $level == 'xl' { box-shadow: $shadow-xl; }
+}
+
+// --- Responsive Grid ---
+@mixin responsive-grid($min-width: 160px, $gap: $space-3) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+// --- Text Truncation ---
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+// --- Flex Center ---
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// --- Hide Scrollbar ---
+@mixin hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// --- Responsive Breakpoints ---
+@mixin bp-sm { @media (min-width: $bp-sm) { @content; } }
+@mixin bp-md { @media (min-width: $bp-md) { @content; } }
+@mixin bp-lg { @media (min-width: $bp-lg) { @content; } }
+@mixin bp-xl { @media (min-width: $bp-xl) { @content; } }
+
+// --- Interactive States ---
+@mixin interactive {
+  cursor: pointer;
+  transition: transform $transition-fast, box-shadow $transition-fast, opacity $transition-fast;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+// --- Button Reset ---
+@mixin button-reset {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+// --- Skeleton Loading ---
+@mixin skeleton {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: $radius-sm;
+}
+
+// --- Backdrop Overlay ---
+@mixin backdrop($opacity: 0.3) {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, $opacity);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: $z-modal-backdrop;
+}
+
+// --- Bottom Sheet ---
+@mixin bottom-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: $radius-xl $radius-xl 0 0;
+  z-index: $z-modal;
+  transform: translateY(100%);
+  transition: transform $transition-spring;
+  max-height: 85vh;
+  overflow-y: auto;
+
+  &.open {
+    transform: translateY(0);
+  }
+}
+
+// --- Drag Handle (for bottom sheets) ---
+@mixin drag-handle {
+  width: 40px;
+  height: 4px;
+  background: #d0d0d0;
+  border-radius: $radius-full;
+  margin: $space-3 auto $space-4;
+}
