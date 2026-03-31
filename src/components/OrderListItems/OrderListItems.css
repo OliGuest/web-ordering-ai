@@ -1,0 +1,28 @@
+.order-list-body {
+  padding-bottom: 10px;
+  position: relative;
+  /* overflow-y: auto; */
+  /* max-height: calc(100vh - 100px); */
+  margin: 28px 12px 170px 12px;
+  background: white;
+  overflow-y: hidden;
+}
+
+.order-list-body .menu-item-wrapper {
+  padding-bottom: 80px;
+}
+
+@media only screen and (min-width: 600px) {
+
+  /* .order-list-body {
+    max-height: calc(100% - 170px);
+  }
+
+  .open-cart .order-list-body {
+    max-height: calc(100% - 340px);
+  } */
+  .order-list-body {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+}

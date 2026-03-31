@@ -1,0 +1,46 @@
+.order-listing .settings-wrapper {
+    padding: 40px 9px 0 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFF9F4;
+}
+
+.order-listing .settings-wrapper .icons-rignt {
+    border-radius: 10px;
+    border: 1px solid #E7A536;
+
+}
+
+.order-listing .settings-wrapper .icons-rignt .icon-left {
+    border-right: 1px solid #E7A536;
+}
+
+.order-listing .settings-wrapper .icons-rignt .icon-right {
+    border-left: 1px solid #E7A536;
+}
+
+.order-listing .settings-wrapper .icons-rignt .icon-left,
+.order-listing .settings-wrapper .icons-rignt .icon-right {
+    padding: 8px;
+    display: inline-block;
+}
+
+.order-listing .settings-wrapper h4 {
+    max-width: 200px;
+    font-family: "Plus Jakarta Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    word-break: break-word;
+    line-height: 150%;
+    /* 27px */
+}
+
+@media (min-width: 600px) {
+    .order-listing .settings-wrapper {
+        max-width: 1080px;
+        margin: 0 auto;
+        background-color: white;
+    }
+}

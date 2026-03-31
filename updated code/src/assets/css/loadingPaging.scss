@@ -1,0 +1,99 @@
+.maindiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 9;
+    background-color: rgba($blue1, 0.5);
+    top: 0;
+
+    .logoname {
+        width: 190px;
+        margin-top: 5px;
+    }
+
+    .loadericon {
+        position: relative;
+        height: 100px;
+        width: 100px;
+        margin: auto;
+
+        .icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            img {
+                width: 50px;
+                filter: brightness(0) invert(1);
+            }
+        }
+
+        .outerCircle {
+            background-color: transparent;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            opacity: .9;
+            border-left: 3px solid #fff;
+            border-radius: 50%;
+            top: 0;
+            width: 93px;
+            height: 93px;
+            margin: 0 auto;
+            position: relative;
+            -moz-animation: spinoffPulse 3s infinite linear;
+            -webkit-animation: spinoffPulse 3s infinite linear;
+        }
+    }
+
+}
+
+
+@-moz-keyframes spinoffPulse {
+    0% {
+        -moz-transform: rotate(0deg);
+    }
+
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spinoffPulse {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spinoffPulse {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.sweet-loading {
+    display: flex;
+    margin: 0 auto;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    align-self: center;
+    z-index: 99999;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.3);
+    top: 0;
+}

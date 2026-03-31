@@ -1,0 +1,109 @@
+.extra-features-list label {
+  color: #1c1b1b;
+  font-family: "Plus Jakarta Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  /* 166.667% */
+  letter-spacing: -0.24px;
+  width: 100%;
+}
+
+.extra-features-list .label-name {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.extra-features-list .form-check-label {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.extra-features-list .form-check-label span {
+  pointer-events: all;
+}
+
+.extra-features-list .form-check-label .price {
+  font-family: "Plus Jakarta Sans";
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.form-check-input:checked[type=radio] {
+  background-image: none !important;
+}
+
+.form-check input[type="radio"] {
+  /* remove standard background appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* create custom radiobutton appearance */
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  padding: 3px;
+  /* background-color only for content */
+  background-clip: content-box;
+  margin-top: 3px;
+  border-radius: 50%;
+}
+
+.info-msg {
+  color: #C45A3C !important;
+  font-family: "Plus Jakarta Sans";
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  /* 200% */
+  letter-spacing: -0.24px;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.extra-features-list {
+  max-width: 100%;
+  /* padding: 12px; */
+  width: 100%;
+  padding: 8px 0;
+}
+
+
+.extra-features-list .form-check {
+  padding-left: 25px;
+}
+
+.extra-features-list .custom-checkbox:last-child {
+  margin-bottom: 0px;
+}
+
+.checking-input .form-check-input:checked {
+  background-color: white;
+}
+
+.form-check-input:checked[type=checkbox] {
+  background-image: none;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transition: 120ms transform ease-in-out;
+  transform-origin: bottom left;
+  box-shadow: inset 1em 1em red;
+}
+
+.extra-features-list.glow {
+  animation: 0.9s glow ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 0.1em #da9582);
+  }
+
+  100% {
+    filter: drop-shadow(0 0 0.1em #d48d7a);
+  }
+}

@@ -1,0 +1,17 @@
+.menu-list-wrapper {
+  /* margin: 5px 0; */
+}
+
+.now-tile .menu-list-wrapper {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.promotion-box {
+  margin-top: 35px;
+  border-top: 1px solid black;
+}

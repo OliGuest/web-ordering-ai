@@ -1,0 +1,178 @@
+/* landing Page Buttons */
+.landing-page {
+    height: 100%;
+    background-color: #ffffff;
+    color: white;
+    /* margin: 13px 0 40px; */
+    text-align: center;
+    /* position: relative; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.landing-logo {
+  padding-bottom: 109px;
+  display: block;
+}
+
+.landing-welcome-content {
+  padding: 0 49px;
+}
+
+.welcome-heading {
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: rgb(0, 0, 0);
+  font-weight: 700;
+}
+
+.welcome-text {
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.landing-footer {
+  margin-bottom: 20px;
+  /* padding-top: 40px; */
+}
+
+.input-Name {
+  width: 366px !important;
+  display: inline-block;
+  max-width: 90%;
+  margin: 0 auto 16px auto;
+  height: 66px;
+  position: relative;
+}
+
+.input-Name input {
+  height: 100%;
+}
+
+.input-Name .form-control {
+  /* border-radius: 12px; */
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+  border-bottom-left-radius: 8px !important;
+  border: none;
+  background: rgba(217, 217, 217, 0.8);
+  font-family: "Plus Jakarta Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+  /* 25.6px */
+  /* 150% */
+  letter-spacing: 0.5px;
+  padding-bottom: 0px;
+  padding-top: 10px;
+  padding-left: 15px;
+}
+
+.clear-input-name {
+  cursor: pointer;
+}
+
+.input-Name .form-control:focus {
+  background: rgba(217, 217, 217, 0.8);
+  border: none;
+  box-shadow: none;
+}
+
+.input-Name #addon-wrapping {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border: none;
+  background: rgba(217, 217, 217, 0.8);
+}
+
+.input-Name .input-group-prepend {
+  border: none;
+  margin-left: 0px !important;
+}
+
+.placeholderName {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  font-family: "Plus Jakarta Sans";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  /* 18px */
+  letter-spacing: 0.4px;
+  color: #49454f;
+  z-index: 4;
+}
+
+.continue-btn {
+  border-radius: 12px;
+  padding: 14px;
+  width: 366px;
+  display: inline-block;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.continue-btn span {
+  font-family: "Plus Jakarta Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.net-butns .start-met,
+.net-butns .input-Name {
+  display: none;
+}
+
+.landing-footer .landing-select-butns {
+  position: relative;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  height: 0;
+  overflow: hidden;
+}
+
+.net-butns .landing-select-butns {
+  height: auto;
+  /* min-height: 220px; */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.about-back {
+  background: #E7A536;
+  /* margin-left: 12px; */
+}
+
+@keyframes topToBottom {
+  0% {
+    bottom: 0;
+  }
+
+  100% {
+    bottom: 160px;
+  }
+}
+
+.landing-select-butns .butn:nth-child(2) {
+  bottom: 80px;
+  animation: topToBottom2 ease 1.5s;
+  -webkit-animation: topToBottom2 ease 1.5s;
+  -moz-animation: topToBottom2 ease 1.5s;
+  -o-animation: topToBottom2 ease 1.5s;
+  -ms-animation: topToBottom2 ease 1.5s;
+}

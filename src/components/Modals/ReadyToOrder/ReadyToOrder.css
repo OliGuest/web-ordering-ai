@@ -1,0 +1,56 @@
+#modalReadyToOrder .icon-text {
+    display: flex;
+    width: 100%;
+}
+
+#modalReadyToOrder .icon-text p {
+    margin: 0;
+    font-family: "Plus Jakarta Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; 
+    width: 100%;
+}
+
+#modalReadyToOrder .cancel-request-bill, #modalReadyToOrder .confirm-request-bill {
+ background-color: transparent;
+ color: black;
+}
+
+#modalReadyToOrder .cancel-request-bill {
+    /* width: 68px ; */
+    margin-right: 8px;
+    margin-left: 12px;
+    color: #C45A3C;
+}
+#modalReadyToOrder .modal-empty .bottom-clear-buttons {
+    margin-top: 34px;
+}
+#modalReadyToOrder .modal-empty .bottom-clear-buttons button {
+    
+    padding: 0 12px; 
+    text-align: center;
+    font-family: "Plus Jakarta Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 100% */
+}
+#modalRequestEmpty .modal-empty .bottom-clear-buttons {
+    margin-top: 34px;
+}
+#modalRequestEmpty .modal-empty .bottom-clear-buttons button {
+    
+    padding: 10px 12px; 
+    text-align: center;
+    font-family: "Plus Jakarta Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 100% */
+}
+
+#modalReadyToOrder .modal-empty .bottom-clear-buttons {
+    align-self: flex-end;
+}

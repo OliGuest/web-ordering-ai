@@ -1,0 +1,25 @@
+#modalRequestEmpty .icon-text {
+    display: flex;
+}
+
+#modalRequestEmpty .icon-text p {
+    margin: 0;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "Plus Jakarta Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 150%; /* 21px */
+    width: 192px;
+}
+
+#modalRequestEmpty .cancel-request-bill, #modalRequestEmpty .confirm-request-bill {
+    width: 68px ;
+    border-radius: 12px;
+}
+
+#modalRequestEmpty .cancel-request-bill {
+    /* width: 68px ; */
+    margin-right: 50px;
+    margin-left: 12px;
+}

@@ -1,0 +1,296 @@
+#alergens-modal {
+    display: none !important;
+    opacity: 0;
+    justify-content: center;
+    align-items: flex-end;
+    animation: scaleUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+#alergens-modal .modal-body {
+    /* max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px 24px; */
+}
+
+#alergens-modal .modal-body p {
+    margin: 4px 4px 24px;
+    font-family: "Plus Jakarta Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+#alergens-modal .modal-body .img-flag {
+    margin-right: 32px;
+    box-shadow: 0px 6px 16.8px 0px rgba(0, 0, 0, 0.25);
+}
+
+#alergens-modal .modal-body span {
+    font-family: "Plus Jakarta Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    /* 200% */
+}
+
+#alergens-modal .modal-body .text-details h6 {
+    font-family: "Plus Jakarta Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    color: #77828C;
+}
+
+#alergens-modal .modal-body .text-details {
+    padding: 8px 30px;
+}
+
+#alergens-modal .modal-footer {
+    display: flex;
+    justify-content: center;
+    padding: 17px;
+}
+
+#alergens-modal .modal-footer button:first-child {
+    background-color: white;
+    color: #E7A536;
+    margin-right: 20px;
+}
+
+#alergens-modal .modal-footer button:last-child {
+    background-color: #E7A536;
+    color: white;
+}
+
+#alergens-modal .modal-footer button {
+    width: 160px;
+    padding: 12px 0;
+    border: 1px solid #E7A536;
+    border-radius: 8px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0;
+}
+
+#alergens-modal.show {
+    opacity: 1;
+    display: flex !important;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.language-flag {
+    background-color: transparent;
+}
+
+#alergens-modal .modal-content .modal-header h4 {
+    width: 100%;
+    font-family: "Plus Jakarta Sans";
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    margin: 0;
+    margin-left: 13px;
+}
+
+#alergens-modal .modal-body .filter-body {
+    height: 90%;
+    overflow-y: auto;
+}
+
+#alergens-modal .modal-footer .bottom-clear-buttons {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#alergens-modal .modal-dialog #modal-content {
+    height: 80vh !important;
+}
+
+#alergens-modal .modal-dialog #modal-content .modal-body {
+    overflow-y: unset;
+    outline: none;
+    height: 76%;
+}
+
+#alergens-modal .close-button {
+    background: white;
+    position: absolute;
+    top: 13px;
+    left: 14px;
+    z-index: 3;
+}
+
+/* body.filter-open .nav_overlay {
+    display: block;
+} */
+
+#alergens-modal .promo-list-wrapper .promo-list-item .fade-check .item-img {
+    border-radius: 8px;
+}
+
+#alergens-modal .promo-list-wrapper .promo-list-item .fade-check .item-img .promo-tag {
+    bottom: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    top: auto !important;
+    border-radius: 0px 0px 8px 8px !important;
+}
+
+
+/* filter check */
+
+#alergens-modal .fade-check-wrapper input {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    opacity: 0;
+}
+
+#alergens-modal .fade-check-wrapper .fade-check {
+    opacity: 0.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+#alergens-modal .fade-check-wrapper input:checked+.fade-check {
+    opacity: 1;
+}
+
+/* body.filter-open .filter-sidebar {
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+    border-radius: 8px 0px 0px 8px;
+} */
+
+#alergens-modal .filter-sidebar {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    bottom: 0;
+    background: #fff;
+    max-width: 297px;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+    opacity: 0;
+    transition: all 0.5s;
+    visibility: hidden;
+    height: 100%;
+    overflow: auto;
+}
+
+#alergens-modal .filter-head {
+    color: #403b3b;
+    font-family: "Plus Jakarta Sans";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: normal;
+}
+
+#alergens-modal .filter-head .colored-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 8px 11px 21px;
+}
+
+#alergens-modal .filter-head .text-details {
+    padding: 6px 20px 6px 24px;
+    background-color: white;
+}
+
+#alergens-modal .filter-head .text-details h6 {
+    color: #979797;
+    font-family: "Plus Jakarta Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    /* 133.333% */
+}
+
+#alergens-modal .filter-head .colored-text h6 {
+    color: white;
+    text-align: center;
+    font-family: "Plus Jakarta Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    /* 114.286% */
+}
+
+#alergens-modal .main-menu-heading {
+    color: #9e9e9e;
+    font-weight: 400;
+    background: transparent;
+    border: none;
+    outline: none !important;
+    text-align: left;
+}
+
+#alergens-modal .filter-list-wrapper {
+    overflow-y: auto;
+}
+
+#alergens-modal .filter-list-wrapper .filter-item {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    padding: 0 9px;
+    list-style: none;
+    margin-bottom: 12px;
+}
+
+#alergens-modal .filter-list-wrapper .filter-item a {
+    display: inline-block;
+}
+
+#alergens-modal .filter-list-wrapper .filter-item .filter-img {
+    margin-bottom: 6px;
+}
+
+
+.fade-check-wrapper input:not(:checked)+.fade-check {
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+}
+
+.filter-list-wrapper h6 {
+    color: var(--color-dark);
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 0;
+    word-break: break-all;
+}
+
+
+/* #alergens-modal .filter-body {
+    max-height: calc(100% - 160px);
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+} */
+@keyframes scaleUp {
+    0% {
+        transform: scale(.8) translateY(1000px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1) translateY(0px);
+        opacity: 1;
+    }
+}
