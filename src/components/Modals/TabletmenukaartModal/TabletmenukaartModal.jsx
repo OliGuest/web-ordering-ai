@@ -27,9 +27,7 @@ const TabletmenukaartModal = () => {
                             }}
                         >
                             <h4 style={{ color: `${billTheme?.HeaderTextColor}` }}>
-                                {kartHistoryStore && kartHistoryStore?.length > 1
-                                    ? "Tabletmenukaart"
-                                    : "Tabletmenukaart"}
+                                {"GuestIt"}
                             </h4>
                             <button
                                 type="button"
