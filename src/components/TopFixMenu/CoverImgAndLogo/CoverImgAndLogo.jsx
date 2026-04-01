@@ -18,11 +18,14 @@ const CoverImgAndLogo = ({ visible }) => {
         }
     }, [isOpenLanguage])
 
-    return (
+    // Hide cover if image URL is from a different/unavailable server
+    const showCover = landingPage && !landingPage.includes('wo.cloud.revelapps.com');
+
+    return showCover ? (
         <div className={`img-text-wrapper ${visible ? "up" : ""}`} >
             <img className={`top-background  ${visible ? "up" : ""}`} src={landingPage} alt="Landing Page" />
         </div>
-    )
+    ) : null;
 }
 
 export default CoverImgAndLogo;

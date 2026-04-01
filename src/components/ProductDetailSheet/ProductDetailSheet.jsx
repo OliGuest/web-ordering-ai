@@ -25,6 +25,7 @@ const ProductDetailSheet = () => {
         orderTheme,
         searchSubCatIndex,
         setActiveCard,
+        discriptionTotal,
     } = useContext(Context);
 
     const [calculateTotalAccToWizard] = useCalculateTotalAccToWizard();
@@ -42,7 +43,6 @@ const ProductDetailSheet = () => {
             setProductData(null);
             return;
         }
-        // Search through all categories to find the product
         for (const cat of searchSubCatIndex) {
             if (cat?.SubCategories) {
                 for (const sub of cat.SubCategories) {
@@ -56,7 +56,6 @@ const ProductDetailSheet = () => {
                     }
                 }
             }
-            // Also check if products are directly on the category
             if (cat?.Products) {
                 const found = cat.Products.find(p => p.ProductId === activeCard);
                 if (found) {
@@ -94,9 +93,12 @@ const ProductDetailSheet = () => {
     if (!productData || !activeCard) return null;
 
     const quantity = getProductQuantityInCart(productData);
-    const price = parseFloat(productData?.Price) || 0;
+    const basePrice = parseFloat(productData?.Price) || 0;
+    const modifierTotal = parseFloat(discriptionTotal) || 0;
+    const totalPrice = basePrice + modifierTotal;
     const currency = currencyValue || "€";
     const hasModifiers = modifires && modifires.length > 0;
+    const hasQuantity = quantity && quantity !== "";
     const description = productData?.ProductDetails?.MenuItems?.map((item) => {
         if (item.LayoutType === 1) return item?.HtmlContent;
         return "";
@@ -138,7 +140,7 @@ const ProductDetailSheet = () => {
                             {productData?.Name}
                         </h2>
                         <p className="pds-price" style={{ color: activeColor }}>
-                            {currency} {price.toFixed(2)}
+                            {currency} {basePrice.toFixed(2)}
                         </p>
                     </div>
 
@@ -157,6 +159,9 @@ const ProductDetailSheet = () => {
                     {/* Modifiers */}
                     {hasModifiers && (
                         <div className="pds-modifiers">
+                            <h3 className="pds-modifiers-title">
+                                {t("lblChooseOptions") || "Choose your options"}
+                            </h3>
                             <ModifiresList
                                 resetModifiers={resetModifiers}
                                 DescriptionData={productData}
@@ -175,18 +180,18 @@ const ProductDetailSheet = () => {
                 {/* Sticky footer with add to cart */}
                 {active && (
                     <div className="pds-footer">
-                        {quantity && quantity !== "" ? (
+                        {hasQuantity ? (
                             <div className="pds-qty-row">
                                 <div className="pds-qty-stepper">
                                     <button className="pds-qty-btn" onClick={handleRemoveFromCart}>
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                            <path d="M4 10h12" stroke={activeColor} strokeWidth="2" strokeLinecap="round"/>
+                                            <path d="M4 10h12" stroke={activeColor} strokeWidth="2.5" strokeLinecap="round"/>
                                         </svg>
                                     </button>
                                     <span className="pds-qty-value">{quantity}</span>
                                     <button className="pds-qty-btn" onClick={handleAddToCart}>
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                            <path d="M10 4v12M4 10h12" stroke={activeColor} strokeWidth="2" strokeLinecap="round"/>
+                                            <path d="M10 4v12M4 10h12" stroke={activeColor} strokeWidth="2.5" strokeLinecap="round"/>
                                         </svg>
                                     </button>
                                 </div>
@@ -195,7 +200,7 @@ const ProductDetailSheet = () => {
                                     style={{ backgroundColor: activeColor }}
                                     onClick={handleClose}
                                 >
-                                    {t("lblDone") || "Done"}
+                                    Done · {currency} {(totalPrice * parseInt(quantity)).toFixed(2)}
                                 </button>
                             </div>
                         ) : (
@@ -204,8 +209,8 @@ const ProductDetailSheet = () => {
                                 style={{ backgroundColor: activeColor }}
                                 onClick={handleAddToCart}
                             >
-                                <span>{t("lblAddToCart") || "Add to order"}</span>
-                                <span className="pds-add-price">{currency} {price.toFixed(2)}</span>
+                                <span>Add to cart</span>
+                                <span className="pds-add-price">{currency} {totalPrice.toFixed(2)}</span>
                             </button>
                         )}
                     </div>
