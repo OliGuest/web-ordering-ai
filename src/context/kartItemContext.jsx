@@ -345,6 +345,11 @@ export const Provider = ({ children }) => {
     // ________________________ SignalR useEffect 
     const JoinTable = async () => {
 
+        // Skip SignalR in demo mode
+        if (window.config?.APP_DEMO_MODE === true) {
+            return;
+        }
+
         try {
             hubProxy.invoke("ping").done(function () {
                 console.log("Connection still alive!");
