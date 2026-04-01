@@ -19,8 +19,8 @@
     background-position: center;
     background-size: cover;
     position: relative;
-    margin: 6px 10px 0;
-    border-radius: 14px;
+    margin: 8px 12px 12px;
+    border-radius: 16px;
     overflow: hidden;
 }
 
@@ -37,7 +37,7 @@
     );
     pointer-events: none;
     z-index: 0;
-    border-radius: 14px;
+    border-radius: 16px;
 }
 
 .landing-page > * {
@@ -70,15 +70,15 @@
 }
 
 .landing-footer {
-    padding: 20px 24px;
-    padding-bottom: calc(28px + var(--safe-area-bottom, 0px));
+    padding: 24px 24px;
+    padding-bottom: calc(36px + var(--safe-area-bottom, 0px));
 }
 
 .input-Name {
     width: min(380px, 88vw) !important;
     display: inline-block;
     max-width: 92%;
-    margin: 0 auto 14px auto;
+    margin: 0 auto 16px auto;
     height: 52px;
     position: relative;
     border-radius: 12px;

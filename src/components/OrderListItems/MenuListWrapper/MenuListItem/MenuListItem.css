@@ -1,7 +1,7 @@
 .menu-list-wrapper .menu-list-item {
   max-width: 1080px;
   background: var(--bg-primary, #FFF);
-  padding: 14px 0;
+  padding: 16px 0;
   position: relative;
   border-bottom: 1px solid var(--border-light, #f0f0f0);
   cursor: pointer;

@@ -103,12 +103,12 @@
 
 /* Content area */
 .pds-content {
-  padding: 16px 18px 90px;
+  padding: 20px 20px 100px;
 }
 
 /* Header: title + price */
 .pds-header {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .pds-title {
@@ -130,7 +130,7 @@
 
 /* Description */
 .pds-description {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   color: #717171;
   font-size: 14px;
   line-height: 1.5;
