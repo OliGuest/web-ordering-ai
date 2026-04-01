@@ -20,8 +20,10 @@ const LandingPage = () => {
     }, [setNameValue])
 
     useEffect(() => {
-
-        // getResourcesWithParams();
+        // Load data if not already loaded (e.g. direct navigation)
+        if (!index || index.length === 0) {
+            getResourcesWithParams();
+        }
         JoinTable();
         // eslint-disable-next-line
     }, [])

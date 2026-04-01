@@ -624,6 +624,11 @@ export const Provider = ({ children }) => {
     const getResourcesWithParams = () => {
         setvisibility(true)
         let resourceFromParams = JSON.parse(sessionStorage.getItem("theParams"));
+        // In demo mode, ensure params exist
+        if (!resourceFromParams && window.config?.APP_DEMO_MODE === true) {
+            resourceFromParams = { tableNumber: "1", orderCode: "1", tableCode: "1", validation: "1" };
+            sessionStorage.setItem("theParams", JSON.stringify(resourceFromParams));
+        }
         setPath(resourceFromParams);
         setDefaultLang(CONSTANTDATA.LANGUAGE_CODE_NL);
         adminServices.getResourcesWithParams(resourceFromParams, deviceId).then((resp) => {
