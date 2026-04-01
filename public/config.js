@@ -1,7 +1,7 @@
 window.config = {
   // Set to true to use local demo data (no API needed)
   // Set to false to use real API endpoints below
-  APP_DEMO_MODE: true,
+  APP_DEMO_MODE: false,
 
   // APP_CONNECTION: "http://tabletmenukaart2.ddns.net:9933/signalr/hubs",
   // APP_LOCALHOST: "http://tabletmenukaart2.ddns.net:9933",

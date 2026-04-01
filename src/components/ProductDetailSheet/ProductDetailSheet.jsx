@@ -36,11 +36,14 @@ const ProductDetailSheet = () => {
     const [getProductQuantityInCart] = useGetProductQuantityInCart();
     const [productData, setProductData] = useState(null);
     const [modifires, setModifires] = useState([]);
+    const [localQty, setLocalQty] = useState(0);
 
     // Find the product data from categories when activeCard changes
     useEffect(() => {
         if (!activeCard || !searchSubCatIndex) {
             setProductData(null);
+            setModifires([]);
+            setLocalQty(0);
             return;
         }
         for (const cat of searchSubCatIndex) {
@@ -51,6 +54,9 @@ const ProductDetailSheet = () => {
                         if (found) {
                             setProductData(found);
                             setModifires(found.ModifierWizards || []);
+                            // Get existing quantity from cart
+                            const existing = kartItem?.find(i => i.ProductId === found.ProductId);
+                            setLocalQty(existing?.quantity || 0);
                             return;
                         }
                     }
@@ -61,28 +67,40 @@ const ProductDetailSheet = () => {
                 if (found) {
                     setProductData(found);
                     setModifires(found.ModifierWizards || []);
+                    const existing = kartItem?.find(i => i.ProductId === found.ProductId);
+                    setLocalQty(existing?.quantity || 0);
                     return;
                 }
             }
         }
     }, [activeCard, searchSubCatIndex]);
 
+    // Sync localQty with kartItem changes
+    useEffect(() => {
+        if (productData) {
+            const existing = kartItem?.find(i => i.ProductId === productData.ProductId);
+            setLocalQty(existing?.quantity || 0);
+        }
+    }, [kartItem, productData]);
+
     const handleClose = () => {
         setActiveCard(undefined);
         setProductData(null);
+        setModifires([]);
+        setLocalQty(0);
         document.body.classList.remove("open-detail");
     };
 
-    const handleAddToCart = (e) => {
+    const handleAdd = (e) => {
         e.stopPropagation();
         if (productData) {
             addQuantityAndRemoveClass(productData);
         }
     };
 
-    const handleRemoveFromCart = (e) => {
+    const handleRemove = (e) => {
         e.stopPropagation();
-        if (productData) {
+        if (productData && localQty > 0) {
             const finddata = kartItem.find((item) => item.ProductId === productData.ProductId);
             if (finddata) {
                 minusQuantityKart(finddata);
@@ -92,13 +110,11 @@ const ProductDetailSheet = () => {
 
     if (!productData || !activeCard) return null;
 
-    const quantity = getProductQuantityInCart(productData);
     const basePrice = parseFloat(productData?.Price) || 0;
     const modifierTotal = parseFloat(discriptionTotal) || 0;
     const totalPrice = basePrice + modifierTotal;
     const currency = currencyValue || "€";
     const hasModifiers = modifires && modifires.length > 0;
-    const hasQuantity = quantity && quantity !== "";
     const description = productData?.ProductDetails?.MenuItems?.map((item) => {
         if (item.LayoutType === 1) return item?.HtmlContent;
         return "";
@@ -106,17 +122,13 @@ const ProductDetailSheet = () => {
 
     return (
         <>
-            {/* Backdrop */}
             <div className="pds-backdrop" onClick={handleClose} />
 
-            {/* Sheet */}
             <div className="pds-sheet">
-                {/* Drag handle */}
                 <div className="pds-drag-handle" onClick={handleClose}>
                     <span />
                 </div>
 
-                {/* Close button */}
                 <button className="pds-close" onClick={handleClose} aria-label="Close">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
@@ -134,7 +146,6 @@ const ProductDetailSheet = () => {
 
                 {/* Content */}
                 <div className="pds-content">
-                    {/* Title & Price */}
                     <div className="pds-header">
                         <h2 className="pds-title" style={{ color: orderTheme?.ProductTextColor }}>
                             {productData?.Name}
@@ -144,14 +155,12 @@ const ProductDetailSheet = () => {
                         </p>
                     </div>
 
-                    {/* Description */}
                     {description.some(d => d && d.length > 0) && (
                         <div className="pds-description">
                             <DescriptionItemAllText description={description} />
                         </div>
                     )}
 
-                    {/* Allergens */}
                     <div className="pds-allergens">
                         <AlergenIcons data={productData} />
                     </div>
@@ -159,10 +168,8 @@ const ProductDetailSheet = () => {
                     {/* Modifiers */}
                     {hasModifiers && (
                         <div className="pds-modifiers">
-                            <h3 className="pds-modifiers-title">
-                                {t("lblChooseOptions") || "Choose your options"}
-                            </h3>
                             <ModifiresList
+                                key={activeCard}
                                 resetModifiers={resetModifiers}
                                 DescriptionData={productData}
                                 modifires={modifires}
@@ -177,42 +184,46 @@ const ProductDetailSheet = () => {
                     )}
                 </div>
 
-                {/* Sticky footer with add to cart */}
+                {/* Footer — always show quantity stepper */}
                 {active && (
                     <div className="pds-footer">
-                        {hasQuantity ? (
-                            <div className="pds-qty-row">
-                                <div className="pds-qty-stepper">
-                                    <button className="pds-qty-btn" onClick={handleRemoveFromCart}>
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                            <path d="M4 10h12" stroke={activeColor} strokeWidth="2.5" strokeLinecap="round"/>
-                                        </svg>
-                                    </button>
-                                    <span className="pds-qty-value">{quantity}</span>
-                                    <button className="pds-qty-btn" onClick={handleAddToCart}>
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                            <path d="M10 4v12M4 10h12" stroke={activeColor} strokeWidth="2.5" strokeLinecap="round"/>
-                                        </svg>
-                                    </button>
-                                </div>
+                        <div className="pds-qty-row">
+                            <div className="pds-qty-stepper">
+                                <button
+                                    className="pds-qty-btn"
+                                    onClick={handleRemove}
+                                    disabled={localQty === 0}
+                                    style={{ opacity: localQty === 0 ? 0.3 : 1 }}
+                                >
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M4 10h12" stroke={activeColor} strokeWidth="2.5" strokeLinecap="round"/>
+                                    </svg>
+                                </button>
+                                <span className="pds-qty-value">{localQty}</span>
+                                <button className="pds-qty-btn" onClick={handleAdd}>
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M10 4v12M4 10h12" stroke={activeColor} strokeWidth="2.5" strokeLinecap="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            {localQty > 0 ? (
                                 <button
                                     className="pds-add-btn"
                                     style={{ backgroundColor: activeColor }}
                                     onClick={handleClose}
                                 >
-                                    Done · {currency} {(totalPrice * parseInt(quantity)).toFixed(2)}
+                                    Done · {currency} {(totalPrice * localQty).toFixed(2)}
                                 </button>
-                            </div>
-                        ) : (
-                            <button
-                                className="pds-add-btn pds-add-btn-full"
-                                style={{ backgroundColor: activeColor }}
-                                onClick={handleAddToCart}
-                            >
-                                <span>Add to cart</span>
-                                <span className="pds-add-price">{currency} {totalPrice.toFixed(2)}</span>
-                            </button>
-                        )}
+                            ) : (
+                                <button
+                                    className="pds-add-btn"
+                                    style={{ backgroundColor: activeColor }}
+                                    onClick={handleAdd}
+                                >
+                                    Add to cart
+                                </button>
+                            )}
+                        </div>
                     </div>
                 )}
             </div>
