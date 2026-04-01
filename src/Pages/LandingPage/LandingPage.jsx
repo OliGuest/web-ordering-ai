@@ -53,9 +53,7 @@ const LandingPage = () => {
             <div className="main-landing-text">
                 <div className="textBox">
 
-                    <h2 style={{
-                        color: `${activeTheme === "2" ? "#4D4D4D" : "#ffffff"}`,
-                    }}>{t("IbIMainCategories")}</h2>
+                    <h2>{t("IbIMainCategories")}</h2>
                     <p>{t("IbIHi")} {nameValue}! {t("IbIYourChoice")}? </p>
                 </div>
 

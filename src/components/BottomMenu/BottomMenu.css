@@ -1,7 +1,10 @@
 .menu-bottom-bar {
-  background: #ffffff;
-  padding: 11px 27px 16px;
-  border-top: 1px solid #616161;
+  background: var(--bg-primary, #ffffff);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 12px 24px;
+  padding-bottom: calc(12px + var(--safe-area-bottom, 0px));
+  border-top: 1px solid var(--border-light, #f0f0f0);
   position: fixed;
   bottom: 0;
   left: 0;
@@ -9,20 +12,16 @@
   z-index: 5;
   max-width: 100%;
   margin: 0 auto;
-  -webkit-box-shadow: 0px -15px 20px -21px rgba(0, 0, 0, 0.13);
-  -moz-box-shadow: 0px -15px 20px -21px rgba(0, 0, 0, 0.13);
-  box-shadow: 0px -15px 20px -21px rgba(0, 0, 0, 0.13);
-  /* border-radius: 12px 12px 0px 0px; */
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.04);
 }
-
-
-/* a.nav-link.cart-link span {
-   color: #da1a35;
-} */
-
 
 .btnBottom {
   background-color: inherit;
+  transition: transform 150ms ease;
+}
+
+.btnBottom:active {
+  transform: scale(0.9);
 }
 
 .hideOnScroll {
@@ -32,7 +31,7 @@
 }
 
 .hideOnScroll.down {
-  bottom: -7rem;
+  bottom: -100px;
 }
 
 .count {
@@ -49,6 +48,5 @@
   font-style: normal;
   font-weight: 600;
   line-height: 13px;
-  /* 162.5% */
   letter-spacing: 0.07px;
 }

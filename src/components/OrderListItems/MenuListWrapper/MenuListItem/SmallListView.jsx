@@ -211,8 +211,8 @@ const SmallListView = ({ data, index, activeCard, propClass }) => {
                                                                 );
 
                                                             }} width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <rect x="0.5" width="36" height="36" rx="8" fill="#FAEEE9" />
-                                                            <path d="M25.5 17H19.5V11H17.5V17H11.5V19H17.5V25H19.5V19H25.5V17Z" fill="#E7A536" />
+                                                            <rect x="0.5" width="36" height="36" rx="8" fill={activeColor ? `${activeColor}20` : "#FAEEE920"} />
+                                                            <path d="M25.5 17H19.5V11H17.5V17H11.5V19H17.5V25H19.5V19H25.5V17Z" fill={activeColor || "#E7A536"} />
                                                         </svg>
                                                     </div>
                                                 )
@@ -223,8 +223,8 @@ const SmallListView = ({ data, index, activeCard, propClass }) => {
                                                     <div className="item-count-wrapper d-flex">
                                                         {/* <svg className="blue-buttons"
                                                             onClick={(e) => { e.stopPropagation(); removItems(data) }} width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <rect x="0.5" width="36" height="36" rx="8" fill="#FAEEE9" />
-                                                            <path d="M11.5 17H25.5V19H11.5V17Z" fill="#E7A536" />
+                                                            <rect x="0.5" width="36" height="36" rx="8" fill={activeColor ? `${activeColor}20` : "#FAEEE920"} />
+                                                            <path d="M11.5 17H25.5V19H11.5V17Z" fill={activeColor || "#E7A536"} />
                                                         </svg>
                                                         <input
                                                             type="text"
@@ -244,8 +244,8 @@ const SmallListView = ({ data, index, activeCard, propClass }) => {
                                                                 );
 
                                                             }} width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <rect x="0.5" width="36" height="36" rx="8" fill="#FAEEE9" />
-                                                            <path d="M25.5 17H19.5V11H17.5V17H11.5V19H17.5V25H19.5V19H25.5V17Z" fill="#E7A536" />
+                                                            <rect x="0.5" width="36" height="36" rx="8" fill={activeColor ? `${activeColor}20` : "#FAEEE920"} />
+                                                            <path d="M25.5 17H19.5V11H17.5V17H11.5V19H17.5V25H19.5V19H25.5V17Z" fill={activeColor || "#E7A536"} />
                                                         </svg>
 
                                                     </div>
@@ -343,8 +343,8 @@ const SmallListView = ({ data, index, activeCard, propClass }) => {
                                                 );
                                             setClickedCardId(propClass)
                                         }} width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="0.5" width="36" height="36" rx="8" fill="#FAEEE9" />
-                                        <path d="M25.5 17H19.5V11H17.5V17H11.5V19H17.5V25H19.5V19H25.5V17Z" fill="#E7A536" />
+                                        <rect x="0.5" width="36" height="36" rx="8" fill={activeColor ? `${activeColor}20` : "#FAEEE920"} />
+                                        <path d="M25.5 17H19.5V11H17.5V17H11.5V19H17.5V25H19.5V19H25.5V17Z" fill={activeColor || "#E7A536"} />
                                     </svg>
 
                                 </div>
@@ -355,8 +355,8 @@ const SmallListView = ({ data, index, activeCard, propClass }) => {
                                     {data.ModifierWizards.length <= 0 && (<>
                                         <svg className="blue-buttons"
                                             onClick={(e) => { e.stopPropagation(); removItems(data) }} width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect x="0.5" width="36" height="36" rx="8" fill="#FAEEE9" />
-                                            <path d="M11.5 17H25.5V19H11.5V17Z" fill="#E7A536" />
+                                            <rect x="0.5" width="36" height="36" rx="8" fill={activeColor ? `${activeColor}20` : "#FAEEE920"} />
+                                            <path d="M11.5 17H25.5V19H11.5V17Z" fill={activeColor || "#E7A536"} />
                                         </svg>
                                         <input
                                             type="text"
@@ -383,8 +383,8 @@ const SmallListView = ({ data, index, activeCard, propClass }) => {
                                                 );
 
                                         }} width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="0.5" width="36" height="36" rx="8" fill="#FAEEE9" />
-                                        <path d="M25.5 17H19.5V11H17.5V17H11.5V19H17.5V25H19.5V19H25.5V17Z" fill="#E7A536" />
+                                        <rect x="0.5" width="36" height="36" rx="8" fill={activeColor ? `${activeColor}20` : "#FAEEE920"} />
+                                        <path d="M25.5 17H19.5V11H17.5V17H11.5V19H17.5V25H19.5V19H25.5V17Z" fill={activeColor || "#E7A536"} />
                                     </svg>
                                 </div>
                             )

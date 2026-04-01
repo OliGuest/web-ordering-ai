@@ -77,7 +77,7 @@ const BottomMenu = ({ countMin, setCountMin, countSec, setCountSec, visibleFoote
 
     //End countdown Timer
     return (
-        <div className={`menu-bottom-bar hideOnScroll ${visibleFooter ? "down" : ""}`} >
+        <div className={`menu-bottom-bar hideOnScroll ${visibleFooter ? "down" : ""}`} role="navigation" aria-label="Main navigation" >
             <ul className={`bottom-navbar m-0 p-0 ${serviceCall?.length > 0 ? "bottom-navbar-between" : "bottom-navbar-around"}`}>
                 <li className="nav-item">
                     <button

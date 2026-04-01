@@ -76,10 +76,35 @@
 @mixin bp-lg { @media (min-width: $bp-lg) { @content; } }
 @mixin bp-xl { @media (min-width: $bp-xl) { @content; } }
 
+// --- Touch Target (Apple HIG: 44px minimum) ---
+@mixin touch-target($min: 44px) {
+  min-width: $min;
+  min-height: $min;
+}
+
+// --- Card Elevated ---
+@mixin card-elevated {
+  background: var(--bg-elevated, #ffffff);
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  border: 1px solid var(--border-light, #f0f0f0);
+  transition: transform $transition-spring, box-shadow $transition-normal;
+
+  &:active {
+    transform: scale(0.97);
+    box-shadow: $shadow-xs;
+  }
+}
+
+// --- Safe Area Bottom ---
+@mixin safe-bottom($offset: 0px) {
+  padding-bottom: calc(var(--safe-area-bottom, 0px) + #{$offset});
+}
+
 // --- Interactive States ---
 @mixin interactive {
   cursor: pointer;
-  transition: transform $transition-fast, box-shadow $transition-fast, opacity $transition-fast;
+  transition: transform $transition-spring, box-shadow $transition-normal, opacity $transition-fast;
 
   &:hover {
     transform: translateY(-1px);

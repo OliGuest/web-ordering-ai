@@ -3,32 +3,19 @@
     .nav-item {
         .nav-link {
             &.active {
-                // background-color: $activeColor  !important;
-                // border-bottom: 2px solid $activeColor;
-                // color: $activeColor;
-                padding: 6px 15px;
-                background-color: #E7A536;
-                border-radius: 12px;
-
+                padding: 8px 18px;
+                background-color: var(--activeColor, #E7A536);
+                border-radius: 24px;
+                color: #fff;
+                font-weight: 600;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                transition: all 350ms cubic-bezier(0.32, 0.72, 0, 1);
             }
         }
     }
 }
 
-// .order-list-tab-wrapper {
-//     .filter-toggle {
-//         color: $activeColor;
-//     }
-// }
 .bottom-clear-buttons .clearAll-allergens {
-    // color: $activeColor;
-    // background: var(--gradient, linear-gradient(180deg, $activeColor -66%, $activeColor 131.41%));
-    // background-clip: text;
-    // -webkit-background-clip: text;
-    // -webkit-text-fill-color: transparent;
-    // margin-right: 34px;
-    // border-radius: 10px;
-    // border: 1px solid var(--gradient, $activeColor);
     margin-bottom: 0;
     color: black;
     border-bottom: 1px solid black;
@@ -40,42 +27,21 @@
 
 .bottom-clear-buttons .apply-allergens {
     color: white;
-    background-color: $activeColor;
+    background-color: var(--activeColor, #E7A536);
     border-radius: 10px;
 }
 
-
-.cancel-request-bill {
-    // color: $activeColor;
-    // color: #C45A3C;
-    // background: var(--gradient, linear-gradient(180deg, $activeColor -66%, $activeColor 131.41%));
-    // -webkit-background-clip: text;
-    // -webkit-text-fill-color: transparent;
-    // border: 1px solid var(--gradient, $activeColor);
-}
+.cancel-request-bill {}
 
 .confirm-request-bill {
     color: white;
-    // border: 1px solid var(--gradient, $activeColor);
 }
-
 
 .checking-input .form-check-input:checked {
     background-color: white;
 }
 
-// Search input field 
-
-$cub: cubic-bezier(.73, .14, .4, 1.58);
-$step1: 0.2s;
-$step2: 0.1s;
-$delayClose1: 0.05s;
-$delayClose2: 0.08s;
-$totalAnim: $step1 + $step2;
-$w: 32rem;
-$h: 6rem;
-$borderW: 0.6rem;
-
+// Search input field — simplified
 .search {
     position: absolute;
     left: 13px;
@@ -87,27 +53,23 @@ $borderW: 0.6rem;
         left: 0%;
         width: 19px;
         height: 19px;
-        border: 2px solid #E7A536;
+        border: 2px solid var(--activeColor, #E7A536);
         border-radius: 13px;
-        transition: width 0.1s 0.1s;
-        transition: height 0.09s 0.09s;
-        transition: border 0.1s 0.1s;
+        transition: all 0.2s ease;
         top: 17px;
         z-index: 5;
 
         #trigger:checked~& {
-            transition: width 0.08s 0.08s;
-            transition: height 0.08s 0.08s;
-            // transition: border 0.2s 0.2s;
             width: 100%;
             height: 52px;
-            border: 0.5px solid white;
+            border: 0.5px solid var(--border-light, #e5e7eb);
             background-color: white;
             top: 0;
+            border-radius: 14px;
 
             &:after {
                 width: 0;
-                transition: width $step1 cubic-bezier(.42, -0.7, .62, 1.25);
+                transition: width 0.2s ease;
             }
         }
 
@@ -118,11 +80,11 @@ $borderW: 0.6rem;
             right: -2rem;
             width: 8px;
             height: 2px;
-            background: #E7A536;
+            background: var(--activeColor, #E7A536);
             border-radius: 0.6rem;
             transform-origin: 100% 50%;
             transform: rotate(225deg) translateX(3rem);
-            transition: width 0.08s 0.2s;
+            transition: width 0.15s ease;
         }
     }
 
@@ -134,18 +96,18 @@ $borderW: 0.6rem;
         background: transparent;
         outline: none;
         border: none;
-        font-family: "Poppins";
+        font-family: "Plus Jakarta Sans";
         font-size: 18px;
         font-weight: 400;
-        color: black;
+        color: var(--text-primary, black);
         z-index: -1;
         opacity: 0;
-        transition: opacity 0.2s;
+        transition: opacity 0.2s ease;
 
         #trigger:checked~& {
             opacity: 1;
             z-index: 7;
-            transition: opacity 0.08s $totalAnim;
+            transition: opacity 0.15s 0.2s;
         }
     }
 
@@ -163,13 +125,12 @@ $borderW: 0.6rem;
         z-index: -1;
         cursor: pointer;
         opacity: 0;
-        cursor: pointer;
-        transition: opacity .4s ease;
+        transition: opacity .3s ease;
 
         #trigger:checked~& {
             opacity: 1;
             z-index: 6;
-            transition: opacity 0.2s $totalAnim;
+            transition: opacity 0.2s 0.2s;
         }
     }
 
@@ -206,7 +167,7 @@ $borderW: 0.6rem;
         transform: scale(0);
 
         #trigger:checked~& {
-            tranition: transform 0 $totalAnim;
+            transition: transform 0 0.3s;
             transform: scale(1);
         }
     }
@@ -226,13 +187,13 @@ $borderW: 0.6rem;
             &:before {
                 transform: rotate(-45deg);
                 opacity: 1;
-                transition: transform 0.08s $totalAnim $cub, opacity 0.06s $totalAnim;
+                transition: transform 0.15s 0.25s ease, opacity 0.1s 0.25s;
             }
 
             &:after {
                 transform: rotate(45deg);
                 opacity: 1;
-                transition: transform 0.2s ($totalAnim + $delayClose1) $cub, opacity 0.08s ($totalAnim + $delayClose1);
+                transition: transform 0.15s 0.3s ease, opacity 0.1s 0.3s;
             }
         }
 
@@ -244,7 +205,7 @@ $borderW: 0.6rem;
             left: 0;
             width: 22px;
             height: 2px;
-            background: #222;
+            background: var(--text-primary, #222);
             border-radius: 0.5rem;
             opacity: 0;
         }
@@ -265,39 +226,37 @@ $borderW: 0.6rem;
 // ADD ICON
 
 i.fal.fa-plus-circle {
-    color: $activeColor !important;
+    color: var(--activeColor, #E7A536) !important;
     font-size: 23px;
 }
 
 a.nav-link.cart-link span {
-    color: $activeColor !important;
+    color: var(--activeColor, #E7A536) !important;
 }
 
 .item-count-wrapper {
 
     .qty-btn {
 
-        border: 2px solid $activeColor !important;
+        border: 2px solid var(--activeColor, #E7A536) !important;
 
         &:before {
-            background-color: $activeColor !important;
+            background-color: var(--activeColor, #E7A536) !important;
         }
 
         &:after {
-            background-color: $activeColor !important;
+            background-color: var(--activeColor, #E7A536) !important;
         }
     }
 
 }
 
 .form-check input[type="radio"] {
-    // border: 2px solid $activeColor;
-    border: 2px solid #E7A536 !important;
+    border: 2px solid var(--activeColor, #E7A536) !important;
 }
 
 .form-check input[type="radio"]:checked {
-    // background-color: $activeColor !important;
-    background-color: #E7A536 !important;
+    background-color: var(--activeColor, #E7A536) !important;
 }
 
 .checkbox {
@@ -343,7 +302,7 @@ a.nav-link.cart-link span {
     .menu-list-item {
         .item-img {
             .count-number {
-                background-color: $activeColor !important;
+                background-color: var(--activeColor, #E7A536) !important;
             }
         }
     }
@@ -358,7 +317,7 @@ a.nav-link.cart-link span {
             .item-content {
 
                 &:hover {
-                    background: $activeColor !important;
+                    background: var(--activeColor, #E7A536) !important;
                 }
             }
         }
@@ -366,18 +325,17 @@ a.nav-link.cart-link span {
 }
 
 .info-msg {
-    color: $activeColor !important;
+    color: var(--activeColor, #E7A536) !important;
 
     span {
         svg {
-            stroke: $activeColor !important;
-            ;
+            stroke: var(--activeColor, #E7A536) !important;
         }
     }
 }
 
 .modifiersbox {
-    border-color: $activeColor !important;
+    border-color: var(--activeColor, #E7A536) !important;
 }
 
 // BACK BUTTON - arrow HeaderTextColor.

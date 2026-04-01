@@ -1,9 +1,9 @@
 .menu-list-wrapper .menu-list-item {
   max-width: 1080px;
-  background: #FFF;
-  padding: 16px 0;
+  background: var(--bg-primary, #FFF);
+  padding: 14px 0;
   position: relative;
-  border-bottom: 1px solid #DADEE2;
+  border-bottom: 1px solid var(--border-light, #f0f0f0);
 }
 
 .menu-list-wrapper .menu-list-item>.d-flex {
@@ -15,10 +15,13 @@
 }
 
 .menu-list-wrapper .menu-list-item .item-img {
-  width: 104px;
-  height: 74px;
+  width: 88px;
+  height: 88px;
   position: relative;
   z-index: 1;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .menu-list-wrapper .menu-list-item .accordion-button:not(.collapsed) .item-img,
@@ -117,7 +120,7 @@
 .menu-list-wrapper .menu-list-item .item-img img {
   width: 100%;
   height: 100%;
-  border-radius: 8px;
+  border-radius: 12px;
   object-fit: cover;
 }
 
@@ -358,16 +361,28 @@
   padding: 5px 8px;
 }
 
+.now-tile .menu-list-wrapper {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
 .now-tile .menu-list-wrapper .menu-list-item {
-  -ms-flex: 0 0 50%;
-  flex: 0 0 50%;
-  max-width: 50%;
   position: relative;
   width: 100%;
-  padding-right: 7px;
-  padding-left: 7px;
+  max-width: 100%;
+  padding: 0;
   border: 0;
   display: block !important;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.now-tile .menu-list-wrapper .menu-list-item:active {
+  transform: scale(0.97);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
 .now-tile .menu-list-wrapper .menu-list-item .item-content:hover {
@@ -524,19 +539,15 @@
 }
 
 .menu-main-heading {
-  color: #403B3B;
+  color: var(--text-primary, #403B3B);
   font-feature-settings: 'clig' off, 'liga' off;
   font-family: "Plus Jakarta Sans";
-  font-size: 14px;
+  font-size: 20px;
   font-style: normal;
-  font-weight: 400;
-  line-height: 20px;
-  /* 166.667% */
-  letter-spacing: -0.24px;
-}
-
-.menu-main-heading {
-  margin-bottom: 30px !important;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+  margin: 24px 0 8px 0 !important;
 }
 
 .sub-roduct-name {
@@ -656,18 +667,19 @@ a.butn-sm.butn-orange.add-cart-btn.promo-cart-btn:hover {
 
 .item-inner-content {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
 }
 
 .item-price {
   font-family: "Plus Jakarta Sans";
-  font-size: 14px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   margin: 0px 10px;
-  color: #E7A536;
+  color: var(--activeColor, #E7A536);
 }
 
 .detail-right .item-content .addimage .item-price.item-margin {
@@ -877,12 +889,13 @@ a.butn-sm.butn-orange.add-cart-btn.promo-cart-btn:hover {
 .detail-right {
   width: 100%;
   opacity: 1;
-  margin-left: 12px;
-  margin-top: 7px;
+  margin-left: 14px;
+  margin-top: 0;
   pointer-events: auto;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  gap: 6px;
 }
 
 .detail-right .right {
@@ -1022,15 +1035,25 @@ a.butn-sm.butn-orange.add-cart-btn.promo-cart-btn:hover {
 }
 
 .blue-buttons {
-  max-width: 36px;
-  height: 36px;
+  max-width: 40px;
+  height: 40px;
   cursor: pointer;
+  transition: transform 150ms ease;
+}
+
+.blue-buttons:active {
+  transform: scale(0.85);
 }
 
 .big-plus-btn {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
+  transition: transform 150ms ease;
+}
+
+.big-plus-btn:active {
+  transform: scale(0.85);
 }
 
 /* __________________ End Card details  */

@@ -156,12 +156,20 @@ const Home = () => {
   useEffect(() => {
 
     let lastScroll = 0;
+    let ticking = false;
+    const SCROLL_THRESHOLD = 270;
     const listenToScroll = () => {
-      const winScroll = document.querySelector(".order-listing").scrollTop ||
-        document.documentElement.scrollTop;
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const orderListing = document.querySelector(".order-listing");
+        if (!orderListing) return;
+        const winScroll = orderListing.scrollTop ||
+          document.documentElement.scrollTop;
 
-      let totalHeight = document.querySelector(".order-listing").scrollHeight - 768;
-      const fromTop = document.querySelector(".order-listing").scrollTop;
+        let totalHeight = orderListing.scrollHeight - 768;
+        const fromTop = orderListing.scrollTop;
       // const body = document.querySelector("body");
 
       if (totalHeight < "0") { totalHeight = 0 }
@@ -198,17 +206,16 @@ const Home = () => {
       }
 
 
-      if (winScroll > 270) {
-        // Check if visible is false to avoid unnecessary setState
+      if (winScroll > SCROLL_THRESHOLD) {
         if (!visible) {
           setVisible(true);
         }
       } else {
-        // Check if visible is true to avoid unnecessary setState
         if (visible) {
           setVisible(false);
         }
       }
+      }); // end requestAnimationFrame
     };
 
     document.querySelector(".order-listing").addEventListener("scroll", listenToScroll);

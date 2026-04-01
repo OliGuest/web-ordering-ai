@@ -121,7 +121,7 @@ function Login() {
               <span className="placeholderName">{t("IbIWriteYourNamePlaceholder")}</span>
               <input type="text" className="form-control" value={nameValue} onChange={e => onChangeHandler(e.target.value)} placeholder="" aria-label="Writeyourname" aria-describedby="addon-wrapping" />
             </div>
-            <Link to={{ pathname: '/landing', state: houseRules }} className={"butn butn continue-btn"} style={{ textDecoration: "none", backgroundColor: `#D98F29` }} >
+            <Link to={{ pathname: '/landing', state: houseRules }} className={"butn butn continue-btn"} style={{ textDecoration: "none", backgroundColor: 'var(--activeColor, #D98F29)' }} >
             <span style={{ color: `${activeTheme === "2" ? "#4D4D4D" : "#ffffff"}` }}>  {t('lblContinueOrdering')} </span>
             </Link>
           </div>

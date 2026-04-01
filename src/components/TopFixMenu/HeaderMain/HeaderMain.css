@@ -3,7 +3,12 @@
     top: 0;
     z-index: 4;
     background: transparent;
-    height: 0px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    transition: background 300ms ease, height 300ms ease;
 }
 
 .header-main button {
@@ -58,11 +63,8 @@
 }
 
 .header-main.up {
-    background: #F5F6F7;
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 300ms;
-    /* height: 56px; */
+    background: var(--bg-primary, #F5F6F7);
+    transition: background 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .top-background {
@@ -93,13 +95,17 @@
 
 
 .img-text-wrapper {
-    max-height: 390px;
-    background: #F5F6F7;
+    max-height: 280px;
+    background: var(--bg-secondary, #F5F6F7);
+    overflow: hidden;
+    border-radius: 0 0 20px 20px;
 }
 
 .img-text-wrapper.up {
-    background: #F5F6F7;
+    background: var(--bg-secondary, #F5F6F7);
     padding-bottom: 10px;
+    max-height: 0;
+    transition: max-height 400ms ease;
 }
 
 .hm-logo {
@@ -120,26 +126,39 @@
 }
 
 .back-icon {
-    /* border: 1px solid #CCCECF; */
     padding: 8px;
-    border-radius: 40%;
-    width: 32px;
-    height: 32px;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
     margin-right: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    background: rgba(0, 0, 0, 0.06);
+    transition: transform 200ms ease, background 200ms ease;
+}
+
+.back-icon:active {
+    transform: scale(0.9);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .table-btn .search-circle {
-    width: 32px;
-    height: 32px;
+    width: auto;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 12px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 14px;
-    background-color: #E7A536 !important;
+    border-radius: 10px;
+    background-color: var(--activeColor, #E7A536) !important;
+    transition: transform 200ms ease;
+}
+
+.table-btn .search-circle:active {
+    transform: scale(0.93);
 }
 
 .table-btn .search-circle h6 {
@@ -166,9 +185,10 @@
 .hm-logo a {
     display: block;
     margin: auto;
-    margin-top: -28px;
+    margin-top: -20px;
     height: 55px;
     width: 150px;
+    transition: opacity 200ms ease, transform 200ms ease;
 }
 
 .hm-logo a img {
@@ -183,11 +203,11 @@
 }
 
 .menu-bottom-bar .bottom-navbar-between {
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .menu-bottom-bar .bottom-navbar-around {
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .menu-bottom-bar .bottom-navbar .nav-item .nav-link {
@@ -199,17 +219,15 @@
 
 
 .menu-bottom-bar .bottom-navbar .nav-link p {
-    margin: 5px 0 0;
-    color: #252424;
+    margin: 6px 0 0;
+    color: var(--text-secondary, #6b7280);
     text-align: center;
     font-family: "Plus Jakarta Sans";
-    font-size: 14px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 500;
     line-height: 16px;
-    /* 92.857% */
     letter-spacing: 0.07px;
-    margin-top: 10px;
 }
 
 .now-tile .menu-bottom-bar .bottom-navbar .nav-item .nav-link.note-list-none {

@@ -11,8 +11,9 @@
 
   // --- Surfaces ---
   --bg-primary: #ffffff;
-  --bg-secondary: #f7f7f8;
+  --bg-secondary: #f5f5f7;
   --bg-surface: #ffffff;
+  --bg-elevated: #ffffff;
   --bg-surface-hover: #f0f0f2;
   --bg-overlay: rgba(0, 0, 0, 0.3);
 
@@ -42,9 +43,13 @@
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
 
   // --- Layout ---
-  --header-height: 64px;
-  --bottom-bar-height: 72px;
-  --cart-bar-height: 56px;
+  --header-height: 56px;
+  --bottom-bar-height: 80px;
+  --cart-bar-height: 64px;
+
+  // --- Motion ---
+  --transition-spring: 350ms cubic-bezier(0.32, 0.72, 0, 1);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
 
   // --- Feedback colors ---
   --color-success: #10b981;
@@ -55,9 +60,10 @@
 
 // --- Dark theme override (ThemeType === "1") ---
 [data-theme="dark"] {
-  --bg-primary: #1a1a1a;
-  --bg-secondary: #2a2a2a;
-  --bg-surface: #2a2a2a;
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-surface: #1e1e1e;
+  --bg-elevated: #2a2a2a;
   --bg-surface-hover: #333333;
 
   --text-primary: #f0f0f0;

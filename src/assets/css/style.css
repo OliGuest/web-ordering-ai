@@ -8,6 +8,15 @@
   box-sizing: border-box;
   outline: none;
   word-wrap: break-word;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  touch-action: manipulation;
+}
+
+img {
+  content-visibility: auto;
 }
 
 :root {

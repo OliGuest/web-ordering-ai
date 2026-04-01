@@ -1,11 +1,11 @@
 .order-list-body {
   padding-bottom: 10px;
   position: relative;
-  /* overflow-y: auto; */
-  /* max-height: calc(100vh - 100px); */
-  margin: 28px 12px 170px 12px;
-  background: white;
+  padding: 0 16px;
+  margin-bottom: 0;
+  background: var(--bg-primary, white);
   overflow-y: hidden;
+  scroll-behavior: smooth;
 }
 
 .order-list-body .menu-item-wrapper {
