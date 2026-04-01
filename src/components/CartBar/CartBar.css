@@ -4,10 +4,10 @@
 
 .cart-bar {
     position: fixed;
-    bottom: calc(72px + var(--safe-area-bottom, 0px) + 8px);
-    left: 12px;
-    right: 12px;
-    width: calc(100% - 24px);
+    bottom: calc(76px + var(--safe-area-bottom, 0px) + 10px);
+    left: 14px;
+    right: 14px;
+    width: calc(100% - 28px);
     background: var(--activeColor, #E7A536);
     border-radius: 14px;
     cursor: pointer;
@@ -101,7 +101,7 @@
 }
 
 .hideOnScroll.toBottom {
-    bottom: calc(72px + var(--safe-area-bottom, 0px) + 8px);
+    bottom: calc(76px + var(--safe-area-bottom, 0px) + 10px);
 }
 
 .cart-bar-content .icon-text-left svg {

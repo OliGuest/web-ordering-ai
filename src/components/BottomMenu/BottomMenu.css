@@ -4,8 +4,8 @@
 
 .menu-bottom-bar {
     background: var(--bg-primary, #ffffff);
-    padding: 6px 0 4px;
-    padding-bottom: calc(6px + var(--safe-area-bottom, 0px));
+    padding: 8px 0 6px;
+    padding-bottom: calc(8px + var(--safe-area-bottom, 0px));
     border-top: 1px solid var(--border-light, #f0f0f0);
     position: fixed;
     bottom: 0;
