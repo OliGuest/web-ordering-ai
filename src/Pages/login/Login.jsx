@@ -100,7 +100,7 @@ function Login() {
   // });
 
   return (
-    <div id="main-wrapper">
+    <div id="main-wrapper" className="login-wrapper">
         <div className="landing-page" style={{ backgroundImage: ` url(${coverImage})` }}>
 
           {/* <Link className="landing-logo" to="#">
