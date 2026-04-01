@@ -28,7 +28,6 @@ const PayModal = () => {
                             className="modal-header"
                             style={{
                                 backgroundColor: `${billTheme?.HeaderBackgroundColor}`,
-                                margin: "0 -15px",
                             }}
                         >
                             <h4 style={{ color: `${billTheme?.HeaderTextColor}` }}>

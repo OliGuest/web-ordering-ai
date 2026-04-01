@@ -25,11 +25,6 @@ const CartListModal = ({ countMin, countSec, timer }) => {
                         <div id="modal-content-cart-modal" className="modal-content">
                             <div
                                 className="modal-header"
-                                style={{
-                                    // backgroundColor: `${orderTheme?.ButtonBackgroundColor}`,
-                                    backgroundColor: `white`,
-                                    margin: "0 -15px",
-                                }}
                             >
                                 <h4>
                                    {t("IbIItem")}
@@ -53,11 +48,6 @@ const CartListModal = ({ countMin, countSec, timer }) => {
                             
                                 <div
                                     className="modal-body"
-                                    style={{
-                                        // backgroundColor: `${orderTheme?.BackgroundColor}`,
-                                        backgroundColor: `white`,
-                                        margin: "0 -15px",
-                                    }}
                                 >
                                     <div className="total-amounts">
                                         <div className="d-flex align-items-center justify-content-between">
@@ -81,10 +71,7 @@ const CartListModal = ({ countMin, countSec, timer }) => {
                                 </div>
 
                             ) : (
-                                    <div className="modal-body text-center empty-cart-img" style={{
-                                        backgroundColor: `${orderTheme?.BackgroundColor}`,
-                                        margin: "0 -15px",
-                                    }}>
+                                    <div className="modal-body text-center empty-cart-img">
                                         <svg className="empty-basked-icon" width="118" height="118" viewBox="0 0 118 118" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fillRule="evenodd" clipRule="evenodd" d="M23.9067 32.3433L27.4175 75.2115C27.6737 78.5109 30.2995 80.9854 33.5076 80.9854H33.5309H97.0574H97.069C100.102 80.9854 102.693 78.6663 103.124 75.5881L108.655 36.3839C108.783 35.4515 108.556 34.519 108.003 33.7659C107.456 33.0068 106.652 32.5167 105.744 32.3852C104.527 32.433 54.031 32.3613 23.9067 32.3433ZM33.4954 89.9505C25.8275 89.9505 19.3357 83.806 18.7128 75.946L13.3796 10.8309L4.60545 9.2768C2.22416 8.84645 0.634683 6.53329 1.04224 4.08863C1.46144 1.64397 3.76123 0.0540503 6.09013 0.436588L18.2004 2.58836C20.1508 2.94102 21.6355 4.60267 21.8044 6.6349L23.1726 23.3769C106.291 23.4128 106.559 23.4546 106.961 23.5024C110.204 23.9866 113.056 25.7259 115.001 28.4037C116.946 31.0755 117.761 34.3689 117.295 37.6683L111.77 76.8665C110.728 84.326 104.416 89.9505 97.0802 89.9505H97.0511H33.542H33.4954Z" fill="#E7A536" />
                                             <path fillRule="evenodd" clipRule="evenodd" d="M87.7164 54.4325H71.5771C69.1609 54.4325 67.2104 52.4242 67.2104 49.9497C67.2104 47.4751 69.1609 45.4668 71.5771 45.4668H87.7164C90.1268 45.4668 92.0831 47.4751 92.0831 49.9497C92.0831 52.4242 90.1268 54.4325 87.7164 54.4325Z" fill="#E7A536" />

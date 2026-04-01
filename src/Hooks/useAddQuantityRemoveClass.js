@@ -182,16 +182,14 @@ export const useAddQuantityRemoveClass = () => {
       }
 
       setTimeout(function () {
-        // $(".menu-list-item").removeClass("qty-open");
         setquantityToKart(1);
         setAddRemove(false);
       }, 1000);
-      // open cart - className
+      // open cart class - but don't close detail sheet so quantity stepper shows
       document.body.classList.add("open-cart");
       document.body.classList.add("open");
-      document.body.classList.remove("open-detail");
+      // Don't remove open-detail — let the sheet stay open
 
-      //changed for radio button if clicked again it shows one value checked but not showing price so changed
       setDiscriptionTotal(0);
     }
   };

@@ -1,5 +1,8 @@
-/* Bottom sheet positioning for cart modal */
-.cart-modal .modal-dialog {
+/* ============================================
+   Pay Modal — Bottom Sheet
+   ============================================ */
+
+.cart-modal.full-popup .modal-dialog {
   margin: 0;
   max-width: 100%;
   min-height: 100vh;
@@ -7,46 +10,64 @@
   align-items: flex-end;
 }
 
-.cart-modal .modal-content {
-  border-radius: 24px 24px 0 0;
+.cart-modal.full-popup .modal-content {
+  border-radius: 20px 20px 0 0;
   border: none;
-  max-height: 90vh;
+  max-height: 85vh;
   overflow-y: auto;
-  animation: slideUpSheet 350ms cubic-bezier(0.32, 0.72, 0, 1);
 }
 
-@keyframes slideUpSheet {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-/* Drag handle indicator */
-.cart-modal .modal-content::before {
+/* Drag handle */
+.cart-modal.full-popup .modal-content::before {
   content: '';
   display: block;
-  width: 40px;
+  width: 36px;
   height: 4px;
-  background: #d0d0d0;
+  background: #d5d5d5;
   border-radius: 4px;
-  margin: 12px auto 0;
+  margin: 10px auto 0;
+}
+
+.cart-modal.full-popup .modal-header {
+  margin: 0;
+  padding: 10px 18px;
+  border-bottom: 1px solid #f0f0f0;
+  border-radius: 0 !important;
+}
+
+.cart-modal.full-popup .modal-body {
+  padding: 0 18px;
 }
 
 .payment-method {
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border-light, #f0f0f0);
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .payment-method .sm-heading {
   font-size: 14px;
-  line-height: 17px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: var(--text-secondary, #9e9e9e);
+  line-height: 1.3;
+  color: #717171;
   font-weight: normal;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+}
+
+.cart-modal-footer {
+  padding: 0;
+}
+
+.cart-modal-footer .total-amounts {
+  padding: 14px 0;
+}
+
+.cart-modal-footer .total-hd {
+  font-family: "Plus Jakarta Sans";
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.cart-modal-footer .total-price {
+  font-family: "Plus Jakarta Sans";
+  font-size: 16px;
+  font-weight: 700;
 }
