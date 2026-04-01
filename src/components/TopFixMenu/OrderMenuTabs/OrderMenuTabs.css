@@ -306,6 +306,14 @@
 
 .menu-search input[type="submit"]:hover { opacity: 0.7; }
 
+/* Search bar below categories */
+.search-bar-wrapper {
+    position: relative;
+    height: 52px;
+    border-top: 1px solid var(--border-light, #f0f0f0);
+    background: var(--bg-primary, #fff);
+}
+
 @media (min-width: 600px) {
     .menu-search {
         max-width: 640px;

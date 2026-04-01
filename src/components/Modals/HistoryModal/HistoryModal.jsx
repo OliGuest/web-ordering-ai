@@ -26,11 +26,6 @@ const HistoryModal = () => {
                     <div id="modal-content-bill-modal" className="modal-content">
                         <div
                             className="modal-header"
-                            style={{
-                                // backgroundColor: `${billTheme?.HeaderBackgroundColor}`,
-                                backgroundColor: `white`,
-                                margin: "0 -15px",
-                            }}
                         >
                             {/* <h4 style={{ color: `${billTheme?.HeaderTextColor}` }}> */}
                             <h4 style={{ color: `black` }}>
@@ -53,11 +48,6 @@ const HistoryModal = () => {
                         </div>
                         <div
                             className="modal-body"
-                            style={{
-                                // backgroundColor: `${billTheme?.BackgroundColor}`,
-                                backgroundColor: `white`,
-                                margin: "0 -15px",
-                            }}
                         >
                             {/**listing of kartHistory */}
 

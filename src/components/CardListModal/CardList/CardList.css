@@ -79,6 +79,8 @@
     text-align: left;
     margin: 0;
     color: var(--text-primary, #202020);
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .card-list .item-inner-content .item-left-text .mb-15 p {

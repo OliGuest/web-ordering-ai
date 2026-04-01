@@ -54,9 +54,9 @@ const ProductDetailSheet = () => {
                         if (found) {
                             setProductData(found);
                             setModifires(found.ModifierWizards || []);
-                            // Get existing quantity from cart
+                            // Get existing quantity from cart, default to 1 for new items
                             const existing = kartItem?.find(i => i.ProductId === found.ProductId);
-                            setLocalQty(existing?.quantity || 0);
+                            setLocalQty(existing?.quantity || 1);
                             return;
                         }
                     }
@@ -68,7 +68,7 @@ const ProductDetailSheet = () => {
                     setProductData(found);
                     setModifires(found.ModifierWizards || []);
                     const existing = kartItem?.find(i => i.ProductId === found.ProductId);
-                    setLocalQty(existing?.quantity || 0);
+                    setLocalQty(existing?.quantity || 1);
                     return;
                 }
             }

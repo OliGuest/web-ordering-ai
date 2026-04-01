@@ -495,11 +495,19 @@
   visibility: visible;
 }
 
+.promo-banner {
+  margin: 16px 0 12px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
 .promo-banner .img-icons>img {
   width: 100%;
-  height: 375px;
+  height: auto;
+  max-height: 300px;
   object-fit: contain;
   object-position: top;
+  border-radius: 12px;
 }
 
 .promo-banner p {
@@ -793,7 +801,15 @@ a.butn-sm.butn-orange.add-cart-btn.promo-cart-btn:hover {
   order: 0;
   flex: 1;
   margin-left: 0;
-  margin-right: 14px;
+  margin-right: 16px;
+}
+
+/* Product image natural ratio */
+.accordion .tab .item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .subcateclass {

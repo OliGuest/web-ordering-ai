@@ -95,6 +95,7 @@
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
+    width: 100%;
 }
 
 #payment-modal .menu-list-item .item-left-text {

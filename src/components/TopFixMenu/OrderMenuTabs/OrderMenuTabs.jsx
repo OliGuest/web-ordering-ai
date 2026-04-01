@@ -100,30 +100,7 @@ const OrderMenuTabs = ({ visible, handleShow }) => {
 
     return (
         <div className="menu-search">
-
-            <div className={`search ${showElem && "focus"}`} {...eventHandlers} >
-                <input type="checkbox" id="trigger" className="search__checkbox" />
-                <label className="search__label-init" htmlFor="trigger"></label>
-                <label className="search__label-active" htmlFor="trigger" onClick={(e) => {
-                    setSearchSubCatIndex(index);
-                    clearField();
-                    setShow1(!show1);
-                }}></label>
-                <div className="search__icon"></div>
-                <div className="search__border"></div>
-                <input type="text" className="search__input" onKeyPress={(e) => {
-                    e.key === "Enter" && e.preventDefault();
-                }}
-                    onChange={(e) => {
-                        searchdata(e.target.value);
-                        setsearchTextInner(e.target.value);
-                        setShow1(!show);
-                    }}
-                    value={searchTextInner}/>
-                <div className="search__close"></div>
-            </div>
-           
-
+            {/* Category tabs first */}
             {index !== undefined && index && index.length > 0 ? (
                 <ul
                     className="nav order-menu-tabs nav-link-active"
@@ -134,11 +111,9 @@ const OrderMenuTabs = ({ visible, handleShow }) => {
                         <Fragment key={index}>
                             {data?.Products.length > 0 ? (
                                 <Fragment key={index}>
-
                                     <li className="nav-item" key={index}>
                                         <a className={`nav-link top-menu menu-list-wrapper-${data.SubCategoryId} ${index === 0 ? 'active' : ''}`}
                                             subcatid={data.SubCategoryId}
-                                            // id={"clickTab_" + data.SubCategoryId}
                                             href={"/"}
                                             onClick={(e) => scrollToItem(e)}>
                                             {data?.Name}
@@ -154,6 +129,33 @@ const OrderMenuTabs = ({ visible, handleShow }) => {
             ) : (
                 <div></div>
             )}
+
+            {/* Search bar below tabs */}
+            <div className={`search-bar-wrapper ${showElem ? "search-open" : ""}`}>
+                <div className={`search ${showElem && "focus"}`} {...eventHandlers} >
+                    <input type="checkbox" id="trigger" className="search__checkbox" />
+                    <label className="search__label-init" htmlFor="trigger"></label>
+                    <label className="search__label-active" htmlFor="trigger" onClick={(e) => {
+                        setSearchSubCatIndex(index);
+                        clearField();
+                        setShow1(!show1);
+                    }}></label>
+                    <div className="search__icon"></div>
+                    <div className="search__border"></div>
+                    <input type="text" className="search__input" onKeyPress={(e) => {
+                        e.key === "Enter" && e.preventDefault();
+                    }}
+                        onChange={(e) => {
+                            searchdata(e.target.value);
+                            setsearchTextInner(e.target.value);
+                            setShow1(!show);
+                        }}
+                        value={searchTextInner}
+                        placeholder="Search..."
+                    />
+                    <div className="search__close"></div>
+                </div>
+            </div>
         </div>
     )
 }
