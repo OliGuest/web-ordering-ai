@@ -519,6 +519,41 @@ export const Provider = ({ children }) => {
     }
 
     const sendDataToServer = async (data) => {
+        // Demo mode: update cart locally without SignalR
+        if (window.config?.APP_DEMO_MODE === true) {
+            try {
+                // Merge new items into existing cart
+                let updatedCart = [...kartItem];
+                data.forEach(newItem => {
+                    const existingIndex = updatedCart.findIndex(item =>
+                        item.ProductId === newItem.ProductId &&
+                        JSON.stringify(item.selectedModifiersData) === JSON.stringify(newItem.selectedModifiersData)
+                    );
+                    if (newItem.quantity <= 0) {
+                        // Remove item
+                        if (existingIndex >= 0) {
+                            updatedCart.splice(existingIndex, 1);
+                        }
+                    } else if (existingIndex >= 0) {
+                        // Update quantity
+                        updatedCart[existingIndex] = {
+                            ...updatedCart[existingIndex],
+                            quantity: updatedCart[existingIndex].quantity + newItem.quantity
+                        };
+                    } else {
+                        // Add new
+                        updatedCart.push(newItem);
+                    }
+                });
+                setkartItem(updatedCart);
+                setBascketLenght(updatedCart.reduce((sum, item) => sum + item.quantity, 0));
+                localStorage.setItem("kaartData", JSON.stringify(updatedCart));
+            } catch (error) {
+                console.log(error);
+            }
+            return;
+        }
+
         try {
             let jsonData = JSON.stringify(data);
 
@@ -538,18 +573,17 @@ export const Provider = ({ children }) => {
     }
 
     const deleteProductBasket = async (data) => {
+        if (window.config?.APP_DEMO_MODE === true) {
+            return;
+        }
         try {
             let jsonData = JSON.stringify(data);
 
             hubProxy.invoke("deleteProductBasket", jsonData, sessionStorage.getItem("theParams"), localStorage.getItem("deviceId"))
                 .done(function (result) {
-                    // showNotification("success", "Order has been successfully send");
-
-                    // console.log(result); //display in textbox the return value of a call to public string GetValue(string userId) 
                 }).fail(function (error) {
                     console.log(error, "Error happened while adding item to the basket");
                     showNotification("danger", "Something Went wrong");
-
                 });
 
         } catch (error) {

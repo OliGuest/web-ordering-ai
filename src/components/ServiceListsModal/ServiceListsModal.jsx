@@ -27,10 +27,6 @@ const ServiceListsModal = () => {
                         <div id="modal-content" className="modal-content">
                             <div
                                 className="modal-header"
-                                style={{
-                                    backgroundColor: `white`,
-                                    margin: "0 -15px",
-                                }}
                             >
                                 <h4>
                                     {kartHistoryStore && kartHistoryStore?.length > 1
@@ -53,11 +49,6 @@ const ServiceListsModal = () => {
                             </div>
                             <div
                                 className="modal-body"
-                                style={{
-                                    // backgroundColor: `${billTheme?.BackgroundColor}`,
-                                    margin: "0 -15px",
-                                }}
-                                
                             >
                                 {/* <div className="bar-heading">
                                     <div className="bar-heading-line"></div>

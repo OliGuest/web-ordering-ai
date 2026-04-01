@@ -2,8 +2,8 @@
   background: var(--bg-primary, #ffffff);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  padding: 12px 24px;
-  padding-bottom: calc(12px + var(--safe-area-bottom, 0px));
+  padding: 10px 0;
+  padding-bottom: calc(10px + var(--safe-area-bottom, 0px));
   border-top: 1px solid var(--border-light, #f0f0f0);
   position: fixed;
   bottom: 0;
@@ -15,9 +15,50 @@
   box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.04);
 }
 
+/* Force all nav layouts to be evenly distributed */
+.menu-bottom-bar .bottom-navbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-evenly !important;
+}
+
+.menu-bottom-bar .bottom-navbar-between,
+.menu-bottom-bar .bottom-navbar-around {
+  justify-content: space-evenly !important;
+}
+
+.menu-bottom-bar .bottom-navbar .nav-item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.menu-bottom-bar .bottom-navbar .nav-item .nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  text-align: center;
+}
+
+.menu-bottom-bar .bottom-navbar .nav-link p {
+  margin: 4px 0 0;
+  color: var(--text-secondary, #6b7280);
+  text-align: center;
+  font-family: "Plus Jakarta Sans";
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.07px;
+}
+
 .btnBottom {
   background-color: inherit;
+  border: none;
   transition: transform 150ms ease;
+  cursor: pointer;
 }
 
 .btnBottom:active {
