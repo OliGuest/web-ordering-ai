@@ -527,31 +527,38 @@ export const Provider = ({ children }) => {
         // Demo mode: update cart locally without SignalR
         if (window.config?.APP_DEMO_MODE === true) {
             try {
-                // Merge new items into existing cart
                 let updatedCart = [...kartItem];
                 data.forEach(newItem => {
                     const existingIndex = updatedCart.findIndex(item =>
                         item.ProductId === newItem.ProductId &&
-                        JSON.stringify(item.selectedModifiersData) === JSON.stringify(newItem.selectedModifiersData)
+                        JSON.stringify(item.selectedModifiersData || []) === JSON.stringify(newItem.selectedModifiersData || [])
                     );
-                    if (newItem.quantity <= 0) {
-                        // Remove item
+                    if (newItem.quantity === -1) {
+                        // Decrement by 1
                         if (existingIndex >= 0) {
-                            updatedCart.splice(existingIndex, 1);
+                            const newQty = updatedCart[existingIndex].quantity - 1;
+                            if (newQty <= 0) {
+                                updatedCart.splice(existingIndex, 1);
+                            } else {
+                                updatedCart[existingIndex] = {
+                                    ...updatedCart[existingIndex],
+                                    quantity: newQty
+                                };
+                            }
                         }
                     } else if (existingIndex >= 0) {
-                        // Update quantity
+                        // Increment existing
                         updatedCart[existingIndex] = {
                             ...updatedCart[existingIndex],
                             quantity: updatedCart[existingIndex].quantity + newItem.quantity
                         };
                     } else {
-                        // Add new
-                        updatedCart.push(newItem);
+                        // Add new item
+                        updatedCart.push({ ...newItem });
                     }
                 });
                 setkartItem(updatedCart);
-                setBascketLenght(updatedCart.reduce((sum, item) => sum + item.quantity, 0));
+                setBascketLenght(updatedCart.reduce((sum, item) => sum + (item.quantity || 0), 0));
                 localStorage.setItem("kaartData", JSON.stringify(updatedCart));
             } catch (error) {
                 console.log(error);
