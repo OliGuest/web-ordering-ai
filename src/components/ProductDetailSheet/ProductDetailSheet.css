@@ -1,0 +1,363 @@
+/* ============================================
+   Product Detail Sheet — Wolt Style
+   ============================================ */
+
+/* Backdrop */
+.pds-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  animation: pdsBackdropIn 250ms ease forwards;
+}
+
+@keyframes pdsBackdropIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Sheet container */
+.pds-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #ffffff;
+  border-radius: 20px 20px 0 0;
+  max-height: 92vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  animation: pdsSlideUp 350ms cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  padding-bottom: 0;
+}
+
+.pds-sheet::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes pdsSlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+/* Drag handle */
+.pds-drag-handle {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  padding: 12px 0 8px;
+  cursor: pointer;
+  background: transparent;
+}
+
+.pds-drag-handle span {
+  width: 36px;
+  height: 4px;
+  background: #d0d0d0;
+  border-radius: 4px;
+}
+
+/* Close button */
+.pds-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 11;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 150ms ease;
+}
+
+.pds-close:active {
+  transform: scale(0.9);
+}
+
+/* Product image */
+.pds-image {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: #f5f5f7;
+  margin-top: -4px;
+}
+
+.pds-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content area */
+.pds-content {
+  padding: 20px 20px 100px;
+}
+
+/* Header: title + price */
+.pds-header {
+  margin-bottom: 12px;
+}
+
+.pds-title {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin: 0 0 6px;
+}
+
+.pds-price {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Description */
+.pds-description {
+  margin-bottom: 16px;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.pds-description h6,
+.pds-description p {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Allergens */
+.pds-allergens {
+  margin-bottom: 16px;
+}
+
+.pds-allergens .icon-alergens {
+  justify-content: flex-start;
+}
+
+/* Modifiers section */
+.pds-modifiers {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 8px;
+}
+
+.pds-modifiers .extra-features-wrapper {
+  padding: 0;
+  margin-bottom: 4px;
+}
+
+.pds-modifiers .extra-features-list {
+  padding: 12px 0;
+  border-bottom: 1px solid #f5f5f7;
+}
+
+.pds-modifiers .extra-features-list .label-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.pds-modifiers .extra-features-list .form-check {
+  padding-left: 0;
+}
+
+.pds-modifiers .extra-features-list .form-check-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f8f8f8;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 400;
+  color: #1a1a1a;
+  transition: background 150ms ease;
+  margin: 0;
+}
+
+.pds-modifiers .extra-features-list .form-check-label:last-child {
+  border-bottom: none;
+}
+
+.pds-modifiers .form-check-label .price {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+/* Radio buttons in modifier */
+.pds-modifiers .form-check input[type="radio"] {
+  width: 22px;
+  height: 22px;
+  margin-right: 14px;
+  margin-top: 0;
+  flex-shrink: 0;
+  border: 2px solid #d1d5db;
+  transition: border-color 150ms ease;
+}
+
+.pds-modifiers .form-check input[type="radio"]:checked {
+  border-width: 6px;
+}
+
+/* Checkbox in modifier */
+.pds-modifiers .checkbox {
+  padding: 12px 0;
+  border-bottom: 1px solid #f8f8f8;
+}
+
+.pds-modifiers .checkbox__icon {
+  width: 22px;
+  height: 22px;
+  margin-right: 12px;
+}
+
+.pds-modifiers .checkbox__label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  font-size: 15px;
+}
+
+/* Sticky footer */
+.pds-footer {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 20px;
+  padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  background: #ffffff;
+  border-top: 1px solid #f0f0f0;
+  z-index: 10;
+}
+
+/* Add to cart button */
+.pds-add-btn {
+  width: 100%;
+  height: 56px;
+  border: none;
+  border-radius: 14px;
+  color: #ffffff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 150ms ease, opacity 150ms ease;
+  letter-spacing: 0.2px;
+}
+
+.pds-add-btn:active {
+  transform: scale(0.97);
+  opacity: 0.9;
+}
+
+.pds-add-btn-full {
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.pds-add-price {
+  font-weight: 700;
+  font-size: 17px;
+}
+
+/* Quantity row */
+.pds-qty-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pds-qty-stepper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: #f5f5f7;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.pds-qty-btn {
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 150ms ease;
+}
+
+.pds-qty-btn:active {
+  background: #e5e5e7;
+}
+
+.pds-qty-value {
+  min-width: 32px;
+  text-align: center;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.pds-qty-row .pds-add-btn {
+  flex: 1;
+  height: 48px;
+  font-size: 16px;
+}
+
+/* Required tag */
+.pds-modifiers .info-msg {
+  font-size: 12px;
+  color: #ef4444 !important;
+  background: #fef2f2;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .pds-sheet {
+    max-width: 560px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: pdsSlideUpDesktop 350ms cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  }
+
+  @keyframes pdsSlideUpDesktop {
+    from { transform: translateX(-50%) translateY(100%); }
+    to { transform: translateX(-50%) translateY(0); }
+  }
+
+  .pds-image {
+    height: 340px;
+  }
+}

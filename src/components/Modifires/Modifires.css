@@ -1,24 +1,53 @@
+/* ============================================
+   Modifiers — Wolt Style
+   ============================================ */
+
+.extra-features-wrapper {
+  margin-bottom: 0;
+}
+
+.extra-features-list {
+  max-width: 100%;
+  width: 100%;
+  padding: 0;
+}
+
 .extra-features-list label {
-  color: #1c1b1b;
+  color: #1a1a1a;
   font-family: "Plus Jakarta Sans";
-  font-size: 14px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
-  line-height: 22px;
-  /* 166.667% */
-  letter-spacing: -0.24px;
+  line-height: 1.4;
+  letter-spacing: -0.1px;
   width: 100%;
 }
 
 .extra-features-list .label-name {
-  font-weight: 500;
-  margin-bottom: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1a1a1a;
+  text-transform: none;
+}
+
+.extra-features-list .form-check {
+  padding-left: 0;
 }
 
 .extra-features-list .form-check-label {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   cursor: pointer;
+  padding: 14px 0;
+  border-bottom: 1px solid #f5f5f7;
+  margin: 0;
+  transition: background 150ms ease;
+}
+
+.extra-features-list .form-check-label:last-of-type {
+  border-bottom: none;
 }
 
 .extra-features-list .form-check-label span {
@@ -27,83 +56,100 @@
 
 .extra-features-list .form-check-label .price {
   font-family: "Plus Jakarta Sans";
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+/* Radio buttons */
+.form-check input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  padding: 4px;
+  background-clip: content-box;
+  margin-top: 0;
+  margin-right: 14px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db;
+  flex-shrink: 0;
+  transition: border-color 150ms ease;
 }
 
 .form-check-input:checked[type=radio] {
   background-image: none !important;
+  border-width: 6px;
 }
 
-.form-check input[type="radio"] {
-  /* remove standard background appearance */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  /* create custom radiobutton appearance */
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  padding: 3px;
-  /* background-color only for content */
-  background-clip: content-box;
-  margin-top: 3px;
-  border-radius: 50%;
-}
-
-.info-msg {
-  color: #C45A3C !important;
-  font-family: "Plus Jakarta Sans";
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 20px;
-  /* 200% */
-  letter-spacing: -0.24px;
-  display: flex;
-  flex-shrink: 0;
-  justify-content: center;
-  align-items: center;
-}
-
-.extra-features-list {
-  max-width: 100%;
-  /* padding: 12px; */
-  width: 100%;
-  padding: 8px 0;
-}
-
-
-.extra-features-list .form-check {
-  padding-left: 25px;
-}
-
-.extra-features-list .custom-checkbox:last-child {
-  margin-bottom: 0px;
+/* Checkboxes */
+.form-check-input:checked[type=checkbox] {
+  background-image: none;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transition: 120ms transform ease-in-out;
+  transform-origin: bottom left;
 }
 
 .checking-input .form-check-input:checked {
   background-color: white;
 }
 
-.form-check-input:checked[type=checkbox] {
-  background-image: none;
-  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-  transition: 120ms transform ease-in-out;
-  transform-origin: bottom left;
-  box-shadow: inset 1em 1em red;
+/* Checkbox custom style */
+.checkbox {
+  padding: 14px 0;
+  border-bottom: 1px solid #f5f5f7;
+  display: flex;
+  align-items: center;
 }
 
+.checkbox:last-child {
+  border-bottom: none;
+}
+
+.checkbox__icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  margin-right: 14px;
+}
+
+.checkbox__label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  font-size: 15px;
+}
+
+/* Required indicator */
+.info-msg {
+  color: #ef4444 !important;
+  font-family: "Plus Jakarta Sans";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.1px;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  background: #fef2f2;
+  padding: 4px 8px;
+  border-radius: 6px;
+  gap: 4px;
+}
+
+/* Error glow */
 .extra-features-list.glow {
   animation: 0.9s glow ease-in-out infinite alternate;
 }
 
 @keyframes glow {
-  0% {
-    filter: drop-shadow(0 0 0.1em #da9582);
-  }
-
-  100% {
-    filter: drop-shadow(0 0 0.1em #d48d7a);
-  }
+  0% { filter: drop-shadow(0 0 0.1em #fecaca); }
+  100% { filter: drop-shadow(0 0 0.2em #fca5a5); }
 }

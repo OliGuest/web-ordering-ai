@@ -22,6 +22,7 @@ import SettingsModal from "../../components/Modals/SettingsModal/SettingsModal";
 import AlergensModal from "../../components/Modals/AlergensModal/AlergensModal";
 import PaymentModal from "../../components/Modals/PaymentModal/PaymentModal";
 import PaymentMethodModal from "../../components/Modals/PaymentMethodModal/PaymentMethodModal";
+import ProductDetailSheet from "../../components/ProductDetailSheet/ProductDetailSheet";
 // import DoneOrdering from "../../components/Modals/DoneOrdering/DoneOrdering";
 const Home = () => {
 
@@ -44,7 +45,8 @@ const Home = () => {
     logoHead,
     showPin,
     showCash,
-    showQRpay
+    showQRpay,
+    activeCard
   } = useContext(Context);
 
   const [calculateTotalCartAmount] = useCalculateTotalCartAmount();
@@ -394,6 +396,9 @@ const Home = () => {
       <RulesModal />
 
       <TabletmenukaartModal />
+
+      {/* Product Detail Sheet (Wolt-style) */}
+      {activeCard && <ProductDetailSheet />}
 
       {/* <FeedbackModal /> */}
 

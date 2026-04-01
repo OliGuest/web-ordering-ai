@@ -1,10 +1,7 @@
 import { useContext } from "react";
 import { Context } from "../context/kartItemContext";
-import { useAddClassToAddQuantity } from "./useAddClassToAddQuantity";
 
 export const useMenuWarapper = () => {
-  
-  const [addClassToAddQuantity] = useAddClassToAddQuantity();
 
   const {
     setModifierSelectedTrue,
@@ -13,19 +10,11 @@ export const useMenuWarapper = () => {
   } = useContext(Context);
 
   const menuWarapper = (data, index) => {
-    // set Blank - during selection of other product : because reset -Required Modifire check
+    // Reset modifier selection state
     setModifierSelectedTrue([]);
-      activeButton(data.ProductId);
-
+    // Set active card — this opens the ProductDetailSheet
+    activeButton(data.ProductId);
     setquantityToKart(1);
-  
-    if (data?.ProductDetails?.MenuItems.length > 0) {
-      // setDescriptionData(data);
-      // document.body.classList.add("open-detail");
-      // activeButton(data.ProductId);
-    } else {
-      addClassToAddQuantity(data.ProductId);
-    }
   };
 
   return [menuWarapper];

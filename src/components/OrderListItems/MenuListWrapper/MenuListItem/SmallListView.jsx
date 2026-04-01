@@ -60,15 +60,12 @@ const SmallListView = ({ data, index, activeCard, propClass }) => {
 
     return (
         // eslint-disable-next-line
-        <div className={`${activeCard == data.ProductId && !noDescription && activeCard !== undefined || data.ProdictId !== undefined ? "accordion open" : "accordion "}`}>
+        <div className="accordion">
             {/* eslint-disable-next-line */}
-            <div ref={ref} className={`${activeCard == data.ProductId && !noDescription && activeCard !== undefined || data.ProdictId !== undefined ? "tab open" : "tab "}`} >
+            <div ref={ref} className="tab" >
                 <div className="item-img img" onClick={() => { noDetailsOpener(data); menuWarapper(data, index) }}>
-                    <div className={activeCard == data.ProductId && !noDescription && activeCard !== undefined || data.ProdictId !== undefined ? `overlay open-overlay` : `overlay`}></div>
-                    <img src={activeCard == data.ProductId && !noDescription && activeCard !== undefined || data.ProdictId !== undefined
-                        ? data?.ProductDetails.ProductPictureUrl
-                        : data?.SmallPictureUrl
-                    }
+                    <div className="overlay"></div>
+                    <img src={data?.SmallPictureUrl}
                         alt="menu-item-img"
                         loading="lazy"
                     />
@@ -274,37 +271,30 @@ const SmallListView = ({ data, index, activeCard, propClass }) => {
                 : ""
             } */}
 
-            <div className="detail-right" onClick={() => { noDetailsOpener(data); menuWarapper(data, index) }}>
-                <div className="item-content ">
-                    <div className="item-inner-content  d-flex">
+            <div className="detail-right" onClick={() => { menuWarapper(data, index) }}>
+                <div className="item-content">
+                    <div className="item-inner-content">
                         <div className="item-left-text media-body">
                             <DescriptionTitle description={data?.Name} orderTheme={orderTheme} bold={"600"} />
                         </div>
                     </div>
 
-                    {/* DEscription text */}
                     <div className="text-container description-cnt">
-                        {" "}
-
                         {data?.ProductDetails
                             ?.MenuItems.map((product) => {
-                                // product.[0]?.HtmlContent
                                 if (product.LayoutType === 1 && product.HtmlContent !== "") {
                                     return true;
                                 }
+                                return false;
                             }) ? <DescriptionItem description={data
                                 ?.ProductDetails
                                 ?.MenuItems.map((product) => {
-                                    // product.[0]?.HtmlContent
                                     let text = ""
                                     if (product.LayoutType === 1) {
                                         text = product?.HtmlContent;
-                                        // return product?.HtmlContent;
                                     }
                                     return text;
-                                })} /> : 'No description'}
-
-
+                                })} /> : ''}
                     </div>
                 </div>
                 <div className="right">
@@ -312,83 +302,30 @@ const SmallListView = ({ data, index, activeCard, propClass }) => {
                         <h6 className="item-price m-0">
                             {currencyValue
                                 ? currencyValue
-                                : "€" +
-                                " " +
-                                parseFloat(
-                                    data?.Price
-                                )}
-                            {parseFloat(
-                                data?.Price
-                            )}
+                                : "€ "}
+                            {parseFloat(data?.Price).toFixed(2)}
                         </h6>
-                        // eslint-disable-next-line 
                         : <h6 className="item-price item-margin ml-auto"></h6>}
                     <div className="addimage text-center">
-                        {getProductQuantityInCart(data) === "" ?
-                            active && (
-                                <div className="item-count-wrapper d-flex">
-                                    <svg className={`big-plus-btn`}
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            data?.ModifierWizards
-                                                .length > 0
-                                                ? menuWarapper(
-                                                    data,
-                                                    index
-                                                )
-                                                :
-                                                addQuantityAndRemoveClass(
-                                                    data,
-                                                    index
-                                                );
-                                            setClickedCardId(propClass)
-                                        }} width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="0.5" width="36" height="36" rx="8" fill={activeColor ? `${activeColor}20` : "#FAEEE920"} />
-                                        <path d="M25.5 17H19.5V11H17.5V17H11.5V19H17.5V25H19.5V19H25.5V17Z" fill={activeColor || "#E7A536"} />
-                                    </svg>
-
-                                </div>
-                            )
-                            :
-                            active && (
-                                <div className="item-count-wrapper d-flex">
-                                    {data.ModifierWizards.length <= 0 && (<>
-                                        <svg className="blue-buttons"
-                                            onClick={(e) => { e.stopPropagation(); removItems(data) }} width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect x="0.5" width="36" height="36" rx="8" fill={activeColor ? `${activeColor}20` : "#FAEEE920"} />
-                                            <path d="M11.5 17H25.5V19H11.5V17Z" fill={activeColor || "#E7A536"} />
-                                        </svg>
-                                        <input
-                                            type="text"
-                                            name="quantity"
-                                            contentEditable={false}
-                                            value={getProductQuantityInCart(data) === "" ? "0" : getProductQuantityInCart(data)}
-                                            readOnly
-                                            className="qty quantity-value"
-                                            style={{ color: "black" }}
-                                        /></>
-                                    )}
-                                    <svg className="blue-buttons"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            data?.ModifierWizards
-                                                .length > 0
-                                                ? menuWarapper(
-                                                    data,
-                                                    index
-                                                )
-                                                : addQuantityAndRemoveClass(
-                                                    data,
-                                                    index
-                                                );
-
-                                        }} width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="0.5" width="36" height="36" rx="8" fill={activeColor ? `${activeColor}20` : "#FAEEE920"} />
-                                        <path d="M25.5 17H19.5V11H17.5V17H11.5V19H17.5V25H19.5V19H25.5V17Z" fill={activeColor || "#E7A536"} />
-                                    </svg>
-                                </div>
-                            )
-                        }
+                        {active && (
+                            <div className="item-count-wrapper d-flex">
+                                {getProductQuantityInCart(data) !== "" && (
+                                    <span className="card-qty-badge" style={{ backgroundColor: activeColor }}>
+                                        {getProductQuantityInCart(data)}
+                                    </span>
+                                )}
+                                <svg className="big-plus-btn"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        // Always open sheet - let sheet handle add to cart
+                                        menuWarapper(data, index);
+                                        setClickedCardId(propClass);
+                                    }} width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="40" height="40" rx="12" fill={activeColor ? `${activeColor}15` : "#f5f5f7"} />
+                                    <path d="M27 19H21V13H19V19H13V21H19V27H21V21H27V19Z" fill={activeColor || "#E7A536"} />
+                                </svg>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
