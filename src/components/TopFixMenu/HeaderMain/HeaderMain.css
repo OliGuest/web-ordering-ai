@@ -21,13 +21,11 @@
 
 .header-main button { border: 0; }
 
-/* Left: back + logo */
+/* Left: back button */
 .header-left {
     display: flex;
     align-items: center;
-    gap: 10px;
-    flex: 1;
-    min-width: 0;
+    flex-shrink: 0;
 }
 
 .header-left .back-icon {
@@ -37,7 +35,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.06);
     flex-shrink: 0;
     transition: transform 100ms ease;
     text-decoration: none;
@@ -47,38 +44,47 @@
     transform: scale(0.88);
 }
 
-.header-logo-img {
-    height: 28px;
-    width: auto;
-    max-width: 100px;
-    object-fit: contain;
-}
-
-/* Center: time & date */
+/* Center: logo + time */
 .header-center {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0;
-    flex-shrink: 0;
+    gap: 2px;
+    flex: 1;
+}
+
+.header-logo-img {
+    height: 24px;
+    width: auto;
+    max-width: 90px;
+    object-fit: contain;
+}
+
+.header-time-block {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .header-time {
     font-family: "Plus Jakarta Sans";
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text-primary, #202020);
-    line-height: 1.1;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-secondary, #717171);
+    line-height: 1;
+}
+
+.header-sep {
+    font-size: 11px;
+    color: var(--text-tertiary, #a0a0a0);
 }
 
 .header-date {
     font-family: "Plus Jakarta Sans";
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 500;
     color: var(--text-tertiary, #a0a0a0);
-    line-height: 1.1;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
+    line-height: 1;
 }
 
 /* Right: table number */
@@ -86,7 +92,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    flex: 1;
+    flex-shrink: 0;
 }
 
 .table-badge {

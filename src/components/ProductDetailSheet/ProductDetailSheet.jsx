@@ -26,6 +26,7 @@ const ProductDetailSheet = () => {
         searchSubCatIndex,
         setActiveCard,
         discriptionTotal,
+        detailsBackButtonColor,
     } = useContext(Context);
 
     const [calculateTotalAccToWizard] = useCalculateTotalAccToWizard();
@@ -36,75 +37,110 @@ const ProductDetailSheet = () => {
     const [getProductQuantityInCart] = useGetProductQuantityInCart();
     const [productData, setProductData] = useState(null);
     const [modifires, setModifires] = useState([]);
-    const [localQty, setLocalQty] = useState(0);
+    const [pendingQty, setPendingQty] = useState(1);
+    const [isInCart, setIsInCart] = useState(false);
 
-    // Find the product data from categories when activeCard changes
+    // Find product and check if already in cart
     useEffect(() => {
         if (!activeCard || !searchSubCatIndex) {
             setProductData(null);
             setModifires([]);
-            setLocalQty(0);
+            setPendingQty(1);
+            setIsInCart(false);
             return;
         }
-        for (const cat of searchSubCatIndex) {
-            if (cat?.SubCategories) {
-                for (const sub of cat.SubCategories) {
-                    if (sub?.Products) {
-                        const found = sub.Products.find(p => p.ProductId === activeCard);
-                        if (found) {
-                            setProductData(found);
-                            setModifires(found.ModifierWizards || []);
-                            // Get existing quantity from cart, default to 1 for new items
-                            const existing = kartItem?.find(i => i.ProductId === found.ProductId);
-                            setLocalQty(existing?.quantity || 1);
-                            return;
+        const findProduct = (categories) => {
+            for (const cat of categories) {
+                if (cat?.SubCategories) {
+                    for (const sub of cat.SubCategories) {
+                        if (sub?.Products) {
+                            const found = sub.Products.find(p => p.ProductId === activeCard);
+                            if (found) return found;
                         }
                     }
                 }
-            }
-            if (cat?.Products) {
-                const found = cat.Products.find(p => p.ProductId === activeCard);
-                if (found) {
-                    setProductData(found);
-                    setModifires(found.ModifierWizards || []);
-                    const existing = kartItem?.find(i => i.ProductId === found.ProductId);
-                    setLocalQty(existing?.quantity || 1);
-                    return;
+                if (cat?.Products) {
+                    const found = cat.Products.find(p => p.ProductId === activeCard);
+                    if (found) return found;
                 }
+            }
+            return null;
+        };
+        const found = findProduct(searchSubCatIndex);
+        if (found) {
+            setProductData(found);
+            setModifires(found.ModifierWizards || []);
+            const existing = kartItem?.find(i => i.ProductId === found.ProductId);
+            if (existing) {
+                setPendingQty(existing.quantity);
+                setIsInCart(true);
+            } else {
+                setPendingQty(1);
+                setIsInCart(false);
             }
         }
     }, [activeCard, searchSubCatIndex]);
 
-    // Sync localQty with kartItem changes
+    // Sync with cart changes (after add/remove)
     useEffect(() => {
         if (productData) {
             const existing = kartItem?.find(i => i.ProductId === productData.ProductId);
-            setLocalQty(existing?.quantity || 0);
+            if (existing) {
+                setPendingQty(existing.quantity);
+                setIsInCart(true);
+            }
         }
     }, [kartItem, productData]);
 
+    // Close without adding
     const handleClose = () => {
         setActiveCard(undefined);
         setProductData(null);
         setModifires([]);
-        setLocalQty(0);
+        setPendingQty(1);
+        setIsInCart(false);
         document.body.classList.remove("open-detail");
     };
 
-    const handleAdd = (e) => {
+    // Add to cart (first time or increment)
+    const handleAddToCart = (e) => {
         e.stopPropagation();
         if (productData) {
             addQuantityAndRemoveClass(productData);
         }
     };
 
-    const handleRemove = (e) => {
+    // Remove from cart (decrement)
+    const handleRemoveFromCart = (e) => {
         e.stopPropagation();
-        if (productData && localQty > 0) {
+        if (productData && isInCart) {
             const finddata = kartItem.find((item) => item.ProductId === productData.ProductId);
             if (finddata) {
                 minusQuantityKart(finddata);
             }
+        } else {
+            // Not in cart yet, just decrease pending
+            setPendingQty(prev => Math.max(0, prev - 1));
+        }
+    };
+
+    // Increase pending qty (before adding to cart)
+    const handleIncreasePending = (e) => {
+        e.stopPropagation();
+        if (isInCart) {
+            handleAddToCart(e);
+        } else {
+            setPendingQty(prev => prev + 1);
+        }
+    };
+
+    // Decrease pending qty
+    const handleDecreasePending = (e) => {
+        e.stopPropagation();
+        if (isInCart) {
+            handleRemoveFromCart(e);
+        } else {
+            setPendingQty(prev => Math.max(0, prev - 1));
         }
     };
 
@@ -115,6 +151,7 @@ const ProductDetailSheet = () => {
     const totalPrice = basePrice + modifierTotal;
     const currency = currencyValue || "€";
     const hasModifiers = modifires && modifires.length > 0;
+    const displayQty = pendingQty;
     const description = productData?.ProductDetails?.MenuItems?.map((item) => {
         if (item.LayoutType === 1) return item?.HtmlContent;
         return "";
@@ -135,7 +172,6 @@ const ProductDetailSheet = () => {
                     </svg>
                 </button>
 
-                {/* Product image */}
                 <div className="pds-image">
                     <img
                         src={productData?.ProductDetails?.ProductPictureUrl || productData?.SmallPictureUrl}
@@ -144,7 +180,6 @@ const ProductDetailSheet = () => {
                     />
                 </div>
 
-                {/* Content */}
                 <div className="pds-content">
                     <div className="pds-header">
                         <h2 className="pds-title" style={{ color: orderTheme?.ProductTextColor }}>
@@ -165,7 +200,6 @@ const ProductDetailSheet = () => {
                         <AlergenIcons data={productData} />
                     </div>
 
-                    {/* Modifiers */}
                     {hasModifiers && (
                         <div className="pds-modifiers">
                             <ModifiresList
@@ -184,45 +218,50 @@ const ProductDetailSheet = () => {
                     )}
                 </div>
 
-                {/* Footer — always show quantity stepper */}
+                {/* Footer */}
                 {active && (
                     <div className="pds-footer">
                         <div className="pds-qty-row">
                             <div className="pds-qty-stepper">
                                 <button
                                     className="pds-qty-btn"
-                                    onClick={handleRemove}
-                                    disabled={localQty === 0}
-                                    style={{ opacity: localQty === 0 ? 0.3 : 1 }}
+                                    onClick={handleDecreasePending}
+                                    disabled={displayQty === 0}
+                                    style={{ opacity: displayQty === 0 ? 0.3 : 1 }}
                                 >
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                                         <path d="M4 10h12" stroke={activeColor} strokeWidth="2.5" strokeLinecap="round"/>
                                     </svg>
                                 </button>
-                                <span className="pds-qty-value">{localQty}</span>
-                                <button className="pds-qty-btn" onClick={handleAdd}>
+                                <span className="pds-qty-value">{displayQty}</span>
+                                <button className="pds-qty-btn" onClick={handleIncreasePending}>
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                                         <path d="M10 4v12M4 10h12" stroke={activeColor} strokeWidth="2.5" strokeLinecap="round"/>
                                     </svg>
                                 </button>
                             </div>
-                            {localQty > 0 ? (
-                                <button
-                                    className="pds-add-btn"
-                                    style={{ backgroundColor: activeColor }}
-                                    onClick={handleClose}
-                                >
-                                    Done · {currency} {(totalPrice * localQty).toFixed(2)}
-                                </button>
-                            ) : (
-                                <button
-                                    className="pds-add-btn"
-                                    style={{ backgroundColor: activeColor }}
-                                    onClick={handleAdd}
-                                >
-                                    Add to cart
-                                </button>
-                            )}
+                            <button
+                                className="pds-add-btn"
+                                style={{
+                                    backgroundColor: displayQty > 0 ? activeColor : '#ccc',
+                                    pointerEvents: displayQty > 0 ? 'auto' : 'none'
+                                }}
+                                onClick={(e) => {
+                                    if (isInCart) {
+                                        // Already in cart, just close
+                                        handleClose();
+                                    } else {
+                                        // Add to cart then close
+                                        handleAddToCart(e);
+                                        setTimeout(handleClose, 200);
+                                    }
+                                }}
+                            >
+                                {isInCart
+                                    ? `Done · ${currency} ${(totalPrice * displayQty).toFixed(2)}`
+                                    : `Add to cart · ${currency} ${(totalPrice * displayQty).toFixed(2)}`
+                                }
+                            </button>
                         </div>
                     </div>
                 )}
