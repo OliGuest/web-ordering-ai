@@ -1,46 +1,69 @@
+/* Settings wrapper - restaurant name + icons */
 .order-listing .settings-wrapper {
-    padding: 40px 9px 0 12px;
+    padding: 16px 16px 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #FFF9F4;
+    background: var(--bg-primary, #ffffff);
+}
+
+.order-listing .settings-wrapper.up {
+    padding-top: 8px;
 }
 
 .order-listing .settings-wrapper .icons-rignt {
-    border-radius: 10px;
-    border: 1px solid #E7A536;
-
+    border-radius: 12px;
+    border: 1.5px solid var(--border-default, #e5e7eb);
+    display: flex;
+    overflow: hidden;
+    flex-shrink: 0;
 }
 
 .order-listing .settings-wrapper .icons-rignt .icon-left {
-    border-right: 1px solid #E7A536;
+    border-right: 1px solid var(--border-light, #f0f0f0);
 }
 
 .order-listing .settings-wrapper .icons-rignt .icon-right {
-    border-left: 1px solid #E7A536;
+    border-left: none;
 }
 
 .order-listing .settings-wrapper .icons-rignt .icon-left,
 .order-listing .settings-wrapper .icons-rignt .icon-right {
-    padding: 8px;
-    display: inline-block;
+    padding: 10px 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 150ms ease;
+}
+
+.order-listing .settings-wrapper .icons-rignt .icon-left:active,
+.order-listing .settings-wrapper .icons-rignt .icon-right:active {
+    background: var(--bg-surface-hover, #f0f0f2);
 }
 
 .order-listing .settings-wrapper h4 {
-    max-width: 200px;
+    max-width: 240px;
     font-family: "Plus Jakarta Sans";
-    font-size: 18px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 700;
     word-break: break-word;
-    line-height: 150%;
-    /* 27px */
+    line-height: 1.3;
+    color: var(--text-primary, #1a1a1a);
+    margin: 0;
+}
+
+.order-listing .settings-wrapper .restorant-name {
+    flex: 1;
+    margin-right: 16px;
 }
 
 @media (min-width: 600px) {
     .order-listing .settings-wrapper {
         max-width: 1080px;
         margin: 0 auto;
-        background-color: white;
+        background-color: var(--bg-primary, white);
+        padding: 20px 24px 16px;
     }
 }

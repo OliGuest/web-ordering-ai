@@ -51,6 +51,16 @@ const GenQRCode = () => {
      }
   },[])
 
+ const getLocalUrl = (scannedUrl) => {
+   try {
+     const url = new URL(scannedUrl);
+     // Keep the query parameters but redirect to localhost instead of production
+     return window.location.origin + "/" + url.search;
+   } catch (e) {
+     return scannedUrl;
+   }
+ }
+
  const setupUrl = () => {
    sessionStorage.setItem("theParams", JSON.stringify(paramsValue))
    setPath(JSON.parse(sessionStorage.getItem("theParams")));
@@ -64,7 +74,7 @@ const GenQRCode = () => {
         </span>
       </Link>
       <h4>Scan the QR code please</h4>
-      {scanResult ? <div> Success: <a href={scanResult} onClick={setupUrl}> {scanResult}</a> </div>  : <div id="renderCode" width="600px"></div>}
+      {scanResult ? <div> Success: <a href={getLocalUrl(scanResult)} onClick={setupUrl}> {scanResult}</a> </div>  : <div id="renderCode" width="600px"></div>}
     </div>
   );
 };

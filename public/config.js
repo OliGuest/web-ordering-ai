@@ -8,7 +8,7 @@ window.config = {
   // APP_CONNECTION: "http://dev.revelapps.com:9988/signalr/hubs/",
   // APP_LOCALHOST: "http://dev.revelapps.com:9988/",
   // APP_PLATFORM: "http://dev.revelapps.com:9988/",
-  APP_CONNECTION: "http://tabletmenukaart.ddns.net:9944/signalr/hubs/",
-  APP_LOCALHOST: "http://tabletmenukaart.ddns.net:9944",
-  APP_PLATFORM: "http://tabletmenukaart.ddns.net:9944",
+  APP_CONNECTION: "http://f.revelapps.com:9955/signalr/hubs/",
+  APP_LOCALHOST: "http://f.revelapps.com:9955",
+  APP_PLATFORM: "http://f.revelapps.com:9955",
 };

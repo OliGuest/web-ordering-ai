@@ -297,9 +297,12 @@
 
 .menu-list-item .item-img {
   position: relative;
-  width: 77px;
-  height: 66px;
-  margin-right: 14px;
+  width: 88px;
+  height: 88px;
+  margin-right: 0;
+  flex-shrink: 0;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .products-modal .menu-list-item {
@@ -768,9 +771,9 @@ a.butn-sm.butn-orange.add-cart-btn.promo-cart-btn:hover {
   height: fit-content;
   display: flex;
   overflow: hidden;
-  pointer-events: none;
-  transition: all 0.5s ease;
-  /* max-height: 74px; */
+  pointer-events: auto;
+  transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  border-radius: 12px;
 }
 
 .subcateclass {
@@ -782,13 +785,15 @@ a.butn-sm.butn-orange.add-cart-btn.promo-cart-btn:hover {
   position: absolute;
   bottom: 0;
   top: 0;
-  background: #4f4f4f6b;
+  background: rgba(0, 0, 0, 0.15);
   width: 100%;
   border-radius: 12px;
+  transition: background 0.3s ease;
 }
 
 .open-overlay {
   border-radius: 12px 12px 0 0;
+  background: rgba(0, 0, 0, 0.25);
 }
 
 .heart-img {
@@ -895,7 +900,20 @@ a.butn-sm.butn-orange.add-cart-btn.promo-cart-btn:hover {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
+  min-height: 88px;
+}
+
+.detail-right .item-content {
+  flex: 1;
+}
+
+.detail-right .right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 4px;
 }
 
 .detail-right .right {
@@ -957,19 +975,24 @@ a.butn-sm.butn-orange.add-cart-btn.promo-cart-btn:hover {
 }
 
 .item-count-wrapper .quantity-value {
-  color: white;
+  color: var(--text-primary, #1a1a1a);
   text-align: center;
   font-family: "Plus Jakarta Sans" !important;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal;
-  width: 25px;
+  width: 32px;
   border: none;
+  background: transparent;
+  padding: 0;
 }
 
 .item-count-wrapper {
   justify-content: flex-end;
+  align-items: center;
+  gap: 2px;
+  display: flex;
 }
 
 /* --- Hover Effects --- */
@@ -1010,9 +1033,10 @@ a.butn-sm.butn-orange.add-cart-btn.promo-cart-btn:hover {
 }
 
 .tab.open .item-img {
-  transition: all 0.5s ease;
-  height: 260px;
+  transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  height: 240px;
   width: 100%;
+  border-radius: 12px 12px 0 0;
 }
 
 .tab.open~.detail-right {
@@ -1027,11 +1051,12 @@ a.butn-sm.butn-orange.add-cart-btn.promo-cart-btn:hover {
   opacity: 1;
   display: block;
   width: 100%;
-  transition: all 0.5s ease;
-  border: 1px solid #D9D9D9;
+  transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  border: 1px solid var(--border-light, #f0f0f0);
   border-top: none;
-  border-radius: 0 0 12px 12px;
-  padding: 8px 8px 12px 8px;
+  border-radius: 0 0 14px 14px;
+  padding: 12px 14px 16px;
+  background: var(--bg-primary, #fff);
 }
 
 .blue-buttons {

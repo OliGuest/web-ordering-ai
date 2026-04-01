@@ -115,6 +115,15 @@
     width: fit-content;
     margin: 0 auto;
     height: 24px;
+    transition: opacity 250ms ease, transform 250ms ease;
+}
+
+.hm-logo.up {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+    height: 0;
+    overflow: hidden;
 }
 
 .table-btn {
@@ -185,10 +194,17 @@
 .hm-logo a {
     display: block;
     margin: auto;
-    margin-top: -20px;
-    height: 55px;
-    width: 150px;
+    margin-top: -16px;
+    height: 50px;
+    width: 140px;
     transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.hm-logo a img {
+    vertical-align: unset;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 
 .hm-logo a img {
