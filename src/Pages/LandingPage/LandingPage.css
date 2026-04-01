@@ -1,195 +1,157 @@
+/* ============================================
+   Landing Page — Category Grid
+   ============================================ */
+
 .main-wrapper-landing {
-  overflow-y: auto;
-  height: 100vh;
-  background: var(--bg-primary, #ffffff);
+    overflow-y: auto;
+    height: 100vh;
+    background: var(--bg-secondary, #f8f8f8);
 }
 
 .main-wrapper-landing .landing-text {
-  position: absolute;
-  bottom: 20px;
-  left: 18px;
+    position: absolute;
+    bottom: 20px;
+    left: 18px;
 }
 
 .landingPage-back-btn {
-  position: absolute;
-  z-index: 3;
-  top: 13px;
-  left: 12px;
+    position: absolute;
+    z-index: 3;
+    top: 13px;
+    left: 12px;
 }
 
 .landingPage-back-btn .back-icon {
-  background-color: var(--activeColor, #E7A536);
+    background-color: var(--activeColor, #E7A536);
 }
 
 .main-menu-list {
-  max-width: 1080px;
-  margin: 0 auto;
+    max-width: 640px;
+    margin: 0 auto;
 }
 
 .main-wrapper-landing .main-menu-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  padding: 12px 12px 120px;
-  overflow-y: visible;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 8px 12px 120px;
 }
 
 .main-menu-list .dropdown-btn-landing {
-  border: none;
-  background: var(--bg-elevated, #ffffff);
-  cursor: pointer;
-  outline: none;
-  text-transform: none;
-  font-family: inherit;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 0;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-  transition: transform 200ms cubic-bezier(0.32, 0.72, 0, 1),
-              box-shadow 200ms ease;
-  text-decoration: none;
+    border: none;
+    background: var(--bg-card, #ffffff);
+    cursor: pointer;
+    outline: none;
+    text-transform: none;
+    font-family: inherit;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    padding: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 150ms ease;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.04);
 }
 
 .main-menu-list .dropdown-btn-landing:active {
-  transform: scale(0.96);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    transform: scale(0.96);
 }
 
 .main-menu-list .dropdown-btn-landing .img-left {
-  width: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
 .main-menu-list .dropdown-btn-landing .img-left img {
-  border-radius: 0;
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
+    border-radius: 0;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+}
+
+.main-menu-list .dropdown-btn-landing .img-left.big-img img {
+    aspect-ratio: 3/2;
 }
 
 .main-menu-list .separator {
-  border-bottom: 1px solid var(--border-light, #f0f0f0);
-  width: 100%;
-  margin: 10px 0;
-  grid-column: 1 / -1;
+    display: none;
 }
 
 .main-menu-list .dropdown-btn-landing p {
-  font-feature-settings: "clig" off, "liga" off;
-  font-family: "Plus Jakarta Sans";
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 1.2;
-  margin: 0;
-  padding: 8px 6px 10px;
-  text-align: center;
-  color: var(--text-primary, #1a1a1a);
-  text-transform: none;
+    font-family: "Plus Jakarta Sans";
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+    padding: 8px 6px 10px;
+    text-align: center;
+    color: var(--text-primary, #202020);
 }
 
 .landing-text h2 {
-  color: white;
-  font-feature-settings: "clig" off, "liga" off;
-  font-family: "Plus Jakarta Sans";
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 28px;
-  letter-spacing: 0.8px;
+    color: white;
+    font-family: "Plus Jakarta Sans";
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.2px;
 }
 
 .landing-text p {
-  color: white;
-  font-feature-settings: "clig" off, "liga" off;
-  font-family: "Plus Jakarta Sans";
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 20px;
-  letter-spacing: -0.24px;
-  margin-bottom: 0.25rem;
+    color: rgba(255,255,255,0.85);
+    font-family: "Plus Jakarta Sans";
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.4;
 }
 
 .main-landing-text {
-  padding: 16px 16px 8px;
-  background: var(--bg-primary, #ffffff);
-  position: relative;
+    padding: 16px 16px 10px;
+    background: var(--bg-secondary, #f8f8f8);
 }
 
 .main-landing-text p {
-  font-family: "Plus Jakarta Sans";
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: 0.09px;
-  margin: 0;
-  color: var(--text-secondary, #6b7280);
+    font-family: "Plus Jakarta Sans";
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    color: var(--text-secondary, #717171);
 }
 
 .main-landing-text h2 {
-  color: var(--activeColor, #E7A536) !important;
-  font-family: "Plus Jakarta Sans";
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 800;
-  line-height: normal;
-  letter-spacing: 0.2px;
-  margin-bottom: 4px;
+    color: var(--text-primary, #202020) !important;
+    font-family: "Plus Jakarta Sans";
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.2px;
+    margin-bottom: 2px;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-.addScroll::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.addScroll {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+.addScroll::-webkit-scrollbar { display: none; }
+.addScroll { -ms-overflow-style: none; scrollbar-width: none; }
 
 @media (min-width: 600px) {
-  .main-wrapper-landing .main-menu-list {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-    padding: 16px 24px 120px;
-    margin: 0 auto;
-  }
-
-  .main-landing-text h2 {
-    font-size: 28px;
-  }
-
-  .landing-text h2 {
-    font-size: 34px;
-  }
-
-  .landing-text p {
-    font-size: 21px;
-    line-height: 30px;
-  }
-
-  .main-wrapper-landing .landing-text {
-    bottom: 45px;
-    left: 45px;
-  }
+    .main-wrapper-landing .main-menu-list {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        padding: 12px 20px 120px;
+    }
+    .main-landing-text h2 { font-size: 26px; }
 }
 
 @media (min-width: 1080px) {
-  .main-wrapper-landing .main-menu-list {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-    padding: 20px 40px 120px;
-  }
-
-  .main-landing-text .textBox {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 40px;
-  }
+    .main-wrapper-landing .main-menu-list {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 14px;
+        padding: 16px 24px 120px;
+    }
+    .main-landing-text .textBox {
+        max-width: 640px;
+        margin: 0 auto;
+    }
 }

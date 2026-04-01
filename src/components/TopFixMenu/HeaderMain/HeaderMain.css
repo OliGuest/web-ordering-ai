@@ -1,31 +1,25 @@
+/* ============================================
+   Header & Cover Image
+   ============================================ */
+
 .header-main {
     position: sticky;
     top: 0;
     z-index: 4;
     background: transparent;
-    height: 48px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 16px;
-    transition: background 300ms ease, height 300ms ease;
+    padding: 0 14px;
+    transition: background 250ms ease;
 }
 
-.header-main button {
-    border: 0;
-}
+.header-main button { border: 0; }
 
-.header-height .nav-toggle {
-    height: 100%;
-}
-
-.header-height .nav-toggle .navbar {
-    height: 100%;
-}
-
-.header-height .nav-toggle .navbar button {
-    height: 18px;
-}
+.header-height .nav-toggle { height: 100%; }
+.header-height .nav-toggle .navbar { height: 100%; }
+.header-height .nav-toggle .navbar button { height: 18px; }
 
 .navbar-toggler .navbar {
     display: flex;
@@ -33,17 +27,15 @@
     align-items: center;
 }
 
-.header-main .navbar-toggler {
-    padding: 0;
-}
+.header-main .navbar-toggler { padding: 0; }
 
 .header-main .navbar-toggler .navbar-toggler-icon,
 .header-main .navbar-toggler .navbar-toggler-icon::before,
 .header-main .navbar-toggler .navbar-toggler-icon::after {
     background: #000;
-    width: 22px;
-    height: 1px;
-    border-radius: 20px;
+    width: 20px;
+    height: 1.5px;
+    border-radius: 2px;
     position: absolute;
     left: 0;
 }
@@ -51,40 +43,37 @@
 .header-main .navbar-toggler .navbar-toggler-icon::before,
 .header-main .navbar-toggler .navbar-toggler-icon::after {
     content: "";
-    width: 32px;
+    width: 20px;
     display: inline-block;
-    top: -8px;
+    top: -6px;
 }
 
 .header-main .navbar-toggler .navbar-toggler-icon::after {
-    width: 25px;
+    width: 20px;
     top: auto;
-    bottom: -8px;
+    bottom: -6px;
 }
 
 .header-main.up {
-    background: var(--bg-primary, #F5F6F7);
-    transition: background 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--bg-primary, #fff);
 }
 
 .top-background {
     opacity: 1;
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 300ms;
+    transition: opacity 300ms ease;
+    width: 100%;
+    object-fit: cover;
 }
 
 .top-background.up {
     opacity: 0;
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 200ms;
+    transition: opacity 200ms ease;
 }
 
 .header-main .navbar-toggler {
     padding: 0;
     width: 32px;
-    height: 30px;
+    height: 28px;
 }
 
 .header-main .img-text-wrapper img {
@@ -93,29 +82,29 @@
     object-fit: cover;
 }
 
-
+/* Cover image */
 .img-text-wrapper {
-    max-height: 280px;
-    background: var(--bg-secondary, #F5F6F7);
+    max-height: 220px;
+    background: var(--bg-secondary, #f8f8f8);
     overflow: hidden;
-    border-radius: 0 0 20px 20px;
+    border-radius: 0 0 16px 16px;
 }
 
 .img-text-wrapper.up {
-    background: var(--bg-secondary, #F5F6F7);
-    padding-bottom: 10px;
     max-height: 0;
-    transition: max-height 400ms ease;
+    overflow: hidden;
+    transition: max-height 350ms ease;
 }
 
+/* Logo */
 .hm-logo {
     position: sticky;
-    top: 7px;
+    top: 4px;
     z-index: 8;
     width: fit-content;
     margin: 0 auto;
-    height: 24px;
-    transition: opacity 250ms ease, transform 250ms ease;
+    height: 20px;
+    transition: opacity 200ms ease, transform 200ms ease, height 200ms ease;
 }
 
 .hm-logo.up {
@@ -126,78 +115,12 @@
     overflow: hidden;
 }
 
-.table-btn {
-    width: fit-content;
-    position: absolute;
-    right: 12px;
-    top: 12px;
-    z-index: 3;
-}
-
-.back-icon {
-    padding: 8px;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    margin-right: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.06);
-    transition: transform 200ms ease, background 200ms ease;
-}
-
-.back-icon:active {
-    transform: scale(0.9);
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.table-btn .search-circle {
-    width: auto;
-    min-width: 36px;
-    height: 36px;
-    padding: 0 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    background-color: var(--activeColor, #E7A536) !important;
-    transition: transform 200ms ease;
-}
-
-.table-btn .search-circle:active {
-    transform: scale(0.93);
-}
-
-.table-btn .search-circle h6 {
-    margin: 0;
-    font-family: "Plus Jakarta Sans";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 20px;
-}
-
-.language-flag h4 {
-    text-align: center;
-    font-family: "Plus Jakarta Sans";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 143%;
-    text-transform: capitalize;
-    margin: 0;
-    text-align: left;
-}
-
 .hm-logo a {
     display: block;
     margin: auto;
-    margin-top: -16px;
-    height: 50px;
-    width: 140px;
-    transition: opacity 200ms ease, transform 200ms ease;
+    margin-top: -14px;
+    height: 44px;
+    width: 120px;
 }
 
 .hm-logo a img {
@@ -207,21 +130,74 @@
     object-fit: contain;
 }
 
-.hm-logo a img {
-    vertical-align: unset;
-    height: 100%;
-    object-fit: cover;
+/* Table number badge */
+.table-btn {
+    width: fit-content;
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    z-index: 3;
 }
 
+.back-icon {
+    padding: 6px;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.05);
+    transition: transform 150ms ease;
+}
+
+.back-icon:active {
+    transform: scale(0.88);
+}
+
+.table-btn .search-circle {
+    width: auto;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: var(--activeColor, #E7A536) !important;
+    transition: transform 150ms ease;
+}
+
+.table-btn .search-circle:active {
+    transform: scale(0.93);
+}
+
+.table-btn .search-circle h6 {
+    margin: 0;
+    font-family: "Plus Jakarta Sans";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.language-flag h4 {
+    text-align: left;
+    font-family: "Plus Jakarta Sans";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Bottom nav in HeaderMain (legacy) */
 .menu-bottom-bar .bottom-navbar {
     display: flex;
     align-items: center;
 }
 
-.menu-bottom-bar .bottom-navbar-between {
-    justify-content: space-evenly;
-}
-
+.menu-bottom-bar .bottom-navbar-between,
 .menu-bottom-bar .bottom-navbar-around {
     justify-content: space-evenly;
 }
@@ -232,44 +208,23 @@
     text-align: center;
 }
 
-
-
 .menu-bottom-bar .bottom-navbar .nav-link p {
-    margin: 6px 0 0;
-    color: var(--text-secondary, #6b7280);
+    margin: 3px 0 0;
+    color: var(--text-tertiary, #a0a0a0);
     text-align: center;
     font-family: "Plus Jakarta Sans";
-    font-size: 12px;
-    font-style: normal;
+    font-size: 10px;
     font-weight: 500;
-    line-height: 16px;
-    letter-spacing: 0.07px;
+    line-height: 1;
 }
 
-.now-tile .menu-bottom-bar .bottom-navbar .nav-item .nav-link.note-list-none {
-    display: none;
-}
+.now-tile .menu-bottom-bar .bottom-navbar .nav-item .nav-link.note-list-none { display: none; }
+.menu-bottom-bar .bottom-navbar .nav-item .nav-link.note-list-block { display: none; }
+.now-tile .menu-bottom-bar .bottom-navbar .nav-item .nav-link.note-list-block { display: block; }
 
-.menu-bottom-bar .bottom-navbar .nav-item .nav-link.note-list-block {
-    display: none;
-}
-
-.now-tile .menu-bottom-bar .bottom-navbar .nav-item .nav-link.note-list-block {
-    display: block;
-}
-
-.language-flag {
-    cursor: pointer;
-}
+.language-flag { cursor: pointer; }
 
 @media (min-width: 600px) {
-    .img-text-wrapper {
-        height: 40%;
-    }
-
-    .top-background {
-        width: 100%;
-        max-height: inherit;
-        object-fit: cover;
-    }
+    .img-text-wrapper { max-height: 260px; }
+    .top-background { max-height: inherit; }
 }

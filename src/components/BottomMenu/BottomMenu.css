@@ -1,93 +1,94 @@
+/* ============================================
+   Bottom Navigation Bar
+   ============================================ */
+
 .menu-bottom-bar {
-  background: var(--bg-primary, #ffffff);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  padding: 10px 0;
-  padding-bottom: calc(10px + var(--safe-area-bottom, 0px));
-  border-top: 1px solid var(--border-light, #f0f0f0);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 5;
-  max-width: 100%;
-  margin: 0 auto;
-  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.04);
+    background: var(--bg-primary, #ffffff);
+    padding: 6px 0 4px;
+    padding-bottom: calc(6px + var(--safe-area-bottom, 0px));
+    border-top: 1px solid var(--border-light, #f0f0f0);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    max-width: 100%;
 }
 
-/* Force all nav layouts to be evenly distributed */
 .menu-bottom-bar .bottom-navbar {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-evenly !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-evenly !important;
+    margin: 0;
+    padding: 0;
 }
 
 .menu-bottom-bar .bottom-navbar-between,
 .menu-bottom-bar .bottom-navbar-around {
-  justify-content: space-evenly !important;
+    justify-content: space-evenly !important;
 }
 
 .menu-bottom-bar .bottom-navbar .nav-item {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .menu-bottom-bar .bottom-navbar .nav-item .nav-link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4px 8px;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    text-align: center;
 }
 
 .menu-bottom-bar .bottom-navbar .nav-link p {
-  margin: 4px 0 0;
-  color: var(--text-secondary, #6b7280);
-  text-align: center;
-  font-family: "Plus Jakarta Sans";
-  font-size: 11px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: 0.07px;
+    margin: 3px 0 0;
+    color: var(--text-tertiary, #a0a0a0);
+    text-align: center;
+    font-family: "Plus Jakarta Sans";
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.2px;
+}
+
+.menu-bottom-bar .bottom-navbar .nav-link svg {
+    width: 22px;
+    height: 22px;
+    opacity: 0.7;
 }
 
 .btnBottom {
-  background-color: inherit;
-  border: none;
-  transition: transform 150ms ease;
-  cursor: pointer;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+    transition: transform 100ms ease;
 }
 
 .btnBottom:active {
-  transform: scale(0.9);
+    transform: scale(0.88);
 }
 
 .hideOnScroll {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 500ms;
+    transition: transform 400ms cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .hideOnScroll.down {
-  bottom: -100px;
+    transform: translateY(100%);
 }
 
 .count {
-  position: relative;
+    position: relative;
 }
 
 .count .close-time {
-  position: absolute;
-  top: -6px;
-  right: -20px;
-  font-feature-settings: 'clig' off, 'liga' off;
-  font-family: "Plus Jakarta Sans";
-  font-size: 8px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 13px;
-  letter-spacing: 0.07px;
+    position: absolute;
+    top: -6px;
+    right: -20px;
+    font-family: "Plus Jakarta Sans";
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 1;
 }

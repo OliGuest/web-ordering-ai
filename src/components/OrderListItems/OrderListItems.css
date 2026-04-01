@@ -1,28 +1,16 @@
+/* ============================================
+   Product List Container
+   ============================================ */
+
 .order-list-body {
-  padding-bottom: 10px;
-  position: relative;
-  padding: 0 16px;
-  margin-bottom: 0;
-  background: var(--bg-primary, white);
-  overflow-y: hidden;
-  scroll-behavior: smooth;
+    padding: 0 14px;
+    position: relative;
+    background: var(--bg-primary, white);
+    overflow-y: hidden;
+    max-width: 640px;
+    margin: 0 auto;
 }
 
 .order-list-body .menu-item-wrapper {
-  padding-bottom: 80px;
-}
-
-@media only screen and (min-width: 600px) {
-
-  /* .order-list-body {
-    max-height: calc(100% - 170px);
-  }
-
-  .open-cart .order-list-body {
-    max-height: calc(100% - 340px);
-  } */
-  .order-list-body {
-    max-width: 1080px;
-    margin: 0 auto;
-  }
+    padding-bottom: 100px;
 }
