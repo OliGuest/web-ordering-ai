@@ -1,154 +1,196 @@
+/* ============================================
+   Cart List Items
+   ============================================ */
+
 .products-modal .all-items {
-  /* overflow-y: hidden; */
-  margin: 0 10px;
-  /* border-bottom: 1px solid #e9e9e9; */
+    margin: 0;
 }
 
 #pay-modal .all-items {
-  overflow-y: auto;
+    overflow-y: auto;
 }
 
-.item-edit-btn {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #ff9900;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: -6px;
-  left: -4px;
-}
-
-.item-edit-btn img {
-  width: auto !important;
-  height: auto !important;
-}
-
-.service-01 ul li button {
-  background-color: inherit;
-  font-size: 14px;
-  line-height: 17px;
-  color: #403b3b;
-  margin-bottom: 15px;
-  display: inline-block;
-}
-
-.service-01 ul li button svg {
-  margin-right: 20px;
-}
-
-.card-list .item-content .item-left-text {
-  text-align: left;
-}
-
-.card-list .item-inner-content .item-left-text {
-  justify-content: space-between;
-  display: flex;
-}
-
-.card-list.item-inner-content .item-left-text {
-  flex-direction: column;
-  height: 72px;
-}
-
-.card-list .item-inner-content .item-left-text h6 {
-  text-align: left;
-  font-family: "Plus Jakarta Sans";
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16.5px;
-}
-
-.card-list .item-inner-content .item-left-text>p {
-  text-align: right;
-  font-family: "Plus Jakarta Sans";
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
-}
-
-.card-list .item-inner-content .item-left-text>h6 p {
-  text-align: right;
-  font-family: "Plus Jakarta Sans";
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 10px;
+.card-list {
+    padding-bottom: 80px;
 }
 
 .products-modal .card-list .all-items {
-  background: #fff;
-  padding: 24px 0;
-  border-bottom: 1px solid #DADEE2;
+    background: #fff;
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .card-list .all-items:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
 
-.card-list:last-child {
-  border-bottom: 0;
-  margin-bottom: 0;
-  padding-bottom: 80px;
+/* Cart item row */
+.card-list .menu-list-item {
+    align-items: flex-start;
+}
+
+.card-list .menu-list-item .item-img {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: 12px;
+}
+
+.card-list .menu-list-item .item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Content area */
+.card-list .item-content {
+    flex: 1;
+    min-width: 0;
 }
 
 .card-list .item-inner-content {
-  height: 100%;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
 }
 
+/* Left text: name + modifiers + price */
 .card-list .item-inner-content .item-left-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  height: 100%;
-  max-width: 130px;
-  width: 130px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    min-width: 0;
+    max-width: none;
+    width: auto;
+    height: auto;
 }
 
-.card-list .item-delet {
-  height: 72px;
-  display: flex;
-  justify-content: space-between;
+.card-list .item-inner-content .item-left-text h6,
+.card-list .item-inner-content .item-left-text .mb-15 {
+    font-family: "Plus Jakarta Sans";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: left;
+    margin: 0;
+    color: var(--text-primary, #202020);
+}
+
+.card-list .item-inner-content .item-left-text .mb-15 p {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-tertiary, #a0a0a0);
+    margin: 0;
+    padding: 1px 0;
+}
+
+.card-list .item-inner-content .item-left-text > p {
+    font-family: "Plus Jakarta Sans";
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+    margin: 4px 0 0;
+    color: var(--text-primary, #202020);
+}
+
+/* Right side: delete + quantity stepper */
+.card-list .addimage.item-delet {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 8px;
+    height: auto;
+    flex-shrink: 0;
 }
 
 .card-list .item-delet span {
-  text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #fef2f2;
+    cursor: pointer;
+    transition: transform 100ms ease;
+}
+
+.card-list .item-delet span:active {
+    transform: scale(0.9);
+}
+
+.card-list .item-delet span svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Quantity stepper in cart */
+.card-list .item-count-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: #f5f5f5;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-list .item-count-wrapper .blue-buttons {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-list .item-count-wrapper .quantity-value {
+    width: 24px;
+    text-align: center;
+    font-family: "Plus Jakarta Sans";
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary, #202020);
+    border: none;
+    background: transparent;
+    padding: 0;
+}
+
+/* Cart footer */
+#modal-content-cart-modal .cart-modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    position: sticky;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #f0f0f0;
 }
 
 #modal-content-cart-modal .cart-modal-footer .button {
-  display: inline-flex;
-  padding: 10px 30px;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  text-align: center;
-  font-feature-settings: "clig" off, "liga" off;
-  font-family: "Plus Jakarta Sans";
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 12px;
-  /* 100% */
-  border-radius: 12px;
+    display: inline-flex;
+    padding: 10px 24px;
+    justify-content: center;
+    align-items: center;
+    font-family: "Plus Jakarta Sans";
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
 }
 
-#modal-content-cart-modal .cart-modal-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 12px 18px;
-  position: absolute;
-  z-index: 113;
-  bottom: 0;
-  left: -16px;
-  right: -16px;
-  background: white;
-  border-top: 1px solid #616161;
+/* Service list button */
+.service-01 ul li button {
+    background-color: inherit;
+    font-size: 14px;
+    color: #403b3b;
+    margin-bottom: 12px;
 }

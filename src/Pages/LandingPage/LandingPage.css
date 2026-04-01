@@ -69,12 +69,7 @@
     width: 100%;
     height: auto;
     display: block;
-    object-fit: cover;
-    aspect-ratio: 4/3;
-}
-
-.main-menu-list .dropdown-btn-landing .img-left.big-img img {
-    aspect-ratio: 3/2;
+    object-fit: contain;
 }
 
 .main-menu-list .separator {

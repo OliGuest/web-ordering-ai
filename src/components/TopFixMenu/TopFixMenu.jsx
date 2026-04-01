@@ -11,15 +11,9 @@ const TopFixMenu = ({ visible, handleShow, handleShowPayment, logoHead, restaura
 
   return (
     <>
-      <HeaderMain visible={visible} />
+      <HeaderMain visible={visible} logoHead={logoHead} />
 
       <CoverImgAndLogo visible={visible} />
-
-      <div className={`hm-logo ${visible ? " up" : ""}`}>
-        <a href="/" alt="logo">
-          <img src={`${logoHead}`} alt="" />
-        </a>
-      </div>
 
       <div className={`settings-wrapper  ${visible ? " up" : ""}`}>
         <div className="restorant-name">

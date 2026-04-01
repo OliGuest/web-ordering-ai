@@ -4,7 +4,7 @@ import './HeaderMain.css';
 import { Context } from "../../../context/kartItemContext";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-const HeaderMain = ({ visible }) => {
+const HeaderMain = ({ visible, logoHead }) => {
 
     const {
         activeColor,
@@ -25,7 +25,7 @@ const HeaderMain = ({ visible }) => {
 
     return (
         <div className={`header-main header-height  ${visible ? "up" : ""}`}>
-            
+
             <div className="landingPage-back-btn">
                 <Link to={`${location.pathname === "/home" ? "/landing" : "/"}`}>
                     <span className="back-icon">
@@ -35,6 +35,13 @@ const HeaderMain = ({ visible }) => {
                     </span>
                 </Link>
             </div>
+
+            {/* Logo centered in header */}
+            {logoHead && (
+                <div className="header-logo">
+                    <img src={logoHead} alt="logo" />
+                </div>
+            )}
 
             <div className="table-btn">
                 <span className="search-circle" style={{ background: `${activeColor}` }}>

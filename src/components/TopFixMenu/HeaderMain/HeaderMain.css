@@ -84,10 +84,11 @@
 
 /* Cover image */
 .img-text-wrapper {
-    max-height: 220px;
+    max-height: 180px;
     background: var(--bg-secondary, #f8f8f8);
     overflow: hidden;
     border-radius: 0 0 16px 16px;
+    margin: 0 12px;
 }
 
 .img-text-wrapper.up {
@@ -96,38 +97,26 @@
     transition: max-height 350ms ease;
 }
 
-/* Logo */
-.hm-logo {
-    position: sticky;
-    top: 4px;
-    z-index: 8;
-    width: fit-content;
-    margin: 0 auto;
-    height: 20px;
-    transition: opacity 200ms ease, transform 200ms ease, height 200ms ease;
+/* Logo centered in header */
+.header-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 32px;
+    z-index: 2;
 }
 
-.hm-logo.up {
-    opacity: 0;
-    transform: scale(0.9);
-    pointer-events: none;
-    height: 0;
-    overflow: hidden;
-}
-
-.hm-logo a {
-    display: block;
-    margin: auto;
-    margin-top: -14px;
-    height: 44px;
-    width: 120px;
-}
-
-.hm-logo a img {
-    vertical-align: unset;
+.header-logo img {
     height: 100%;
-    width: 100%;
+    width: auto;
+    max-width: 120px;
     object-fit: contain;
+}
+
+/* Legacy logo - hidden, replaced by header-logo */
+.hm-logo {
+    display: none;
 }
 
 /* Table number badge */
