@@ -375,8 +375,8 @@ export const Provider = ({ children }) => {
             })
 
             hubProxy.on('addQuantityViaSignalRListener', function (message) {
-
                 let objectData = JSON.parse(message);
+                console.log("[Cart] Server cart update:", objectData.length, "items |", objectData.reduce((s, i) => s + (i.quantity || 0), 0), "total qty");
                 setkartItem(objectData);
             });
 
@@ -572,10 +572,13 @@ export const Provider = ({ children }) => {
             hubProxy.invoke("addQuantityViaSignalRForServer", jsonData, sessionStorage.getItem("theParams"), localStorage.getItem("deviceId"))
                 .done(function (result) {
                     if (result.Success === false) {
+                        console.log("[Cart] Server rejected:", result.ErrorMessage, "| Items sent:", data);
                         showNotification("warning", result.ErrorMessage);
+                    } else {
+                        console.log("[Cart] Server accepted | Items:", data.map(i => `${i.quantity > 0 ? '+' : ''}${i.quantity}x ${i.Name || i.ProductId}`).join(', '));
                     }
                 }).fail(function (error) {
-                    console.log(error, "Error happened while adding item to the basket");
+                    console.log("[Cart] Server error:", error);
                     showNotification("danger", "Something Went wrong");
                 });
 
