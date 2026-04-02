@@ -40,30 +40,31 @@
   to { transform: translateY(0); }
 }
 
-/* Drag handle */
+/* Drag handle — overlays on top of image */
 .pds-drag-handle {
-  position: sticky;
+  position: absolute;
   top: 0;
-  z-index: 10;
+  left: 0;
+  right: 0;
+  z-index: 12;
   display: flex;
   justify-content: center;
-  padding: 10px 0 6px;
+  padding: 8px 0;
   cursor: pointer;
-  background: transparent;
 }
 
 .pds-drag-handle span {
   width: 36px;
   height: 4px;
-  background: #d5d5d5;
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 3px;
 }
 
 /* Close button */
 .pds-close {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 10px;
+  right: 12px;
   z-index: 11;
   width: 32px;
   height: 32px;
@@ -89,7 +90,7 @@
   width: 100%;
   overflow: hidden;
   background: var(--bg-secondary, #f5f5f5);
-  margin-top: -4px;
+  margin-top: 0;
 }
 
 .pds-image img {
