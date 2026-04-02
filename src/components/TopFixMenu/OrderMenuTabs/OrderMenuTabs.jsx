@@ -130,8 +130,8 @@ const OrderMenuTabs = ({ visible, handleShow }) => {
                 <div></div>
             )}
 
-            {/* Search bar below tabs */}
-            <div className={`search-bar-wrapper ${showElem ? "search-open" : ""}`}>
+            {/* Search bar below tabs — disabled for now */}
+            {/* <div className={`search-bar-wrapper ${showElem ? "search-open" : ""}`}>
                 <div className={`search ${showElem && "focus"}`} {...eventHandlers} >
                     <input type="checkbox" id="trigger" className="search__checkbox" />
                     <label className="search__label-init" htmlFor="trigger"></label>
@@ -155,7 +155,7 @@ const OrderMenuTabs = ({ visible, handleShow }) => {
                     />
                     <div className="search__close"></div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
