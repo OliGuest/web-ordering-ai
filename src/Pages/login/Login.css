@@ -89,12 +89,12 @@
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+    box-shadow: none;
     transition: box-shadow 0.2s ease;
 }
 
 .input-Name:focus-within {
-    box-shadow: 0 2px 24px rgba(0, 0, 0, 0.14);
+    box-shadow: none;
 }
 
 .input-Name input {
@@ -160,7 +160,7 @@
     height: 52px;
     transition: transform 200ms cubic-bezier(0.32, 0.72, 0, 1),
                 opacity 200ms ease;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: none;
 }
 
 .continue-btn:active {

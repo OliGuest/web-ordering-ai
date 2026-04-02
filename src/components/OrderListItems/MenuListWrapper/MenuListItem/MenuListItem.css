@@ -394,13 +394,13 @@
   display: block !important;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: none;
   transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
 .now-tile .menu-list-wrapper .menu-list-item:active {
   transform: scale(0.97);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  box-shadow: none;
 }
 
 .now-tile .menu-list-wrapper .menu-list-item .item-content:hover {
@@ -605,7 +605,7 @@
 .promo-footer {
   background: #ffffff;
   border-radius: 8px;
-  box-shadow: 0px 1px 9px 8px #fafafa;
+  box-shadow: none;
   padding: 17px 27px;
   position: fixed;
   left: 0;

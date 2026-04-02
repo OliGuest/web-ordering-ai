@@ -45,7 +45,7 @@
     max-height: 80vh;
     width: 100%;
     border: none;
-    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: none;
     overflow: hidden;
     display: flex;
     flex-direction: column;

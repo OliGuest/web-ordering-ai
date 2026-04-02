@@ -161,7 +161,7 @@
     right: 0;
     background: white;
     border-top: none;
-    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.04);
+    box-shadow: none;
 }
 
 #modal-content-cart-modal .cart-modal-footer .button {

@@ -1,6 +1,6 @@
 #navbarNav.navbar-collapse {
   background-color: #fff;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  box-shadow: none;
   position: fixed !important;
   min-height: 100vh;
   top: 0;

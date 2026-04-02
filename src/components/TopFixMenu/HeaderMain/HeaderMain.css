@@ -39,7 +39,7 @@
     flex-shrink: 0;
     transition: transform 100ms ease;
     text-decoration: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
 }
 
 .header-left .back-icon:active {
@@ -108,7 +108,7 @@
     font-family: "Plus Jakarta Sans";
     font-size: 13px;
     font-weight: 700;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    box-shadow: none;
 }
 
 /* Legacy selectors kept for compatibility */

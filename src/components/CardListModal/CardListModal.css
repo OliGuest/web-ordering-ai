@@ -46,7 +46,7 @@
   max-height: 85vh;
   width: 100%;
   border: none;
-  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: none;
 }
 
 /* Drag handle */

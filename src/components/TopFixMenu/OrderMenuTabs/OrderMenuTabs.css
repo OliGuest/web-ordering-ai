@@ -78,7 +78,7 @@
     color: white;
     background: var(--activeColor, #E7A536);
     font-weight: 700;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
 }
 
 .order-menu-tabs .nav-item .nav-link .menu-icons-outer {

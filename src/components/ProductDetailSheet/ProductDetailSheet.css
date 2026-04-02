@@ -30,7 +30,7 @@
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   animation: pdsSlideUp 350ms cubic-bezier(0.32, 0.72, 0, 1) forwards;
-  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: none;
 }
 
 .pds-sheet::-webkit-scrollbar { display: none; }
@@ -77,7 +77,7 @@
   align-items: center;
   justify-content: center;
   color: #333;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
   transition: transform 100ms ease;
 }
 
@@ -175,7 +175,7 @@
   padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
   background: #ffffff;
   border-top: 1px solid var(--border-light, #f0f0f0);
-  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.04);
+  box-shadow: none;
   z-index: 10;
 }
 
