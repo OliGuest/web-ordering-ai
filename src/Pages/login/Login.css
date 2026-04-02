@@ -19,8 +19,8 @@
     background-position: center;
     background-size: cover;
     position: relative;
-    margin: 8px 12px 12px;
-    border-radius: 16px;
+    margin: 0;
+    border-radius: 0;
     overflow: hidden;
 }
 
@@ -37,7 +37,7 @@
     );
     pointer-events: none;
     z-index: 0;
-    border-radius: 16px;
+    border-radius: 0;
 }
 
 .landing-page > * {
