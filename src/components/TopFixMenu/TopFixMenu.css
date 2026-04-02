@@ -1,9 +1,9 @@
 /* ============================================
-   Settings Bar — Restaurant name + icons
+   Settings Bar — Restaurant name + action icons
    ============================================ */
 
 .order-listing .settings-wrapper {
-    padding: 16px 14px 12px;
+    padding: 16px 14px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,60 +20,54 @@
     min-width: 0;
 }
 
-.order-listing .settings-wrapper .icons-rignt {
-    border-radius: 10px;
-    background: var(--bg-secondary, #f8f8f8);
-    display: flex;
-    overflow: hidden;
-    flex-shrink: 0;
-    border: 1px solid var(--border-light, #f0f0f0);
-}
-
-.order-listing .settings-wrapper .icons-rignt .icon-left {
-    border-right: 1px solid var(--border-light, #f0f0f0);
-}
-
-.order-listing .settings-wrapper .icons-rignt .icon-right {
-    border-left: none;
-}
-
-.order-listing .settings-wrapper .icons-rignt .icon-left,
-.order-listing .settings-wrapper .icons-rignt .icon-right {
-    padding: 9px 11px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 150ms ease;
-}
-
-.order-listing .settings-wrapper .icons-rignt .icon-left:active,
-.order-listing .settings-wrapper .icons-rignt .icon-right:active {
-    background: var(--bg-surface-hover, #ebebeb);
-}
-
-.order-listing .settings-wrapper .icons-rignt svg {
-    width: 20px;
-    height: 20px;
-    opacity: 0.7;
-}
-
 .order-listing .settings-wrapper h4 {
-    max-width: 260px;
+    max-width: 280px;
     font-family: "Plus Jakarta Sans";
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 800;
     word-break: break-word;
-    line-height: 1.2;
+    line-height: 1.15;
     color: var(--text-primary, #202020);
     margin: 0;
-    letter-spacing: -0.2px;
+    letter-spacing: -0.3px;
+}
+
+/* Action buttons */
+.settings-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.settings-btn {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid var(--border-light, #f0f0f0);
+    background: var(--bg-primary, #ffffff);
+    cursor: pointer;
+    transition: background 150ms ease, transform 100ms ease;
+    color: var(--text-secondary, #717171);
+}
+
+.settings-btn:active {
+    transform: scale(0.92);
+    background: var(--bg-secondary, #f8f8f8);
+}
+
+.settings-btn svg {
+    width: 18px;
+    height: 18px;
 }
 
 @media (min-width: 600px) {
     .order-listing .settings-wrapper {
         max-width: 640px;
         margin: 0 auto;
-        padding: 18px 20px 12px;
+        padding: 18px 20px 10px;
     }
 }
