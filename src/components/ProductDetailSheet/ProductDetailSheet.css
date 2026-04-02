@@ -192,8 +192,8 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
+  justify-content: space-between;
+  padding: 0 20px;
   transition: transform 100ms ease, opacity 100ms ease;
   letter-spacing: 0.2px;
 }
@@ -203,14 +203,10 @@
   opacity: 0.9;
 }
 
-.pds-add-btn-full {
-  justify-content: space-between;
-  padding: 0 20px;
-}
-
 .pds-add-price {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 15px;
+  opacity: 0.9;
 }
 
 /* Quantity row */

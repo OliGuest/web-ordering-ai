@@ -337,10 +337,17 @@ const ProductDetailSheet = () => {
                                     }
                                 }}
                             >
-                                {currentQty === 0
-                                    ? `${t("lblAddToBasket") || "Add"} · ${currency} ${totalPrice.toFixed(2)}`
-                                    : `${t("lblDone") || "Done"} · ${currency} ${(totalPrice * currentQty).toFixed(2)}`
-                                }
+                                {currentQty === 0 ? (
+                                    <>
+                                        <span>{t("lblAddToBasket", { defaultValue: "Add to basket" })}</span>
+                                        <span className="pds-add-price">{currency} {totalPrice.toFixed(2)}</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <span>{t("lblDone", { defaultValue: "Done" })}</span>
+                                        <span className="pds-add-price">{currency} {(totalPrice * currentQty).toFixed(2)}</span>
+                                    </>
+                                )}
                             </button>
                         </div>
                     </div>
