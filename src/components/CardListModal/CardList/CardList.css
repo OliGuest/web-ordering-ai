@@ -110,35 +110,14 @@
     color: var(--text-primary, #202020);
 }
 
-/* Right side: delete + quantity stepper */
-.card-list .addimage.item-delet {
+/* Right side: quantity stepper */
+.card-list .addimage {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 8px;
     height: auto;
     flex-shrink: 0;
-}
-
-.card-list .item-delet span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: #fef2f2;
-    cursor: pointer;
-    transition: transform 100ms ease;
-}
-
-.card-list .item-delet span:active {
-    transform: scale(0.9);
-}
-
-.card-list .item-delet span svg {
-    width: 16px;
-    height: 16px;
 }
 
 /* Quantity stepper in cart */
@@ -152,20 +131,27 @@
     border: 1px solid var(--border-light, #f0f0f0);
 }
 
-.card-list .item-count-wrapper .blue-buttons {
-    width: 32px;
-    height: 32px;
+.cart-qty-btn {
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 100ms ease;
+}
+
+.cart-qty-btn:active {
+    transform: scale(0.85);
 }
 
 .card-list .item-count-wrapper .quantity-value {
-    width: 24px;
+    width: 28px;
     text-align: center;
     font-family: "Plus Jakarta Sans";
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
     color: var(--text-primary, #202020);
     border: none;
