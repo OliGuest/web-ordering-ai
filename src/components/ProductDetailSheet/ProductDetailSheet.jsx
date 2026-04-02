@@ -5,9 +5,6 @@ import ModifiresList from "../Modifires/Modifires";
 import { useCalculateTotalAccToWizard } from "../../Hooks/useCalculateTotalAccToWizard";
 import { useOnHandleModifires } from "../../Hooks/useOnHandleModifires";
 import { useGetSelectedModifierItem } from "../../Hooks/useGetSelectedModifierItem";
-import { useAddQuantityRemoveClass } from "../../Hooks/useAddQuantityRemoveClass";
-import { useMinusQuantityKart } from "../../Hooks/useMinusQuantityKart";
-import { useGetProductQuantityInCart } from "../../Hooks/useGetProductQuantityInCart";
 import DescriptionItemAllText from "../DescriptionItem/DescriptionItemAllText";
 import AlergenIcons from "../OrderListItems/MenuListWrapper/MenuListItem/AlergenIcons";
 
@@ -26,27 +23,25 @@ const ProductDetailSheet = () => {
         searchSubCatIndex,
         setActiveCard,
         discriptionTotal,
-        detailsBackButtonColor,
+        sendDataToServer,
+        modifierSelectedTrue,
+        setModifierSelectedTrue,
+        setError,
+        setErrorModifiers,
+        setDiscriptionTotal,
     } = useContext(Context);
 
     const [calculateTotalAccToWizard] = useCalculateTotalAccToWizard();
     const [onHandleModifires] = useOnHandleModifires();
     const [getSelectedModifierItem] = useGetSelectedModifierItem();
-    const [addQuantityAndRemoveClass] = useAddQuantityRemoveClass();
-    const [minusQuantityKart] = useMinusQuantityKart();
-    const [getProductQuantityInCart] = useGetProductQuantityInCart();
     const [productData, setProductData] = useState(null);
     const [modifires, setModifires] = useState([]);
-    const [pendingQty, setPendingQty] = useState(1);
-    const [isInCart, setIsInCart] = useState(false);
 
-    // Find product and check if already in cart
+    // Find product data when activeCard changes
     useEffect(() => {
         if (!activeCard || !searchSubCatIndex) {
             setProductData(null);
             setModifires([]);
-            setPendingQty(1);
-            setIsInCart(false);
             return;
         }
         const findProduct = (categories) => {
@@ -70,78 +65,105 @@ const ProductDetailSheet = () => {
         if (found) {
             setProductData(found);
             setModifires(found.ModifierWizards || []);
-            const existing = kartItem?.find(i => i.ProductId === found.ProductId);
-            if (existing) {
-                setPendingQty(existing.quantity);
-                setIsInCart(true);
-            } else {
-                setPendingQty(1);
-                setIsInCart(false);
-            }
         }
     }, [activeCard, searchSubCatIndex]);
 
-    // Sync with cart changes (after add/remove)
-    useEffect(() => {
-        if (productData) {
-            const existing = kartItem?.find(i => i.ProductId === productData.ProductId);
-            if (existing) {
-                setPendingQty(existing.quantity);
-                setIsInCart(true);
-            }
-        }
-    }, [kartItem, productData]);
+    // Get current quantity from cart
+    const cartItem = kartItem?.find(i => i.ProductId === productData?.ProductId);
+    const currentQty = cartItem?.quantity || 0;
 
-    // Close without adding
+    // Close sheet
     const handleClose = () => {
         setActiveCard(undefined);
         setProductData(null);
         setModifires([]);
-        setPendingQty(1);
-        setIsInCart(false);
         document.body.classList.remove("open-detail");
     };
 
-    // Add to cart (first time or increment)
-    const handleAddToCart = (e) => {
-        e.stopPropagation();
-        if (productData) {
-            addQuantityAndRemoveClass(productData);
-        }
+    // Get selected modifiers from DOM
+    const getSelectedModifiers = () => {
+        const selectedModifiers = [];
+        document.querySelectorAll('.modifiersbox:checked').forEach(el => {
+            selectedModifiers.push({
+                mModifiersWizardId: el.getAttribute('mdata-ModifiersWizardId'),
+                mIdOtherPos: el.getAttribute('mdata-IdOtherPos'),
+                mProductId: el.getAttribute('mdata-ProductId'),
+                mPrice: el.getAttribute('mdata-Price'),
+                mName: el.getAttribute('mdata-Name'),
+            });
+        });
+        return selectedModifiers;
     };
 
-    // Remove from cart (decrement)
-    const handleRemoveFromCart = (e) => {
-        e.stopPropagation();
-        if (productData && isInCart) {
-            const finddata = kartItem.find((item) => item.ProductId === productData.ProductId);
-            if (finddata) {
-                minusQuantityKart(finddata);
+    // Check required modifiers
+    const checkRequiredModifiers = () => {
+        if (!productData?.ModifierWizards) return true;
+        let isValid = true;
+        productData.ModifierWizards.forEach((modif) => {
+            if (modif?.IsMandatory && !modifierSelectedTrue.includes(modif.ModifierId)) {
+                isValid = false;
+                setError(modif.ModifierId);
+                setErrorModifiers((prev) => [...prev, modif.ModifierId]);
             }
-        } else {
-            // Not in cart yet, just decrease pending
-            setPendingQty(prev => Math.max(0, prev - 1));
-        }
+        });
+        return isValid;
     };
 
-    // Increase pending qty (before adding to cart)
-    const handleIncreasePending = (e) => {
+    // ADD: directly add 1 to cart
+    const handlePlus = (e) => {
         e.stopPropagation();
-        if (isInCart) {
-            handleAddToCart(e);
-        } else {
-            setPendingQty(prev => prev + 1);
+        if (!productData) return;
+
+        if (productData?.OutOfStock) return;
+
+        // Check required modifiers on first add
+        if (currentQty === 0 && !checkRequiredModifiers()) return;
+
+        const selectedModifiers = getSelectedModifiers();
+
+        const itemToSend = {
+            ...productData,
+            quantity: 1,
+            basePrice: productData.Price,
+            selectedModifiersData: selectedModifiers,
+            modifierPrice: selectedModifiers.map(obj => parseFloat(obj.mPrice)),
+            selectedModifierIdOtherPos: 0,
+        };
+
+        console.log(`[Cart+] Adding 1x "${productData.Name}" (ID: ${productData.ProductId}) | Cart qty: ${currentQty} → ${currentQty + 1}`);
+        sendDataToServer([itemToSend]);
+
+        // Clear modifiers after first add
+        if (currentQty === 0) {
+            const checks = document.getElementsByClassName("clear-checked");
+            for (let i = 0; i < checks.length; i++) {
+                checks[i].checked = false;
+                setModifierSelectedTrue([]);
+            }
         }
+
+        document.body.classList.add("open-cart");
+        document.body.classList.add("open");
+        setDiscriptionTotal(0);
     };
 
-    // Decrease pending qty
-    const handleDecreasePending = (e) => {
+    // MINUS: remove 1 from cart, delete if last one
+    const handleMinus = (e) => {
         e.stopPropagation();
-        if (isInCart) {
-            handleRemoveFromCart(e);
-        } else {
-            setPendingQty(prev => Math.max(0, prev - 1));
+        if (!productData || currentQty <= 0) return;
+
+        const itemToSend = {
+            ...cartItem,
+            quantity: -1,
+        };
+
+        console.log(`[Cart-] Removing 1x "${productData.Name}" (ID: ${productData.ProductId}) | Cart qty: ${currentQty} → ${currentQty - 1}`);
+
+        if (currentQty === 1) {
+            console.log(`[Cart] Deleting "${productData.Name}" from cart (was last item)`);
         }
+
+        sendDataToServer([itemToSend]);
     };
 
     if (!productData || !activeCard) return null;
@@ -151,11 +173,13 @@ const ProductDetailSheet = () => {
     const totalPrice = basePrice + modifierTotal;
     const currency = currencyValue || "€";
     const hasModifiers = modifires && modifires.length > 0;
-    const displayQty = pendingQty;
     const description = productData?.ProductDetails?.MenuItems?.map((item) => {
         if (item.LayoutType === 1) return item?.HtmlContent;
         return "";
     }) || [];
+
+    // Total items in cart for logging
+    const totalCartItems = kartItem?.reduce((sum, item) => sum + (item.quantity || 0), 0) || 0;
 
     return (
         <>
@@ -218,48 +242,58 @@ const ProductDetailSheet = () => {
                     )}
                 </div>
 
-                {/* Footer */}
+                {/* Footer with +/- and cart button */}
                 {active && (
                     <div className="pds-footer">
                         <div className="pds-qty-row">
                             <div className="pds-qty-stepper">
+                                {/* Minus / Delete button */}
                                 <button
                                     className="pds-qty-btn"
-                                    onClick={handleDecreasePending}
-                                    disabled={displayQty === 0}
-                                    style={{ opacity: displayQty === 0 ? 0.3 : 1 }}
+                                    onClick={handleMinus}
+                                    disabled={currentQty === 0}
+                                    style={{ opacity: currentQty === 0 ? 0.3 : 1 }}
                                 >
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                        <path d="M4 10h12" stroke={activeColor} strokeWidth="2.5" strokeLinecap="round"/>
-                                    </svg>
+                                    {currentQty === 1 ? (
+                                        // Trash icon when qty is 1
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                            <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14z"
+                                                stroke="#e5484d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                        </svg>
+                                    ) : (
+                                        // Minus icon
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                            <path d="M4 10h12" stroke={activeColor} strokeWidth="2.5" strokeLinecap="round"/>
+                                        </svg>
+                                    )}
                                 </button>
-                                <span className="pds-qty-value">{displayQty}</span>
-                                <button className="pds-qty-btn" onClick={handleIncreasePending}>
+
+                                <span className="pds-qty-value">{currentQty}</span>
+
+                                {/* Plus button */}
+                                <button className="pds-qty-btn" onClick={handlePlus}>
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                                         <path d="M10 4v12M4 10h12" stroke={activeColor} strokeWidth="2.5" strokeLinecap="round"/>
                                     </svg>
                                 </button>
                             </div>
+
+                            {/* Add / Done button */}
                             <button
                                 className="pds-add-btn"
-                                style={{
-                                    backgroundColor: displayQty > 0 ? activeColor : '#ccc',
-                                    pointerEvents: displayQty > 0 ? 'auto' : 'none'
-                                }}
+                                style={{ backgroundColor: activeColor }}
                                 onClick={(e) => {
-                                    if (isInCart) {
-                                        // Already in cart, just close
-                                        handleClose();
+                                    if (currentQty === 0) {
+                                        handlePlus(e);
                                     } else {
-                                        // Add to cart then close
-                                        handleAddToCart(e);
-                                        setTimeout(handleClose, 200);
+                                        console.log(`[Cart] Done — "${productData.Name}" qty: ${currentQty} | Total cart items: ${totalCartItems}`);
+                                        handleClose();
                                     }
                                 }}
                             >
-                                {isInCart
-                                    ? `Done · ${currency} ${(totalPrice * displayQty).toFixed(2)}`
-                                    : `Add to cart · ${currency} ${(totalPrice * displayQty).toFixed(2)}`
+                                {currentQty === 0
+                                    ? `${t("lblAddToBasket") || "Add"} · ${currency} ${totalPrice.toFixed(2)}`
+                                    : `${t("lblDone") || "Done"} · ${currency} ${(totalPrice * currentQty).toFixed(2)}`
                                 }
                             </button>
                         </div>
