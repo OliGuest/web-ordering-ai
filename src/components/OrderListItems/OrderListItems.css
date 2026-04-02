@@ -3,7 +3,7 @@
    ============================================ */
 
 .order-list-body {
-    padding: 8px 16px 0;
+    padding: 4px 14px 0;
     position: relative;
     background: var(--bg-primary, white);
     overflow-y: hidden;
@@ -12,5 +12,16 @@
 }
 
 .order-list-body .menu-item-wrapper {
-    padding-bottom: 120px;
+    padding-bottom: 140px;
+}
+
+/* End of list indicator */
+.last-img {
+    padding: 32px 16px;
+    text-align: center;
+    opacity: 0.4;
+}
+
+.last-img img {
+    max-width: 100px;
 }

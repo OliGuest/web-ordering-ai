@@ -3,7 +3,7 @@
    ============================================ */
 
 .order-listing .settings-wrapper {
-    padding: 18px 16px 14px;
+    padding: 16px 14px 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,12 +11,13 @@
 }
 
 .order-listing .settings-wrapper.up {
-    padding-top: 10px;
+    padding-top: 8px;
 }
 
 .order-listing .settings-wrapper .restorant-name {
     flex: 1;
-    margin-right: 14px;
+    margin-right: 12px;
+    min-width: 0;
 }
 
 .order-listing .settings-wrapper .icons-rignt {
@@ -25,7 +26,7 @@
     display: flex;
     overflow: hidden;
     flex-shrink: 0;
-    border: none;
+    border: 1px solid var(--border-light, #f0f0f0);
 }
 
 .order-listing .settings-wrapper .icons-rignt .icon-left {
@@ -38,7 +39,7 @@
 
 .order-listing .settings-wrapper .icons-rignt .icon-left,
 .order-listing .settings-wrapper .icons-rignt .icon-right {
-    padding: 10px 12px;
+    padding: 9px 11px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -54,6 +55,7 @@
 .order-listing .settings-wrapper .icons-rignt svg {
     width: 20px;
     height: 20px;
+    opacity: 0.7;
 }
 
 .order-listing .settings-wrapper h4 {
@@ -72,6 +74,6 @@
     .order-listing .settings-wrapper {
         max-width: 640px;
         margin: 0 auto;
-        padding: 20px 20px 14px;
+        padding: 18px 20px 12px;
     }
 }

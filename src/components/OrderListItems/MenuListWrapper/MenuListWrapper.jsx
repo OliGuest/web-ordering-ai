@@ -24,34 +24,20 @@ const MenuListWrapper = () => {
                         <Fragment key={catIndex}>
                             {
                                 <div className="wrapper" key={catIndex} >
-                                    <div>
-                                        <h2 className="sub-roduct-name section" id={"menu-list-wrapper-" + mapSubCatData.SubCategoryId}>
-                                            {mapSubCatData.Products.length > 0
-                                                ? mapSubCatData.Name
-                                                : ""}
-
-                                        </h2>
-                                        {/* <h2 className="sub-roduct-name" id={"menu-list-wrapper-" + mapSubCatData.SubCategoryId}>
-                                            {mapSubCatData.Products.length > 0
-                                                ? mapSubCatData.Name
-                                                : ""}
-
-                                        </h2> */}
-                                        <h2
-                                            className="menu-main-heading mb-0 subcateclass"
-                                            id={mapSubCatData.SubCategoryId}
-                                        >
-                                            {mapSubCatData.Products.length > 0
-                                                ?
-                                                " " +
-                                                mapSubCatData.Products.length +
-                                                `${mapSubCatData.Products.length > 1
+                                    {mapSubCatData.Products.length > 0 && (
+                                        <div className="subcategory-header section" id={"menu-list-wrapper-" + mapSubCatData.SubCategoryId}>
+                                            <h2 className="subcategory-title">
+                                                {mapSubCatData.Name}
+                                            </h2>
+                                            <span className="subcategory-count" id={mapSubCatData.SubCategoryId}>
+                                                {mapSubCatData.Products.length}
+                                                {mapSubCatData.Products.length > 1
                                                     ? ` ${t("IbIItems")}`
                                                     : ` ${t("IbIItem")}`
-                                                }`
-                                                : ""}
-                                        </h2>
-                                    </div>
+                                                }
+                                            </span>
+                                        </div>
+                                    )}
 
                                     {mapSubCatData !== undefined &&
                                         mapSubCatData.Products.map(
