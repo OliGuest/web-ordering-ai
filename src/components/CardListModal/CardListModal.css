@@ -78,8 +78,9 @@
 #cart-modal .modal-body {
   max-height: 65vh;
   overflow-y: auto;
-  padding: 0 20px;
+  padding: 0 14px;
   margin: 0;
+  background: var(--bg-secondary, #f8f8f8);
 }
 
 /* Total amounts */
