@@ -12,7 +12,7 @@ window.config = {
   // APP_CONNECTION: "http://dev.revelapps.com:9988/signalr/hubs/",
   // APP_LOCALHOST: "http://dev.revelapps.com:9988/",
   // APP_PLATFORM: "http://dev.revelapps.com:9988/",
-  APP_CONNECTION: "http://f.revelapps.com:9095/signalr/hubs/",
-  APP_LOCALHOST: "http://f.revelapps.com:9091",
-  APP_PLATFORM: "http://f.revelapps.com:9091",
+  APP_CONNECTION: "http://f.revelapps.com:9955/signalr/hubs/",
+  APP_LOCALHOST: "http://f.revelapps.com:9955",
+  APP_PLATFORM: "http://f.revelapps.com:9955",
 };
