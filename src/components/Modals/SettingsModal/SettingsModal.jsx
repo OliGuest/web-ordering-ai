@@ -36,8 +36,28 @@ const SettingsModal = ({ show, handleClose }) => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="language-allergens-options">
-                        <button data-toggle="modal" data-target="#language-modal" onClick={handleClose}>{t("IbILanguage")}</button>
-                        <button data-toggle="modal" data-target="#alergens-modal" onClick={handleClose}>{t("lblAllergies")}</button>
+                        <button onClick={() => {
+                            handleClose();
+                            setTimeout(() => {
+                                const modal = document.getElementById('language-modal');
+                                if (modal) {
+                                    modal.classList.add('show');
+                                    modal.style.display = 'flex';
+                                    document.body.classList.add('modal-open');
+                                }
+                            }, 300);
+                        }}>{t("IbILanguage")}</button>
+                        <button onClick={() => {
+                            handleClose();
+                            setTimeout(() => {
+                                const modal = document.getElementById('alergens-modal');
+                                if (modal) {
+                                    modal.classList.add('show');
+                                    modal.style.display = 'flex';
+                                    document.body.classList.add('modal-open');
+                                }
+                            }, 300);
+                        }}>{t("lblAllergies")}</button>
                     </div>
 
                     <div className="about-rules">

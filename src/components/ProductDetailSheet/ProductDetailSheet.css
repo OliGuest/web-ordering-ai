@@ -24,7 +24,7 @@
   right: 0;
   z-index: 1000;
   background: #ffffff;
-  border-radius: 16px 16px 0 0;
+  border-radius: 24px 24px 0 0;
   max-height: 92vh;
   overflow-y: auto;
   overflow-x: hidden;
@@ -52,10 +52,10 @@
 }
 
 .pds-drag-handle span {
-  width: 32px;
-  height: 4px;
-  background: #d5d5d5;
-  border-radius: 4px;
+  width: 36px;
+  height: 5px;
+  background: #d0d0d0;
+  border-radius: 3px;
 }
 
 /* Close button */
@@ -87,23 +87,21 @@
 /* Product image */
 .pds-image {
   width: 100%;
-  max-height: 300px;
   overflow: hidden;
-  background: #f5f5f5;
+  background: var(--bg-secondary, #f5f5f5);
   margin-top: -4px;
 }
 
 .pds-image img {
   width: 100%;
   height: auto;
-  max-height: 300px;
-  object-fit: contain;
-  background: #f5f5f5;
+  display: block;
+  background: var(--bg-secondary, #f5f5f5);
 }
 
 /* Content area */
 .pds-content {
-  padding: 20px 20px 100px;
+  padding: 20px 20px 24px;
 }
 
 /* Header: title + price */
@@ -175,7 +173,8 @@
   padding: 12px 18px;
   padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
   background: #ffffff;
-  border-top: 1px solid #f0f0f0;
+  border-top: none;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.04);
   z-index: 10;
 }
 
@@ -223,8 +222,8 @@
 .pds-qty-stepper {
   display: flex;
   align-items: center;
-  background: #f5f5f5;
-  border-radius: 10px;
+  background: var(--bg-secondary, #f5f5f5);
+  border-radius: 12px;
   overflow: hidden;
 }
 

@@ -8,11 +8,21 @@
     animation: paymentSlideUp 0.4s cubic-bezier(0.32, 0.72, 0, 1) forwards;
 }
 
+#payment-modal .modal-dialog {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+}
+
 #payment-modal .modal-content {
-    border-radius: 20px 20px 0 0;
+    border-radius: 24px 24px 0 0;
     height: auto;
     max-height: 90vh;
     border: none;
+    width: 100%;
 }
 
 #payment-modal .modal-content::before {

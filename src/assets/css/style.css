@@ -26,8 +26,25 @@ img {
   --color-yellow: #fed304;
   --color-red: #e84b31;
   --color-dark: #403b3b;
-
   --color-tabred: rgb(218, 26, 53);
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f8f8;
+  --text-primary: #1a1a1a;
+  --text-secondary: #717171;
+  --text-tertiary: #9ca3af;
+  --border-light: #f0f0f0;
+  --border-default: #e8e8e8;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --shadow-card: 0 1px 6px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-modal: 0 -4px 24px rgba(0, 0, 0, 0.08);
+  --transition-fast: 150ms cubic-bezier(0.32, 0.72, 0, 1);
+  --transition-medium: 300ms cubic-bezier(0.32, 0.72, 0, 1);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 html,
@@ -497,6 +514,12 @@ body.open .active-oval {
   overflow-y: auto;
   max-height: 100vh;
   background: #fff;
+}
+
+.modal .modal-dialog {
+  margin: 0;
+  max-width: 100%;
+  width: 100%;
 }
 
 .preloader-wrap {

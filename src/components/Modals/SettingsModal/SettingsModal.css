@@ -8,6 +8,15 @@
     height: initial;
 }
 
+#settings-modal .modal-dialog {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+}
+
 #settings-modal .modal-header {
     background-color: transparent;
     border-bottom: 1px solid var(--border-light, #f0f0f0);
@@ -23,7 +32,7 @@
 #settings-modal .modal-content .modal-header h4 {
     text-align: center;
     font-family: "Plus Jakarta Sans";
-    font-size: 17px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 700;
     line-height: 24px;
@@ -31,7 +40,8 @@
 }
 
 #settings-modal .modal-body {
-    margin: 0 20px 30px;
+    margin: 0;
+    padding: 0 20px 30px;
 }
 
 #settings-modal .modal-body .language-allergens-options,
@@ -94,10 +104,10 @@
 #settings-modal .modal-content::before {
     content: '';
     display: block;
-    width: 40px;
-    height: 4px;
+    width: 36px;
+    height: 5px;
     background: #d0d0d0;
-    border-radius: 4px;
+    border-radius: 3px;
     margin: 12px auto 0;
 }
 
@@ -105,6 +115,7 @@
     border-radius: 24px 24px 0px 0px;
     height: auto;
     max-height: 60vh;
+    width: 100%;
 }
 
 #settings-modal .modal-header button {

@@ -4,9 +4,18 @@ import { useContext } from "react";
 import { Context } from "../../../context/kartItemContext";
 import FilterItem from "../../FilterSidebar/FilterItem/FilterItem";
 
+const closeAlergensModal = () => {
+    const modal = document.getElementById('alergens-modal');
+    if (modal) {
+        modal.classList.remove('show');
+        modal.style.display = '';
+        document.body.classList.remove('modal-open');
+    }
+};
+
 const AlergensModal = ({ handleClose }) => {
     const { t, filterCheckeduncheck,
-        // closeallOpenedModals 
+        // closeallOpenedModals
     } = useContext(Context);
 
     const [filterArray, setFilterArray] = useState([]);
@@ -61,12 +70,11 @@ const AlergensModal = ({ handleClose }) => {
                             className="modal-header"
                             style={{
                                 backgroundColor: "white",
-                                margin: "0 -15px",
                                 borderBottom: "1px solid #B0B0B0"
                             }}>
                             <button type="button"
                                 className="close-button"
-                                data-dismiss="modal"
+                                onClick={closeAlergensModal}
                                 aria-label="Close">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <g id="Icons/close_24px">
@@ -79,7 +87,7 @@ const AlergensModal = ({ handleClose }) => {
                                 {t("lblAllergies")}
                             </h4>
                         </div>
-                        <div className="modal-body" style={{ backgroundColor: "white", margin: "0 -15px" }}>
+                        <div className="modal-body" style={{ backgroundColor: "white" }}>
                             <div className="text-details">
                                 <h6 className="mb-0">{t("lblAllergiesText")} </h6>
                             </div>
@@ -92,16 +100,18 @@ const AlergensModal = ({ handleClose }) => {
                             </div>
                         </div>
                         </div>
-                        <div className="modal-footer" style={{ backgroundColor: "white", margin: "0 -15px" }}>
+                        <div className="modal-footer" style={{ backgroundColor: "white" }}>
                             <div className="bottom-clear-buttons">
-                                <p className="btn-bottom clearAll-allergens" data-dismiss="modal"
+                                <p className="btn-bottom clearAll-allergens"
                                     onClick={() => {
-                                        emptyFilterArray(); 
+                                        emptyFilterArray();
+                                        closeAlergensModal();
                                     }} >{t("lblAllergiesClearAll")}</p>
-                                    
-                                <button className="btn-bottom apply-allergens" data-dismiss="modal"
+
+                                <button className="btn-bottom apply-allergens"
                                     aria-label="Close" onClick={() => {
-                                    filterCheckeduncheck(filterArray); 
+                                    filterCheckeduncheck(filterArray);
+                                    closeAlergensModal();
                                 }}>{t("lblAllergiesApply")}</button>
                             </div>
                         </div>

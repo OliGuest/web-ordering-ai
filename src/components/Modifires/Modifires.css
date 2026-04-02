@@ -25,7 +25,7 @@
 .extra-features-list .d-flex {
     padding: 12px 14px;
     background: var(--bg-secondary, #f5f5f5);
-    border-radius: 10px;
+    border-radius: 12px;
     margin-bottom: 6px;
 }
 

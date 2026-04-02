@@ -4,6 +4,15 @@ import { useContext } from "react";
 import { Context } from "../../../context/kartItemContext";
 import { useSelectLanguage } from "../../../Hooks/useSelectLanguage";
 
+const closeLanguageModal = () => {
+    const modal = document.getElementById('language-modal');
+    if (modal) {
+        modal.classList.remove('show');
+        modal.style.display = '';
+        document.body.classList.remove('modal-open');
+    }
+};
+
 const LanguageListModal = ({ isLanguageModalOpen     }) => {
     const { allLanguageList, t, kartHistoryStore } = useContext(Context);
     const [selectLanguage] = useSelectLanguage();
@@ -42,7 +51,6 @@ const LanguageListModal = ({ isLanguageModalOpen     }) => {
                             className="modal-header"
                             style={{
                                 backgroundColor: "white",
-                                margin: "0 -15px",
                                 paddingBottom: "0",
                                 borderBottom: "0"
                             }}
@@ -53,7 +61,7 @@ const LanguageListModal = ({ isLanguageModalOpen     }) => {
                                     : ` ${t("lblChangeLanguage")}`}
                             </h4>
                         </div>
-                        <div className="modal-body" style={{ backgroundColor: "white", margin: "0 -15px" }}>
+                        <div className="modal-body" style={{ backgroundColor: "white" }}>
                             <p>{t("IbIpreferredlanguage")}</p>
                             <div className="dropdown">
                                 <button className="dropbtn">{allLanguageList[selectedLanguageIndex] === undefined ? allLanguageList[0]?.Name : allLanguageList[selectedLanguageIndex]?.Name}</button>
@@ -87,17 +95,16 @@ const LanguageListModal = ({ isLanguageModalOpen     }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="modal-footer" style={{ backgroundColor: "white", margin: "0 -15px" }}>
+                        <div className="modal-footer" style={{ backgroundColor: "white" }}>
                             <button
                                 type="button"
-                                data-dismiss="modal"
+                                onClick={closeLanguageModal}
                                 aria-label="Close"
                             >{t("IbICancel")}</button>
-                            <button 
+                            <button
                                 type="button"
-                                data-dismiss="modal"
                                 aria-label="Close"
-                                 onClick={() => saveCheckedOption()}>{t("IbISave")}</button>
+                                 onClick={() => { saveCheckedOption(); closeLanguageModal(); }}>{t("IbISave")}</button>
                         </div>
                     </div>
                 </div>

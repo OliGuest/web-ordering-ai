@@ -4,12 +4,14 @@
   background-size: cover;
   width: 100%;
   min-height: 134px;
+  max-height: 170px;
   border-radius: 16px;
   position: relative;
   display: flex;
   align-items: flex-end;
   max-width: 1080px;
-  margin: 10px 0 auto;
+  margin: 10px 0 20px;
+  overflow: hidden;
 }
 
 .promotion-background-image .overlay-promo {
@@ -65,7 +67,7 @@
 
 .promotion-background-image .promo-text button {
   color: white;
-  background-color: #E7A536;
+  background-color: var(--activeColor, #E7A536);
   border: 1px solid white;
   display: flex;
   padding: 8px 12px;

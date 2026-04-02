@@ -40,8 +40,8 @@
 .cart-modal-footer .cart-bar-content .products {
     font-family: "Plus Jakarta Sans";
     font-size: 14px;
-    font-weight: 500;
-    color: var(--text-secondary, #717171);
+    font-weight: 600;
+    color: var(--text-primary, #202020);
     margin: 0;
 }
 

@@ -9,7 +9,7 @@
     right: 14px;
     width: calc(100% - 28px);
     background: var(--activeColor, #E7A536);
-    border-radius: 14px;
+    border-radius: 16px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -92,7 +92,9 @@
     font-weight: 700;
     line-height: 1;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     transition: transform 100ms ease;
 }
 
@@ -105,6 +107,6 @@
 }
 
 .cart-bar-content .icon-text-left svg {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
 }
