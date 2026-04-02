@@ -3,6 +3,7 @@ import "./AlergensModal.css";
 import { useContext } from "react";
 import { Context } from "../../../context/kartItemContext";
 import FilterItem from "../../FilterSidebar/FilterItem/FilterItem";
+import SwipeableModal from "../../SwipeableModal/SwipeableModal";
 
 const closeAlergensModal = () => {
     const modal = document.getElementById('alergens-modal');
@@ -65,6 +66,7 @@ const AlergensModal = ({ handleClose }) => {
         >
             <div className="container">
                 <div className="modal-dialog modal-dialog-zoom" role="document" style={{ alignItems: "flex-end" }}>
+                    <SwipeableModal modalId="alergens-modal" onClose={closeAlergensModal}>
                     <div id="modal-content" className="modal-content">
                         <div
                             className="modal-header"
@@ -116,6 +118,7 @@ const AlergensModal = ({ handleClose }) => {
                             </div>
                         </div>
                     </div>
+                    </SwipeableModal>
                 </div>
             </div>
         </div>

@@ -2,6 +2,7 @@ import React, { useEffect }  from "react";
 import "./HistoryModal.css";
 import { useContext } from "react";
 import { Context } from "../../../context/kartItemContext";
+import SwipeableModal from "../../SwipeableModal/SwipeableModal";
 
 const HistoryModal = () => {
 
@@ -23,6 +24,7 @@ const HistoryModal = () => {
         >
             <div className="container ">
                 <div className="modal-dialog modal-dialog-zoom" role="document">
+                    <SwipeableModal modalId="bill-modal">
                     <div id="modal-content-bill-modal" className="modal-content">
                         <div
                             className="modal-header"
@@ -107,6 +109,7 @@ const HistoryModal = () => {
                             </div> */}
                         </div>
                     </div>
+                    </SwipeableModal>
                 </div>
             </div>
         </div>

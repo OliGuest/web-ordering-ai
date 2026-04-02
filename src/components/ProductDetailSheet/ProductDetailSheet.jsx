@@ -1,4 +1,4 @@
-import { React, useContext, useState, useEffect } from "react";
+import { React, useContext, useState, useEffect, useRef, useCallback } from "react";
 import "./ProductDetailSheet.css";
 import { Context } from "../../context/kartItemContext";
 import ModifiresList from "../Modifires/Modifires";
@@ -166,6 +166,47 @@ const ProductDetailSheet = () => {
         sendDataToServer([itemToSend]);
     };
 
+    // Swipe down to close
+    const sheetRef = useRef(null);
+    const swipeStartY = useRef(0);
+    const swipeCurrentY = useRef(0);
+    const isSwiping = useRef(false);
+
+    const onSwipeStart = useCallback((e) => {
+        const sheet = sheetRef.current;
+        if (!sheet) return;
+        // Only allow swipe when scrolled to top
+        if (sheet.scrollTop > 5) return;
+        swipeStartY.current = e.touches[0].clientY;
+        swipeCurrentY.current = swipeStartY.current;
+        isSwiping.current = true;
+        sheet.style.transition = "none";
+    }, []);
+
+    const onSwipeMove = useCallback((e) => {
+        if (!isSwiping.current || !sheetRef.current) return;
+        swipeCurrentY.current = e.touches[0].clientY;
+        const diff = swipeCurrentY.current - swipeStartY.current;
+        if (diff > 0) {
+            sheetRef.current.style.transform = `translateY(${diff * 0.55}px)`;
+        }
+    }, []);
+
+    const onSwipeEnd = useCallback(() => {
+        if (!isSwiping.current || !sheetRef.current) return;
+        const diff = swipeCurrentY.current - swipeStartY.current;
+        const sheet = sheetRef.current;
+        sheet.style.transition = "transform 300ms cubic-bezier(0.32, 0.72, 0, 1)";
+        if (diff > 80) {
+            sheet.style.transform = "translateY(100%)";
+            setTimeout(handleClose, 280);
+        } else {
+            sheet.style.transform = "translateY(0)";
+            setTimeout(() => { sheet.style.transform = ""; sheet.style.transition = ""; }, 300);
+        }
+        isSwiping.current = false;
+    }, []);
+
     if (!productData || !activeCard) return null;
 
     const basePrice = parseFloat(productData?.Price) || 0;
@@ -185,7 +226,12 @@ const ProductDetailSheet = () => {
         <>
             <div className="pds-backdrop" onClick={handleClose} />
 
-            <div className="pds-sheet">
+            <div className="pds-sheet"
+                ref={sheetRef}
+                onTouchStart={onSwipeStart}
+                onTouchMove={onSwipeMove}
+                onTouchEnd={onSwipeEnd}
+            >
                 <div className="pds-drag-handle" onClick={handleClose}>
                     <span />
                 </div>

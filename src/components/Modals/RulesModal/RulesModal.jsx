@@ -2,6 +2,7 @@ import React from "react";
 import "./RulesModal.css";
 import { useContext } from "react";
 import { Context } from "../../../context/kartItemContext";
+import SwipeableModal from "../../SwipeableModal/SwipeableModal";
 
 const RulesModal = () => {
 
@@ -18,6 +19,7 @@ const RulesModal = () => {
         >
             <div className="container h-100">
                 <div className="modal-dialog modal-dialog-zoom" role="document">
+                    <SwipeableModal modalId="rules-modal">
                     <div className="modal-content">
                         <div
                             className="modal-header"
@@ -58,6 +60,7 @@ const RulesModal = () => {
                             </p>
                         </div>
                     </div>
+                    </SwipeableModal>
                 </div>
             </div>
         </div>

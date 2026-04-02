@@ -1,0 +1,149 @@
+/* ============================================
+   Shared Bottom Sheet Styles
+   All modals use these base styles for
+   consistent height, look, and swipe behavior.
+   ============================================ */
+
+/* --- Base bottom sheet modal --- */
+.modal.full-popup.cart-modal {
+    height: 100% !important;
+    padding: 0 !important;
+    background: transparent;
+}
+
+.modal.full-popup.cart-modal:not(.show) {
+    display: none !important;
+    opacity: 0;
+}
+
+.modal.full-popup.cart-modal.show {
+    opacity: 1;
+    display: flex !important;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.modal.full-popup.cart-modal .container {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+}
+
+.modal.full-popup.cart-modal .modal-dialog {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    min-height: 100vh;
+}
+
+/* --- Consistent modal content --- */
+.modal.full-popup.cart-modal .modal-content {
+    border-radius: 20px 20px 0 0;
+    height: auto !important;
+    max-height: 80vh;
+    width: 100%;
+    border: none;
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Drag handle (swipe indicator) --- */
+.modal.full-popup.cart-modal .modal-content::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 4px;
+    background: #d5d5d5;
+    border-radius: 4px;
+    margin: 10px auto 0;
+    flex-shrink: 0;
+}
+
+/* --- Modal header --- */
+.modal.full-popup.cart-modal .modal-header {
+    border-radius: 0 !important;
+    border-bottom: 1px solid var(--border-light, #f0f0f0);
+    padding: 8px 20px 12px;
+    margin: 0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.modal.full-popup.cart-modal .modal-header h4 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.1px;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    color: var(--text-primary, #1a1a1a);
+}
+
+.modal.full-popup.cart-modal .modal-header .close,
+.modal.full-popup.cart-modal .modal-header button:first-child {
+    padding: 0;
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    background: none;
+    border: none;
+    opacity: 0.6;
+    transition: opacity 150ms ease;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.modal.full-popup.cart-modal .modal-header .close:active,
+.modal.full-popup.cart-modal .modal-header button:first-child:active {
+    opacity: 1;
+}
+
+/* --- Modal body --- */
+.modal.full-popup.cart-modal .modal-body {
+    max-height: 65vh;
+    overflow-y: auto;
+    padding: 0 20px;
+    margin: 0;
+    flex: 1;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* --- Slide up animation --- */
+.modal.full-popup.cart-modal.fade .modal-dialog {
+    transform: translateY(100%);
+    transition: transform 350ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.modal.full-popup.cart-modal.show .modal-dialog {
+    transform: translateY(0);
+}
+
+/* --- Backdrop --- */
+.modal.full-popup.cart-modal + .modal-backdrop,
+.modal-backdrop.show {
+    background: rgba(0, 0, 0, 0.4);
+    transition: opacity 250ms ease;
+}
+
+/* --- Swipe feedback --- */
+.modal.full-popup.cart-modal .modal-content.swiping {
+    transition: none !important;
+}
+
+/* --- Desktop constraint --- */
+@media (min-width: 768px) {
+    .modal.full-popup.cart-modal .modal-dialog {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+}

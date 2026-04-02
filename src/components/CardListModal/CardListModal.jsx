@@ -4,6 +4,7 @@ import Modal from "./Modal/Modal";
 import CardList from "./CardList/CardList";
 import { useContext } from "react";
 import { Context } from "../../context/kartItemContext";
+import SwipeableModal from "../SwipeableModal/SwipeableModal";
 
 const CartListModal = ({ countMin, countSec, timer }) => {
 
@@ -21,7 +22,7 @@ const CartListModal = ({ countMin, countSec, timer }) => {
             >
                 <div className="container ">
                     <div className="modal-dialog modal-dialog-zoom " role="document">
-                        
+                        <SwipeableModal modalId="cart-modal">
                         <div id="modal-content-cart-modal" className="modal-content">
                             <div
                                 className="modal-header"
@@ -104,6 +105,7 @@ const CartListModal = ({ countMin, countSec, timer }) => {
                             )}
 
                         </div>
+                        </SwipeableModal>
                     </div>
                             <Modal countMin={countMin} countSec={countSec} timer={timer} />
                 </div>

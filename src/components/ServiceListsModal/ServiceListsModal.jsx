@@ -1,9 +1,9 @@
 import React from "react";
 import "./ServiceListsModal.css";
 import ServiceList from "./ServiceList/ServiceList";
-// import Modal from "./Modal/Modal";
 import { useContext } from "react";
 import { Context } from "../../context/kartItemContext";
+import SwipeableModal from "../SwipeableModal/SwipeableModal";
 
 const ServiceListsModal = () => {
 
@@ -24,6 +24,7 @@ const ServiceListsModal = () => {
 
                 <div className="container">
                     <div className="modal-dialog modal-dialog-zoom" role="document" style={{aligItems: "flex-end"}}>
+                        <SwipeableModal modalId="service-modal">
                         <div id="modal-content" className="modal-content">
                             <div
                                 className="modal-header"
@@ -87,11 +88,11 @@ const ServiceListsModal = () => {
                                 </div> */}
                             </div>
                         </div>
+                        </SwipeableModal>
                     </div>
                 </div>
 
             </div>
-            {/* <Modal /> */}
         </>
     )
 }

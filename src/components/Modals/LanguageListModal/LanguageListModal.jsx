@@ -3,6 +3,7 @@ import "./LanguageListModal.css";
 import { useContext } from "react";
 import { Context } from "../../../context/kartItemContext";
 import { useSelectLanguage } from "../../../Hooks/useSelectLanguage";
+import SwipeableModal from "../../SwipeableModal/SwipeableModal";
 
 const closeLanguageModal = () => {
     const modal = document.getElementById('language-modal');
@@ -46,6 +47,7 @@ const LanguageListModal = ({ isLanguageModalOpen     }) => {
         >
             <div className="container">
                 <div className={`modal-dialog modal-dialog-zoom`} role="document" style={{ alignItems: "flex-end" }}>
+                    <SwipeableModal modalId="language-modal" onClose={closeLanguageModal}>
                     <div id="modal-content" className="modal-content">
                         <div
                             className="modal-header"
@@ -107,6 +109,7 @@ const LanguageListModal = ({ isLanguageModalOpen     }) => {
                                  onClick={() => { saveCheckedOption(); closeLanguageModal(); }}>{t("IbISave")}</button>
                         </div>
                     </div>
+                    </SwipeableModal>
                 </div>
             </div>
         </div>
