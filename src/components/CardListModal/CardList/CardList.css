@@ -87,10 +87,6 @@
     color: var(--text-primary, #202020);
     word-break: break-word;
     overflow-wrap: break-word;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 
 .card-list .item-inner-content .item-left-text .mb-15 p {
