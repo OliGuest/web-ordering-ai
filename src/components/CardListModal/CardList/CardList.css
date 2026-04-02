@@ -25,99 +25,65 @@
     margin-bottom: 0;
 }
 
-/* Cart item row */
-.card-list .menu-list-item {
-    align-items: center;
+/* --- Cart Card --- */
+.cart-card {
+    display: flex;
+    align-items: flex-start;
     background: var(--bg-secondary, #f8f8f8);
     padding: 12px;
     border-radius: 14px;
+    gap: 12px;
 }
 
-.card-list .menu-list-item .item-img {
-    width: 56px;
-    height: 56px;
+.cart-card__img {
+    width: 52px;
+    height: 52px;
     flex-shrink: 0;
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
-    margin-right: 12px;
-    aspect-ratio: 1;
 }
 
-.card-list .menu-list-item .item-img img {
+.cart-card__img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 12px;
+    display: block;
 }
 
-/* Content area */
-.card-list .item-content {
+.cart-card__body {
     flex: 1;
     min-width: 0;
 }
 
-.card-list .item-inner-content {
+/* Top row: title + stepper on same line */
+.cart-card__top-row {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-}
-
-/* Left text: name + modifiers + price */
-.card-list .item-inner-content .item-left-text {
-    display: flex;
-    flex-direction: column;
     align-items: flex-start;
-    flex: 1;
-    min-width: 0;
-    max-width: none;
-    width: auto;
-    height: auto;
+    justify-content: space-between;
+    gap: 10px;
 }
 
-.card-list .item-inner-content .item-left-text h6,
-.card-list .item-inner-content .item-left-text .mb-15 {
-    font-family: "Plus Jakarta Sans";
+.cart-card__title {
+    flex: 1;
+    min-width: 0;
+    font-family: "Plus Jakarta Sans", sans-serif;
     font-size: 14px;
     font-weight: 600;
     line-height: 1.3;
-    text-align: left;
-    margin: 0;
     color: var(--text-primary, #202020);
     word-break: break-word;
-    overflow-wrap: break-word;
+    padding-top: 2px;
 }
 
-.card-list .item-inner-content .item-left-text .mb-15 p {
-    font-size: 11px;
-    font-weight: 400;
-    color: var(--text-tertiary, #a0a0a0);
+.cart-card__title h6 {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
     margin: 0;
-    padding: 1px 0;
 }
 
-.card-list .item-inner-content .item-left-text > p {
-    font-family: "Plus Jakarta Sans";
-    font-size: 14px;
-    font-weight: 700;
-    text-align: left;
-    margin: 4px 0 0;
-    color: var(--text-primary, #202020);
-}
-
-/* Right side: quantity stepper */
-.card-list .addimage {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-    height: auto;
-    flex-shrink: 0;
-}
-
-/* Quantity stepper in cart */
-.card-list .item-count-wrapper {
+/* Quantity stepper */
+.cart-card__stepper {
     display: flex;
     align-items: center;
     gap: 0;
@@ -125,11 +91,12 @@
     border-radius: 10px;
     overflow: hidden;
     border: 1px solid var(--border-light, #f0f0f0);
+    flex-shrink: 0;
 }
 
 .cart-qty-btn {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -143,16 +110,41 @@
     transform: scale(0.85);
 }
 
-.card-list .item-count-wrapper .quantity-value {
-    width: 28px;
+.cart-card__qty {
+    min-width: 24px;
     text-align: center;
-    font-family: "Plus Jakarta Sans";
+    font-family: "Plus Jakarta Sans", sans-serif;
     font-size: 15px;
     font-weight: 700;
     color: var(--text-primary, #202020);
-    border: none;
-    background: transparent;
-    padding: 0;
+}
+
+/* Modifiers */
+.cart-card__modifiers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.cart-card__mod {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-tertiary, #a0a0a0);
+}
+
+.cart-card__mod:not(:last-child)::after {
+    content: ',';
+}
+
+/* Price */
+.cart-card__price {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 4px 0 0;
+    color: var(--text-primary, #202020);
 }
 
 /* Cart footer */
