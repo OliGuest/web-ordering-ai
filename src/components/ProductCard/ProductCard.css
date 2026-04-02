@@ -1,16 +1,15 @@
 /* ============================================
-   Product Card — Clean modern design
+   Product Card — Compact modern design
    ============================================ */
 
 .product-card {
     display: flex;
     align-items: stretch;
     background: var(--bg-primary, #ffffff);
-    border-radius: 14px;
+    border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
     transition: transform 150ms ease;
-    box-shadow: none;
     border: 1px solid rgba(0, 0, 0, 0.04);
     margin-bottom: 8px;
 }
@@ -21,8 +20,8 @@
 
 /* Image — left side */
 .product-card__img {
-    width: 100px;
-    min-height: 100px;
+    width: 80px;
+    min-height: 80px;
     flex-shrink: 0;
     position: relative;
     overflow: hidden;
@@ -43,11 +42,11 @@
     right: 0;
     text-align: center;
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
     color: #fff;
     background: var(--activeColor, #E7A536);
-    padding: 3px 6px;
+    padding: 2px 4px;
     letter-spacing: 0.3px;
     text-transform: uppercase;
 }
@@ -55,19 +54,19 @@
 /* Text — middle */
 .product-card__info {
     flex: 1;
-    padding: 12px 10px;
+    padding: 8px 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-width: 0;
-    gap: 3px;
+    gap: 2px;
 }
 
 .product-card__title {
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
-    line-height: 1.25;
+    line-height: 1.2;
     color: var(--text-primary, #1a1a1a);
     margin: 0;
     display: -webkit-box;
@@ -78,9 +77,9 @@
 
 .product-card__desc {
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
-    line-height: 1.35;
+    line-height: 1.3;
     color: var(--text-tertiary, #9ca3af);
     margin: 0;
     display: -webkit-box;
@@ -91,11 +90,11 @@
 
 .product-card__price {
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--activeColor, #E7A536);
     margin-top: auto;
-    padding-top: 2px;
+    padding-top: 1px;
 }
 
 /* Plus button — right side, vertically centered */
@@ -104,8 +103,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0 12px;
-    gap: 6px;
+    padding: 0 10px;
+    gap: 4px;
     flex-shrink: 0;
 }
 
@@ -113,14 +112,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 22px;
-    height: 22px;
-    border-radius: 7px;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 6px;
     color: #fff;
     font-family: "Plus Jakarta Sans", sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
-    padding: 0 5px;
+    padding: 0 4px;
     animation: qtyPop 250ms cubic-bezier(0.32, 0.72, 0, 1);
 }
 
@@ -131,15 +130,15 @@
 }
 
 .product-card__plus {
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: transform 100ms ease, background 100ms ease;
+    transition: transform 100ms ease;
 }
 
 .product-card__plus:active {
@@ -149,11 +148,11 @@
 /* Responsive */
 @media (min-width: 600px) {
     .product-card__img {
-        width: 120px;
-        min-height: 120px;
+        width: 100px;
+        min-height: 100px;
     }
 
     .product-card__info {
-        padding: 14px 14px;
+        padding: 10px 12px;
     }
 }

@@ -29,8 +29,8 @@ const ProductCard = ({ data, index, propClass }) => {
 
     const parsedDesc = descText ? Parser(descText) : null;
     const shortDesc =
-        descText && descText.length > 50
-            ? descText.substring(0, 50) + "..."
+        descText && descText.length > 80
+            ? descText.substring(0, 80) + "..."
             : descText;
 
     return (
