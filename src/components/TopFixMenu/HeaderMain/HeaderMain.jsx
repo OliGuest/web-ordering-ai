@@ -40,7 +40,7 @@ const HeaderMain = ({ visible, logoHead }) => {
     const backBtnColor = detailsBackButtonColor || activeColor || '#333';
 
     return (
-        <div className={`header-main header-height ${visible ? "up" : ""}`}>
+        <div className={`header-main header-height ${visible ? "scrolled" : ""}`}>
             {/* Left: back button */}
             <div className="header-left">
                 <Link
