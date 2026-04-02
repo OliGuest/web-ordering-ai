@@ -5,7 +5,7 @@
 .order-list-body {
     padding: 4px 14px 0;
     position: relative;
-    background: var(--bg-secondary, #f8f8f8);
+    background: var(--bg-primary, #ffffff);
     overflow-y: hidden;
     max-width: 640px;
     margin: 0 auto;
